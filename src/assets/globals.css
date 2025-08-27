@@ -111,3 +111,4 @@ main > .kfia-section:first-child,
 /* Hide scrollbars for horizontal carousels */
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+html[dir="rtl"] body { direction: rtl; }
