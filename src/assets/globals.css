@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ===== Global variables ===== */
+html { scroll-behavior: smooth; }
+:root{
+  --kfia-brand:#5F488B; --kfia-alert:#EE7D38; --kfia-surface:#fff; --kfia-muted:#f3f4f6;
+  --kfia-page-w:1800px; --kfia-content-w:1200px;
+  --kfia-hero-h:748px; --kfia-topbar-h:28px;
+  --kfia-h1-size:clamp(28px,6vw,72px); --kfia-h1-line:clamp(34px,7vw,90px); --kfia-h1-track:-0.02em;
+  --kfia-scale:1; --kfia-hero-ox:22%; --kfia-hero-oy:40%;
+}
+
+/* ===== Reset / motion ===== */
+html{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden; }
+body{ overflow-x:hidden; margin:0; }
+#root, body > div:first-child{ overflow-x:clip; }  /* keep safety at the true roots ONLY */
+img,video{ max-width:100%; height:auto; }
+
+/* Remove default heading top margins so section titles don't create gaps */
+h1,h2,h3{ margin-top:0; }
+
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+
+/* ===== Full-bleed helpers ===== */
+.kfia-bleed, .full-bleed{
+  width:100vw; max-width:100vw;
+  position:relative; left:50%; right:50%;
+  margin-left:-50vw; margin-right:-50vw;
+}
+.kfia-content--flush{ padding-inline:0 !important; }
+
+/* ===== Layout ===== */
+.kfia-page{ width:100%; margin-inline:auto; /* NOTE: no overflow clip here */ }
+.kfia-content{ width:100%; max-width:var(--kfia-content-w); margin-inline:auto; padding-inline:24px; }
+@media (max-width:640px){ .kfia-content{ padding-inline:16px; } }
+
+/* Base section spacing */
+.kfia-section{ padding-block:4rem; scroll-margin-top:96px; }
+@media (min-width:768px){ .kfia-section{ padding-block:6rem; } }
+
+/* ---- NEW: tighter/no-top helpers & first-section trim ---- */
+.kfia-section--compact{ padding-block:2rem; }
+@media (min-width:768px){ .kfia-section--compact{ padding-block:3rem; } }
+.kfia-section--no-top{ padding-top:0 !important; }
+
+main > .kfia-section:first-child,
+.kfia-content > .kfia-section:first-child{ padding-top:2rem; }
+@media (min-width:768px){
+  main > .kfia-section:first-child,
+  .kfia-content > .kfia-section:first-child{ padding-top:3rem; }
+}
+
+.kfia-bg-muted{ background:var(--kfia-muted); }
+
+@media (min-width:1440px){
+  .kfia-page{ max-width:var(--kfia-page-w); }
+  .kfia-content{ max-width:var(--kfia-content-w); }
+  .kfia-hero{ height:var(--kfia-hero-h); }
+}
+
+/* ===== Hero ===== */
+.kfia-hero{ min-height:clamp(420px,60vh,calc(640px * var(--kfia-scale))); }
+.kfia-hero-overlay{
+  background:linear-gradient(180deg,rgba(31,27,78,.45) 0%,rgba(31,27,78,.55) 35%,rgba(31,27,78,.65) 65%,rgba(12,8,46,.75) 100%);
+}
+.kfia-object{ object-position:var(--kfia-hero-ox) var(--kfia-hero-oy); }
+.kfia-hero-title{
+  font-weight:600; font-size:var(--kfia-h1-size); line-height:var(--kfia-h1-line); letter-spacing:var(--kfia-h1-track);
+  text-shadow:0 10px 28px rgba(0,0,0,.35); color:#fff; max-width:min(752px,92vw);
+}
+
+/* ===== Cards ===== */
+.kfia-card--soft{
+  background:var(--kfia-surface); border:1px solid rgb(226 232 240); border-radius:20px;
+  box-shadow:0 8px 24px rgba(31,27,78,.06); padding:1.5rem; transition:transform .2s ease;
+}
+@media (max-width:640px){ .kfia-card--soft{ padding:1.25rem; } }
+.kfia-card--soft:hover{ transform:translateY(-2px); }
+
+/* ===== Carousel ===== */
+.kfia-carousel-btn{ width:48px; height:48px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; background:#000; color:#fff; opacity:.9; }
+@media (max-width:640px){ .kfia-carousel-btn{ width:42px; height:42px; } }
+
+/* ===== Tabs ===== */
+.kfia-tabs{ display:grid; grid-template-columns:1fr 1fr; overflow:hidden; border:1px solid rgb(229 231 235); border-radius:10px; }
+.kfia-tab{ display:flex; align-items:center; justify-content:center; gap:.75rem; padding:.75rem 1.25rem; font-weight:600; font-size:14px; color:rgb(107 114 128); min-height:44px; transition:background .2s; }
+.kfia-tab[aria-selected="true"]{ color:#fff; background:var(--kfia-brand); }
+
+/* ===== Table ===== */
+.kfia-th{ padding:.75rem 0; font-size:13px; font-weight:600; letter-spacing:.02em; color:rgb(107 114 128); border-bottom:1px solid rgb(229 231 235); text-align:left; }
+.kfia-td{ padding:1rem 1rem 1rem 0; font-size:15px; color:rgb(23 23 23); border-top:1px solid rgb(229 231 235); }
+
+/* ===== Chips ===== */
+.kfia-chip{ display:inline-flex; align-items:center; border-radius:9999px; padding:.25rem .75rem; font-size:12px; font-weight:700; }
+.kfia-chip--landed{ background:#d1fae5; color:#047857; }
+.kfia-chip--late{ background:#ffedd5; color:#9a3412; }
+.kfia-chip--on-time{ background:#dbeafe; color:#1d4ed8; }
+.kfia-chip--cancelled{ background:#ffe4e6; color:#be123c; }
+
+/* ===== Footer ===== */
+.kfia-footer{ background:#f8fafc; }
+.kfia-logo-lg{ height:auto; max-height:120px; }
+.kfia-link{ color:var(--kfia-brand); text-underline-offset:3px; }
+.kfia-link:hover{ text-decoration:underline; }
+
+/* ===== Responsive grids ===== */
+.kfia-grid-quick{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); }
+@media (min-width:768px){ .kfia-grid-quick{ grid-template-columns:repeat(4,1fr); gap:1.5rem; } }
+@media (min-width:1024px){ .kfia-grid-quick{ grid-template-columns:repeat(6,1fr); } }
+
+/* Hide scrollbars for horizontal carousels */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
