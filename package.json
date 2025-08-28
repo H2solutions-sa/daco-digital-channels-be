@@ -30,6 +30,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@sitecore-jss/sitecore-jss-nextjs": "~22.9.0",
+    "@tabler/icons-react": "^3.34.1",
     "@tailwindcss/postcss": "^4.1.12",
     "font-awesome": "^4.7.0",
     "js-cookie": "^3.0.5",
