@@ -12,12 +12,12 @@ fields:{
 export const Default = (props: TopHeadingSectionProps): JSX.Element => {
 
   return (
-       <div className="text-center mb-8 md:mb-12">
-          <h2 className="font-semibold text-slate-900 tracking-tight text-4xl md:text-6xl">
+       <div className="text-center mb-10 md:mb-12">
+          <h2 className="font-semibold text-[color:var(--kfia-lavender)] tracking-tight text-4xl md:text-6xl">
             {props.fields.Title?.value}
           </h2>
           {props.fields.Description?.value && 
-          (<p className="mt-2 text-slate-600 max-w-3xl mx-auto">
+          (<p className="mt-2 max-w-3xl mx-auto text-sm sm:text-base text-[color:var(--kfia-subtitle)]">
             {props.fields.Description?.value}
           </p>)
           }

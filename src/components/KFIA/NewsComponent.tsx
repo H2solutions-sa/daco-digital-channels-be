@@ -1,7 +1,6 @@
 import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 type Link = {
   href: string;
@@ -76,19 +75,6 @@ export const Default = (props: NewsComponentProps): JSX.Element => {
 
         {/* Desktop */}
         <div className="hidden xl:block relative">
-          <button
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow rounded-full p-2 transition"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-6 h-6 text-slate-700" />
-          </button>
-          <button
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow rounded-full p-2 transition"
-            aria-label="Next"
-          >
-            <ChevronRight className="w-6 h-6 text-slate-700" />
-          </button>
-
           <div className="grid grid-cols-3 gap-6 items-stretch auto-rows-fr">
           {NewsCards}
           </div>

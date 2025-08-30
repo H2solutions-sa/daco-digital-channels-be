@@ -1,6 +1,7 @@
 import {  JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import {  Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import Image from "next/image";
 
 type Link = {
   href: string;
@@ -11,6 +12,7 @@ type HelpPanelProps = ComponentProps & {
   Title: Field<string>,
   Subtitle:Field<string>,
   ButtonLink:Field<Link>
+  Background:ImageField
  }
 }
 
@@ -22,14 +24,22 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
       aria-label="Help and Support"
       role="region"
     >
-      <div
-        className="
-          mx-auto bg-[#1F1B4E]
-          rounded-[40px] md:rounded-[48px]
-          px-6 py-16 md:px-10 md:py-20 lg:py-24
-          text-center text-white
-        "
-      >
+        <div className="relative w-full overflow-hidden rounded-[32px] md:rounded-[40px]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          {(props.fields.Background.value?.src  &&
+          <Image
+            src={props.fields.Background.value?.src} // <-- Replace with your actual background image path
+            alt={props.fields.Title.value}
+            fill
+            className="object-cover"
+            priority
+          />)}
+          {/* Dark overlay for contrast */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="relative z-10 text-center text-white px-6 py-16 md:py-20 lg:py-28">
+
         {/* Title */}
         <h3 className="font-sans font-semibold tracking-tight text-3xl md:text-5xl lg:text-6xl">
           {props.fields.Title?.value}
@@ -54,6 +64,7 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
           >
            {props.fields.ButtonLink?.value?.text}
           </a>
+        </div>
         </div>
       </div>
     </section>
