@@ -22,7 +22,7 @@ type ImageCard ={
 }
 
 export const Default = (props: CardsSectionProps): JSX.Element => {
-const  className="snap-center shrink-0 w-[85%] sm:w-[65%] md:w-[55%] lg:w-[45%]"
+//const  className="snap-center shrink-0 w-[85%] sm:w-[65%] md:w-[55%] lg:w-[45%]"
 const Card = 
 props.fields.items && props.fields.items.map((card,index)=>(
     <a key={index}

@@ -83,7 +83,7 @@ export const Default = (props: FlightsSectionProps): JSX.Element => {
           <div className="flex flex-col justify-center max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight text-[color:var(--kfia-lavender)]">
               {props.fields.Title?.value}
-              <br className="hidden sm:block" /> Flight
+              <br className="hidden sm:block" /> 
             </h2>
             <p className="mt-4 sm:mt-6 md:mt-8 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-[color:var(--kfia-subtitle)] mx-auto lg:mx-0">
               {props.fields.SubTitle?.value}
