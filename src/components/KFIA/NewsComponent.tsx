@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from "next/image";
+import Link from 'next/link';
 type Link = {
   href: string;
   text: string;
@@ -26,7 +27,7 @@ type  NewsCards ={
 export const Default = (props: NewsComponentProps): JSX.Element => {
   const NewsCards = props.fields.items 
   && props.fields.items.map((card,index) =>(
-        <a key={index}
+        <Link key={index}
       href={card.fields.CardLink?.value?.href}
       className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand)] focus-visible:ring-offset-2 rounded-2xl h-full"
     >
@@ -51,7 +52,7 @@ export const Default = (props: NewsComponentProps): JSX.Element => {
           </p>
         </div>
       </div>
-    </a>
+    </Link>
   ));
 
   

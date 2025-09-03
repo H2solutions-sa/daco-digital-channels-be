@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from "next/image";
+import Link from 'next/link';
 
 type Link={
   href: string;
@@ -25,7 +26,7 @@ export const Default = (props: GuideComponentProps): JSX.Element => {
   const CardGuideList =
   props.fields.items && 
   props.fields.items.map((guideTab,index) =>(
-      <a key={index}
+      <Link key={index}
       href={guideTab.fields.CardLink?.value?.href}
       className="block rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand)] focus-visible:ring-offset-2"
     >
@@ -49,7 +50,7 @@ export const Default = (props: GuideComponentProps): JSX.Element => {
           <p className="mt-1 sm:mt-2 text-sm text-slate-600 leading-6">{guideTab.fields.Description?.value}</p>
         </div>
       </div>
-    </a>
+    </Link>
 
   ));
   return (

@@ -290,7 +290,7 @@ export default function DestinationsMap({
   const totalCount = data.length;
 
   return (
-        <section className="scroll-mt-[96px] kfia-content kfia-section">
+    <section className="scroll-mt-[96px] kfia-content kfia-section">
       <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-5 md:px-7 py-4 border-b border-slate-200">
           <h2 className="text-[16px] md:text-[17px] font-semibold text-[color:var(--kfia-lavender)]">
@@ -298,19 +298,19 @@ export default function DestinationsMap({
           </h2>
         </div>
 
-    <div className={className} id={anchorId}>
-      <div ref={ref} style={{ height, width: "100%" }} />
-      <div
-        className="mt-3 md:mt-4 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm md:text-[15px] text-slate-800 flex flex-wrap items-center gap-x-4 gap-y-2"
-        aria-live="polite"
-      >
-        <span className="font-semibold text-slate-900">Destinations</span>
-        <span>Domestic: <b>{domesticCount}</b></span>
-        <span>International: <b>{internationalCount}</b></span>
-        <span className="text-slate-500">Total: <b>{totalCount}</b></span>
-      </div>
-    </div>
+        <div className={className} id={anchorId}>
+          <div ref={ref} style={{ height, width: "100%" }} />
+          <div
+            className="mt-3 md:mt-4 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm md:text-[15px] text-slate-800 flex flex-wrap items-center gap-x-4 gap-y-2"
+            aria-live="polite"
+          >
+            <span className="font-semibold text-slate-900">Destinations</span>
+            <span>Domestic: <b>{domesticCount}</b></span>
+            <span>International: <b>{internationalCount}</b></span>
+            <span className="text-slate-500">Total: <b>{totalCount}</b></span>
           </div>
+        </div>
+    </div>
     </section>
   );
 }

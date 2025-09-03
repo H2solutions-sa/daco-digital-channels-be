@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ArrowUpRight } from "lucide-react";
+import Link from 'next/link';
 type Link = {
   href: string;
   text: string;
@@ -25,7 +26,7 @@ export const Default = (props: QuickAccessProps): JSX.Element => {
 const QuickAccessItems = 
 props.fields.items && 
 props.fields.items.map((quickTab,index) =>(
-<a
+<Link
       href={quickTab.fields.CardLink?.value?.href}
       key={index} className="block h-full transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand)] rounded-2xl"
     >
@@ -50,7 +51,7 @@ props.fields.items.map((quickTab,index) =>(
         {/* Description under title */}
         <p className="text-sm text-slate-600 mt-3 leading-6">{quickTab.fields.Description?.value}</p>
       </div>
-    </a>
+    </Link>
 ));
   return (
         <section

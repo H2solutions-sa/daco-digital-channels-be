@@ -2,6 +2,7 @@ import {  JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from "next/image";
+import Link from 'next/link';
 
 type Link = {
   href: string;
@@ -52,7 +53,7 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
 
         {/* Button */}
         <div className="mt-8">
-          <a
+          <Link
             href= {props.fields.ButtonLink?.value?.href}
             className="
               inline-block px-6 py-3
@@ -63,7 +64,7 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
             "
           >
            {props.fields.ButtonLink?.value?.text}
-          </a>
+          </Link>
         </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 import Image from 'next/image'
+import Link from 'next/link';
 type Link ={
   href:string,
   text:string
@@ -25,7 +26,7 @@ export const Default = (props: CardsSectionProps): JSX.Element => {
 //const  className="snap-center shrink-0 w-[85%] sm:w-[65%] md:w-[55%] lg:w-[45%]"
 const Card = 
 props.fields.items && props.fields.items.map((card,index)=>(
-    <a key={index}
+    <Link key={index}
       href={card.fields.CardLink?.value?.href}
       className={`group relative block overflow-hidden rounded-[24px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand)] focus-visible:ring-offset-2`}
     >
@@ -51,7 +52,7 @@ props.fields.items && props.fields.items.map((card,index)=>(
         <h3 className="text-white text-lg sm:text-xl font-semibold">{card.fields.CardTitle?.value}</h3>
         <p className="text-white/85 text-sm mt-1 leading-6">{card.fields.CardSubTitle?.value}</p>
       </div>
-    </a>
+    </Link>
 ));
 
   return (

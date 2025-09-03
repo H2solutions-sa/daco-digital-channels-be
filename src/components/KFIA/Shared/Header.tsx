@@ -1,7 +1,7 @@
 import { JSX , useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { ImageField , Field} from '@sitecore-jss/sitecore-jss-nextjs';
+import { ImageField , Field, Placeholder} from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { Menu, Search as SearchIcon, Phone } from "lucide-react";
 import { SearchOverlay } from "../header/SearchOverlay";
@@ -44,7 +44,11 @@ export const Default = (props: HeaderProps): JSX.Element => {
          
             </Link>
         </div>
-
+      {!searchOpen && (
+          <nav className="hidden xl:flex items-center gap-6 2xl:gap-8 text-[15px] 2xl:text-[16px] font-semibold">
+           <Placeholder name={`jss-navigation`} rendering={props.rendering} />
+          </nav>
+        )}
 
         <div className="flex items-center gap-2 sm:gap-3 md:gap-3 xl:gap-4 shrink-0">
           <button

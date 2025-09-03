@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import { AlertCircle } from "lucide-react";
+import Link from 'next/link';
 
 type Link = {
     href:string,
@@ -41,12 +42,12 @@ export const Default = (props: WeatherBarProps): JSX.Element => {
 
             <p className="text-sm sm:text-base md:text-lg leading-snug text-white">
               {props.fields.Text?.value}
-              <a
+              <Link
                 href={props.fields.Button.value.href}
                 className="underline underline-offset-2 font-semibold hover:text-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-sm"
               >
                 {props.fields.Button.value.text}
-              </a>
+              </Link>
             </p>
           </div>
         </div>

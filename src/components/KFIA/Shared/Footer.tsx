@@ -3,6 +3,7 @@ import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 import Image from "next/image";
+import Link from 'next/link';
 type Link = {
     href:string,
     text:string
@@ -42,7 +43,7 @@ export const Default = (props: FooterProps): JSX.Element => {
           >
             <ul className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-4 text-slate-800 text-base md:text-lg">
               {props.fields.FooterLinks?.map((link, index) => (
-              <li key={index}><a href={link.fields.Link?.value.href} className="hover:opacity-80">{link.fields.Link?.value?.text}</a></li>
+              <li key={index}><Link href={link.fields.Link?.value.href} className="hover:opacity-80">{link.fields.Link?.value?.text}</Link></li>
               ))}
               </ul>
           </nav>
@@ -50,7 +51,7 @@ export const Default = (props: FooterProps): JSX.Element => {
           {/* Socials */}
           <div className="mt-8 md:mt-10 flex justify-center gap-5 md:gap-6">
             {props.fields.SocialMediaLinks?.map((link, index) => (
-                <a key={index}
+                <Link key={index}
                   href={link.fields.Link?.value?.href}
                   aria-label={link.fields.Link?.value?.text}
                   className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-slate-300 text-slate-800 hover:bg-slate-100 transition-colors"
@@ -65,7 +66,7 @@ export const Default = (props: FooterProps): JSX.Element => {
                       priority
                     />
                    )}
-            </a>
+            </Link>
             ))}
           </div>
 
