@@ -2,7 +2,6 @@ import { JSX , useState, useEffect } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import { Field,Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 type TabsListprops = ComponentProps&{
 fields:{
@@ -19,7 +18,6 @@ fields:{
 
 export const Default = (props: TabsListprops): JSX.Element => {
  const [activeTab, setActiveTab] = useState(0);
- const router = useRouter();
   useEffect(() => {
     const handleHashChange = () => {
       const hash = decodeURIComponent(window.location.hash.replace("#", ""));
