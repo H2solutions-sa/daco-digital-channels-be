@@ -30,7 +30,7 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
         <div className="absolute inset-0">
           {(props.fields.Background.value?.src  &&
           <Image
-            src={props.fields.Background.value?.src} // <-- Replace with your actual background image path
+            src={props.fields.Background?.value?.src} // <-- Replace with your actual background image path
             alt={props.fields.Title.value}
             fill
             className="object-cover"

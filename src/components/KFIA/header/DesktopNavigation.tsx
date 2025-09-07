@@ -4,6 +4,7 @@ import React from "react";
 import { ComponentProps } from 'lib/component-props';
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 type DesktopNavigationProps = ComponentProps & {
 fields:{
   items:navItems[];
@@ -17,7 +18,7 @@ type Link = {
 type navItems = ComponentProps &{
   fields:{
       MenuTitle:Field<string>,
-      MenuLinks:{fields:{ Link: Field<Link>} }[],
+      MenuLinks:{displayName:string, fields:{ Link: Field<Link>} }[],
   }
 }
 
@@ -41,12 +42,6 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
     setOpenIndex((prev) => (prev === index ? null : index));
   const onMouseEnter = (index: number) => setOpenIndex(index);
   const onMouseLeave = () => setOpenIndex(null);
-
-  const onItemClick = (href: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpenIndex(null);
-    window.location.href = href; // Or use Next.js router
-  };
 
   return (
     <div className="relative flex items-center flex-none">
@@ -87,11 +82,11 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
                 {menuItem.fields.MenuLinks?.map((linkObj, i) => {
                   const link = linkObj.fields.Link.value;
                   return (
-                    <li key={link.href} role="none">
+                    <li key={linkObj.displayName} role="none">
                       <Link
-                        href={link.href}
+                        href={`${link.href}#${linkObj.displayName}`}
                         role="menuitem"
-                        onClick={(e) => onItemClick(link.href, e)}
+                       // onClick={(e) => onItemClick(`${link.href}#${linkObj.displayName}`, e)}
                         className="block px-4 py-2.5 xl:py-3 text-[15px] whitespace-nowrap transition-all duration-200 hover:bg-slate-50 hover:text-[color:var(--kfia-brand)] hover:font-semibold hover:border-l-4 hover:border-[color:var(--kfia-brand)]"
                       >
                         {link.text}

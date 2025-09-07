@@ -1,7 +1,8 @@
-import { JSX , useState } from 'react';
+import { JSX , useState, useEffect } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import { Field,Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type TabsListprops = ComponentProps&{
 fields:{
@@ -10,6 +11,7 @@ fields:{
 }
 type ContentTabsWrapperProps = ComponentProps & {
 id: string; // Sitecore ID
+displayName:string;
 fields:{
  TabName:Field<string>
 }
@@ -17,9 +19,32 @@ fields:{
 
 export const Default = (props: TabsListprops): JSX.Element => {
  const [activeTab, setActiveTab] = useState(0);
- const handleTabClick = (index:number) => {
-   setActiveTab(index);
- }
+ const router = useRouter();
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = decodeURIComponent(window.location.hash.replace("#", ""));
+      const index = props.fields.items.findIndex(
+        (tab) => tab.displayName === hash
+      );
+
+      if (index !== -1) {
+        setActiveTab(index);
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    handleHashChange(); // run on mount
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [props.fields.items]);
+
+  const handleTabClick = (index: number, displayName: string) => {
+    setActiveTab(index);
+    // router.push(`${router.pathname}#${encodeURIComponent(displayName)}`, undefined, {
+    //   shallow: true,
+    // });
+  };
+
    const TabHeaders =
     props.fields.items &&
     props.fields.items.map(
@@ -41,15 +66,15 @@ export const Default = (props: TabsListprops): JSX.Element => {
                       "min-w-[max-content]"
                     ].join(" ")}
           >
-            <Link
-              className="nav-link"
-              role="tab"
-              aria-controls={tab.id}
-              href={`#${tab.id}`}
-              onClick={() => handleTabClick(index)}
-            >
-              {tab.fields.TabName?.value}
-            </Link>
+             <Link
+                      className="nav-link"
+                      role="tab"
+                      href={`#${tab.displayName}`}
+                      aria-controls={tab.displayName}
+                      onClick={() => handleTabClick(index, tab.displayName)}
+                    >
+                      {tab.fields.TabName?.value}
+                    </Link>
           </li>
         )
     );
@@ -57,14 +82,18 @@ export const Default = (props: TabsListprops): JSX.Element => {
     props.fields.items &&
     props.fields.items.map((tab, index) => (
       <div
-        key={index}
+        key={index} id={tab.displayName} 
         className={`tab-content ${activeTab === index ? "active" : ""}`}
       >
         {activeTab === index && (
           <div key={index}>
             <div data-tab-content="" className="p-5">
-              <div id={tab.id} role="tabpanel">
+              <div role="tabpanel">
+                <section className="kfia-content py-12 md:py-16">
+                  <div className="space-y-6 -mt-6">
                     <Placeholder name={`jss-content-tab-${index}`} rendering={props.rendering} />
+                    </div>
+                    </section>
               </div>
             </div>
           </div>
