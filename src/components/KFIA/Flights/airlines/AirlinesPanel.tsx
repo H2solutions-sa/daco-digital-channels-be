@@ -4,14 +4,17 @@ import { Plus, Share2 } from "lucide-react";
 import { shareAirline } from "./share";
 import Image from "next/image";
 import { Field, ImageField } from "@sitecore-jss/sitecore-jss-nextjs";
+import { useI18n } from "next-localization";
 import { useAutoMobile } from "./useAutoMobile";
 import MobileAirlineCard from "./MobileAirlineCard";
-
+import SearchBar from "../../Common/SearchBar";
 type AirlinesPanelProps = ComponentProps & {
   fields: {
     items: AirlineDataProps[];
     forceMobile?: boolean;
   };
+    onQueryChange: (v: string) => void;
+    onSearch?: () => void;
 };
 
 type Link = {
@@ -35,6 +38,7 @@ const td =
   "px-3 py-4 align-middle whitespace-nowrap text-[14px] sm:text-[15px] text-neutral-800";
 
 export const Default = (props: AirlinesPanelProps): JSX.Element => {
+ const { t } = useI18n();
   const PAGE_SIZE = 6;
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -68,16 +72,40 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
     <section id="airlines" className="scroll-mt-[96px]">
       <div className="pt-0 -mt-10 md:-mt-14">
         <div ref={wrapperRef} className="overflow-x-auto">
+                {/* Search panel */}
+                <div className="mt-6 sm:mt-8 rounded-2xl bg-[#1E1B4F] text-white p-3 sm:p-6 mx-4 sm:mx-auto max-w-[1100px]">
+                  <div className="flex flex-col gap-4 items-stretch">
+                    { (
+                      
+                      <div className="flex justify-center">
+                        <div className="rounded-xl bg-white/10 p-1">
+                        <span className="px-4 py-2 rounded-full text-sm font-semibold bg-white text-[color:var(--kfia-brand,#5F488B)]"> {t('Airline')}</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="px-1 sm:px-0">
+                      <SearchBar
+                        value={query}
+                        onChange = {(v) =>{
+                          setQuery(v);
+                          props.onQueryChange}}
+                        onSearch={props.onSearch}
+                        placeholder={t("search-placeholder")}
+                        buttonLabel={t("Search-Btn")}
+                      />
+                    </div>
+                  </div>
+                </div>
           <section id="airlines" className="kfia-content py-8 sm:py-12 scroll-mt-[96px]">
           <div className="mt-3 sm:mt-4 rounded-2xl border border-neutral-200 bg-white p-3 sm:p-6 shadow-sm max-w-[1100px] mx-4 sm:mx-auto">
           <div className="rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
             <table className="w-full min-w-[980px] table-auto border-collapse">
               <thead>
                 <tr className="bg-[#1E1B4F]">
-                  <th className={th}>Airline</th>
-                  <th className={th}>Website</th>
-                  <th className={th}>Phone</th>
-                  <th className={th}>Email</th>
+                  <th className={th}>{t('airline-column')}</th>
+                  <th className={th}>{t('website-column')}</th>
+                  <th className={th}>{t('phone-column')}</th>
+                  <th className={th}>{t('email-column')}</th>
                   <th className={`${th} text-center w-[64px]`}></th>
                 </tr>
               </thead>
@@ -174,7 +202,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
               }
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[color:var(--kfia-brand)] text-white text-sm font-medium hover:opacity-90"
             >
-              <Plus className="w-4 h-4" /> Load More
+              <Plus className="w-4 h-4" /> {t("load-more-btn")}
             </button>
           </div>
         )}
