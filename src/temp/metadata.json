@@ -1,0 +1,15 @@
+{
+  "packages": {
+    "@sitecore-cloudsdk/core": "0.5.4",
+    "@sitecore-cloudsdk/events": "0.5.4",
+    "@sitecore-cloudsdk/personalize": "0.5.4",
+    "@sitecore-cloudsdk/utils": "0.5.4",
+    "@sitecore-feaas/clientside": "0.6.2",
+    "@sitecore-jss/sitecore-jss": "22.9.0",
+    "@sitecore-jss/sitecore-jss-cli": "22.9.0",
+    "@sitecore-jss/sitecore-jss-dev-tools": "22.9.0",
+    "@sitecore-jss/sitecore-jss-nextjs": "22.9.0",
+    "@sitecore-jss/sitecore-jss-react": "22.9.0",
+    "@sitecore/byoc": "0.3.0"
+  }
+}
