@@ -1,0 +1,9 @@
+{
+  "sitecore": {
+    "instancePath": "C:\\inetpub\\wwwroot\\sc104sc.dev.local",
+    "apiKey": "08BECE0B-5FC2-4A9E-A31B-E8AC709A46BF",
+    "deploySecret": "60w9vs4onjn1uf96nkzifcd3yyzn83dku0x0lj1l1izp9",
+    "deployUrl": "https://sc104sc.dev.local/sitecore/api/jss/import",
+    "layoutServiceHost": "https://sc104sc.dev.local"
+  }
+}
