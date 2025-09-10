@@ -19,7 +19,7 @@ export const Default = (props: ContentRenderingProps): JSX.Element => {
               <Text field={props.fields.Title} />
             </h2>
           </div> )}
-      <div className="px-4 sm:px-5 md:px-7 py-5 sm:py-6 md:py-7">
+      <div className="px-3 sm:px-3 md:px-5 py-5 sm:py-6 md:py-7">
         <RichText field={props.fields.Content}/>
         <Placeholder name="jss-component-in-richtext" rendering={props.rendering} />
         </div>
