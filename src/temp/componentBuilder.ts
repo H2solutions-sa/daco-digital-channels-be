@@ -61,7 +61,8 @@ import * as HeroCarousel from 'src/components/KFIA/Shared/HeroCarousel';
 import * as LanguageSwitcher from 'src/components/KFIA/Shared/LanguageSwitcher';
 import * as TopUtilityBar from 'src/components/KFIA/Shared/TopUtilityBar';
 import * as WeatherBar from 'src/components/KFIA/Shared/WeatherBar';
-import * as FeatureTile from 'src/components/KFIA/Parking-Transport/FeatureTile'
+import * as FeatureTile from 'src/components/KFIA/Parking-Transport/FeatureTile';
+import  * as FlightsPanel from 'src/components/KFIA/Flights/Flights-Panel/FlightsPanel';
 
 export const components = new Map();
 
@@ -123,6 +124,7 @@ components.set('LanguageSwitcher', LanguageSwitcher);
 components.set('TopUtilityBar', TopUtilityBar);
 components.set('WeatherBar', WeatherBar);
 components.set('FeatureTile',FeatureTile);
+components.set('FlightsPanel',FlightsPanel);
 
 export const componentBuilder = new ComponentBuilder({ components });
 
