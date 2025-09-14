@@ -62,7 +62,11 @@ import * as LanguageSwitcher from 'src/components/KFIA/Shared/LanguageSwitcher';
 import * as TopUtilityBar from 'src/components/KFIA/Shared/TopUtilityBar';
 import * as WeatherBar from 'src/components/KFIA/Shared/WeatherBar';
 import * as FeatureTile from 'src/components/KFIA/Parking-Transport/FeatureTile';
-import  * as FlightsPanel from 'src/components/KFIA/Flights/Flights-Panel/FlightsPanel';
+import * as FlightsPanel from 'src/components/KFIA/Flights/Flights-Panel/FlightsPanel';
+import * as PillEntryCard from 'src/components/KFIA/Parking-Transport/PillEntryCard';
+import * as ShuttleBusContentSection from 'src/components/KFIA/Parking-Transport/ShuttleBusContentSection';
+import * as FaresTable from 'src/components/KFIA/Parking-Transport/FaresTable'; 
+
 
 export const components = new Map();
 
@@ -125,6 +129,9 @@ components.set('TopUtilityBar', TopUtilityBar);
 components.set('WeatherBar', WeatherBar);
 components.set('FeatureTile',FeatureTile);
 components.set('FlightsPanel',FlightsPanel);
+components.set('PillEntryCard',PillEntryCard);
+components.set('ShuttleBusContentSection',ShuttleBusContentSection);
+components.set('FaresTable', FaresTable);
 
 export const componentBuilder = new ComponentBuilder({ components });
 
