@@ -24,7 +24,7 @@ export const Default = (props: WeatherBarProps): JSX.Element => {
       aria-label="Weather disruption alert"
       className="
         relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen
-        bg-[color:var(--kfia-alert)] text-white
+        bg-[color:var(--kfia-secondary)] text-white
         z-10
       "
     >

@@ -22,7 +22,7 @@ export const Default = (props: ContentHeaderProps): JSX.Element => {
         <h1 className="kfia-headline text-[28px] sm:text-[44px] leading-tight font-semibold">
           {props.fields.Title?.value}
         </h1>
-        <p className="kfia-Description mt-2 text-sm sm:text-base">
+        <p className="kfia-subtitle mt-2 text-sm sm:text-base">
           {props.fields.Description?.value}
         </p>
       </div>

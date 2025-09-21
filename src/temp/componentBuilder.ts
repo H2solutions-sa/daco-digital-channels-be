@@ -66,8 +66,9 @@ import * as FlightsPanel from 'src/components/KFIA/Flights/Flights-Panel/Flights
 import * as PillEntryCard from 'src/components/KFIA/Parking-Transport/PillEntryCard';
 import * as ShuttleBusContentSection from 'src/components/KFIA/Parking-Transport/ShuttleBusContentSection';
 import * as FaresTable from 'src/components/KFIA/Parking-Transport/FaresTable'; 
-
-
+import * as SectionSideNav from 'src/components/KFIA/Shared/SectionSideNav';
+import * as PassengerTabs from 'src/components/KFIA//Passenger-Guide/PassengerTabs';
+import * as GuideTile from 'src/components/KFIA/Passenger-Guide/GuideTile';
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -132,6 +133,9 @@ components.set('FlightsPanel',FlightsPanel);
 components.set('PillEntryCard',PillEntryCard);
 components.set('ShuttleBusContentSection',ShuttleBusContentSection);
 components.set('FaresTable', FaresTable);
+components.set('SectionSideNav', SectionSideNav);
+components.set('PassengerTabs', PassengerTabs);
+components.set('GuideTile', GuideTile);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

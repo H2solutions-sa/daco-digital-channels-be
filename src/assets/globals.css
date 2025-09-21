@@ -145,3 +145,7 @@
   .kfia-link{ color:var(--kfia-brand); text-underline-offset:3px; }
   .kfia-link:hover{ text-decoration:underline; }
 }
+
+.white-icon{
+  filter: brightness(0) invert(1);
+}

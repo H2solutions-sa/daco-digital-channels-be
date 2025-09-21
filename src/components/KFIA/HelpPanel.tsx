@@ -12,7 +12,7 @@ type HelpPanelProps = ComponentProps & {
  fields :{
   Title: Field<string>,
   Subtitle:Field<string>,
-  ButtonLink:Field<Link>
+  ButtonLink:Field<Link>,
   Background:ImageField
  }
 }
