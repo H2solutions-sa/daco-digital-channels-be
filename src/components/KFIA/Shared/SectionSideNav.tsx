@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ComponentProps } from 'lib/component-props';
 import { usePathname } from "next/navigation";
+import { ArrowLeft } from 'lucide-react';
 
 
 type Linkfield = {
@@ -12,7 +13,8 @@ type Linkfield = {
 }
 type SideNavTabs = ComponentProps &{
   fields:{
-  items:SectionSideNavProps[]
+  items:SectionSideNavProps[],
+  back:Field<Linkfield>,
   }
 }
 type SectionSideNavProps = ComponentProps & {
@@ -34,17 +36,17 @@ export const Default = (props: SideNavTabs): JSX.Element => {
     >
       <aside className={`relative md:sticky md:top-6`}>
       {/* Back link */}
-      {/* {back && (
+      {props.fields.back && (
         <div className="mb-3 sm:mb-4 md:mb-0 md:absolute md:-top-9 md:left-0">
           <Link
-            href={back.href}
+            href={props.fields.back?.value?.href}
             className="inline-flex items-center gap-2 text-[14px] sm:text-[15px] font-medium text-[color:var(--kfia-brand)] hover:underline"
           >
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" /> 
-            {back.label ?? "Back"}
+            {props.fields.back?.value?.text ?? "Back"}
           </Link>
         </div>
-      )} */}
+      )}
 
       {/* Sidebar nav */}
       <nav

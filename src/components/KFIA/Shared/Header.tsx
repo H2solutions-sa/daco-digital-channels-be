@@ -38,9 +38,9 @@ export const Default = (props: HeaderProps): JSX.Element => {
 
         <Link href="/" className="shrink-0 block" aria-label="KFIA Home">
         {props.fields.Logo.value?.src &&
-            <Image src={props.fields.Logo.value?.src} alt="KFIA" width={132} height={24} className="sm:hidden" priority /> }
-          {props.fields.Logo.value?.src &&  <Image src={props.fields.Logo.value?.src} alt="KFIA" width={160} height={30} className="hidden sm:block xl:hidden" priority /> }
-          {props.fields.Logo.value?.src &&  <Image src={props.fields.Logo.value?.src} alt="KFIA" width={184} height={34} className="hidden xl:block" priority /> }
+            <Image src={props.fields.Logo.value?.src} alt="KFIA" width={160} height={30} className="sm:hidden" priority /> }
+          {props.fields.Logo.value?.src &&  <Image src={props.fields.Logo.value?.src} alt="KFIA" width={200} height={38} className="hidden sm:block xl:hidden" priority /> }
+          {props.fields.Logo.value?.src &&  <Image src={props.fields.Logo.value?.src} alt="KFIA" width={240} height={44} className="hidden xl:block" priority /> }
          
             </Link>
         </div>

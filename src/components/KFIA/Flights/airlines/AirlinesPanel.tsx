@@ -69,7 +69,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
     );
   }
   return (
-    <section id="airlines" className="scroll-mt-[96px]">
+    <section id="airlines" className="kfia-content py-8 sm:py-12 scroll-mt-[96px]">
       <div className="pt-0 -mt-10 md:-mt-14">
         <div ref={wrapperRef} className="overflow-x-auto">
                 {/* Search panel */}

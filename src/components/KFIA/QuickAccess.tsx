@@ -33,19 +33,20 @@ props.fields.items.map((quickTab,index) =>(
       <div className="kfia-card--soft p-5 md:p-6 lg:p-7 flex flex-col h-full">
         {/* Title row with arrow on right */}
         <div className="flex items-start justify-between">
-          <h3 className="font-medium text-slate-900 text-[18px] md:text-[20px] leading-tight">
+          <h3  className="text-[15px] sm:text-[16px] font-semibold leading-tight break-words"
+              style={{ color: "var(--kfia-brand)" }}>
             {quickTab.fields.Header?.value}
           </h3>
-          <span
-            className="ml-3 shrink-0 w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-[color:var(--kfia-brand)]"
-            style={{
-              background:
-                "color-mix(in oklab, var(--kfia-brand) 12%, transparent)",
-            }}
-            aria-hidden
-          >
-            <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
-          </span>
+           <span
+          className={[
+            "mt-0.5 inline-flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full text-white",
+            "motion-safe:group-hover:translate-x-0.5 transition-transform",
+          ].join(" ")}
+          style={{ background: "var(--kfia-brand)" }}
+          aria-hidden
+        >
+          <ArrowUpRight className="h-5 w-5" />
+        </span>
         </div>
 
         {/* Description under title */}

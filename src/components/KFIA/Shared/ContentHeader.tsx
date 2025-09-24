@@ -13,22 +13,21 @@ export const Default = (props: ContentHeaderProps): JSX.Element => {
   const context = useSitecoreContext();
   const pageName = context.sitecoreContext.route?.displayName?.replaceAll(" ", "");
   return (
-  <section id={pageName} className="kfia-content kfia-section py-8 sm:py-12 scroll-mt-[96px]">
+  <section id={pageName} className="pt-4">
       {/* Heading */}
     <div className="text-center px-4">
     <div className="relative w-full">
       {/* No top spacing at all */}
       <div className="max-w-[1100px] mx-auto px-4 pt-0 pb-0 text-center">
-        <h1 className="kfia-headline text-[28px] sm:text-[44px] leading-tight font-semibold">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[28px] font-semibold text-[color:var(--kfia-brand)]">
           {props.fields.Title?.value}
-        </h1>
-        <p className="kfia-subtitle mt-2 text-sm sm:text-base">
+        </h2>
+        <p className="mt-2 max-w-3xl mx-auto text-[color:var(--kfia-subtitle)]">
           {props.fields.Description?.value}
         </p>
       </div>
     </div>
     </div>
-    
   </section>
   );
 };

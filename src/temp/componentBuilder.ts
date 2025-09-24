@@ -26,7 +26,6 @@ import * as NewsComponent from 'src/components/KFIA/NewsComponent';
 import * as QuickAccess from 'src/components/KFIA/QuickAccess';
 import * as TopHeadingSection from 'src/components/KFIA/TopHeadingSection';
 import * as TwoColumnContainer from 'src/components/KFIA/TwoColumnContainer';
-import * as Accordion from 'src/components/KFIA/Common/Accordion';
 import * as AutoHashScroll from 'src/components/KFIA/Common/AutoHashScroll';
 import * as OperatorCard from 'src/components/KFIA/Common/OperatorCard';
 import * as PanelShell from 'src/components/KFIA/Common/PanelShell';
@@ -69,6 +68,9 @@ import * as FaresTable from 'src/components/KFIA/Parking-Transport/FaresTable';
 import * as SectionSideNav from 'src/components/KFIA/Shared/SectionSideNav';
 import * as PassengerTabs from 'src/components/KFIA//Passenger-Guide/PassengerTabs';
 import * as GuideTile from 'src/components/KFIA/Passenger-Guide/GuideTile';
+import * as Accordion from 'src/components/KFIA/Passenger-Guide/Accordion';
+import * as AsideContentBanner from 'src/components/KFIA/Passenger-Guide/AsideContentBanner';
+import * as SecurityCards from "src/components/KFIA/Security/SecurityCards";
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -136,6 +138,9 @@ components.set('FaresTable', FaresTable);
 components.set('SectionSideNav', SectionSideNav);
 components.set('PassengerTabs', PassengerTabs);
 components.set('GuideTile', GuideTile);
+components.set('Accordion',Accordion);
+components.set('AsideContentBanner',AsideContentBanner);
+components.set('SecurityCards',SecurityCards);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

@@ -5,6 +5,7 @@
   :root{
     /* Brand palette used in code */
     --kfia-brand:#60498C;
+    --kfia-lavender:#60498C;
     --kfia-subtitle:#1C1550;
     --kfia-secondary:#4D9CD3;
 
@@ -148,4 +149,7 @@
 
 .white-icon{
   filter: brightness(0) invert(1);
+}
+.list-disc{
+  list-style-type:  disc !important;
 }
