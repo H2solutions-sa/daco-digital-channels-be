@@ -71,6 +71,11 @@ import * as GuideTile from 'src/components/KFIA/Passenger-Guide/GuideTile';
 import * as Accordion from 'src/components/KFIA/Passenger-Guide/Accordion';
 import * as AsideContentBanner from 'src/components/KFIA/Passenger-Guide/AsideContentBanner';
 import * as SecurityCards from "src/components/KFIA/Security/SecurityCards";
+import * as MapLevelTabs from 'src/components/KFIA/Passenger-Guide/MapLevelTabs';
+import * as MapLevel from 'src/components/KFIA/Passenger-Guide/MapLevel';
+import * as ServiceCard from 'src/components/KFIA/Shared/ServiceCard';
+
+
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -141,6 +146,9 @@ components.set('GuideTile', GuideTile);
 components.set('Accordion',Accordion);
 components.set('AsideContentBanner',AsideContentBanner);
 components.set('SecurityCards',SecurityCards);
+components.set('MapLevelTabs',MapLevelTabs);
+components.set('MapLevel',MapLevel);
+components.set('ServiceCard',ServiceCard);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

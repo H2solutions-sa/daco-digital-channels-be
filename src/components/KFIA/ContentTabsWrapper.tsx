@@ -9,11 +9,11 @@ fields:{
 }
 }
 type ContentTabsWrapperProps = ComponentProps & {
-id: string; // Sitecore ID
-displayName:string;
-fields:{
- TabName:Field<string>
-}
+  id: string; // Sitecore ID
+  displayName:string;
+  fields:{
+  TabName:Field<string>
+  }
 }
 
 export const Default = (props: TabsListprops): JSX.Element => {
@@ -27,7 +27,6 @@ export const Default = (props: TabsListprops): JSX.Element => {
 
       if (index !== -1) {
         setActiveTab(index);
-        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
       }
     };
 
