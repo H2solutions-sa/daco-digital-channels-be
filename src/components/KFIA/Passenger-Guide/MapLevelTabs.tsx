@@ -2,7 +2,6 @@ import { JSX ,useState } from 'react';
 import Link from 'next/link';
 import { Field,Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
 
 type MapTabsWrapperProps = ComponentProps & {
   id: string; // Sitecore ID
@@ -72,7 +71,7 @@ export const Default = (props: MapLevelTabsProps): JSX.Element => {
 
 
   return (
-    <section>
+    <section data-level>
       <div className="mt-4">
         {MapTabHeaders}
       </div>

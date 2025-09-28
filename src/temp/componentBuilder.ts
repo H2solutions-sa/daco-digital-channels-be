@@ -74,8 +74,8 @@ import * as SecurityCards from "src/components/KFIA/Security/SecurityCards";
 import * as MapLevelTabs from 'src/components/KFIA/Passenger-Guide/MapLevelTabs';
 import * as MapLevel from 'src/components/KFIA/Passenger-Guide/MapLevel';
 import * as ServiceCard from 'src/components/KFIA/Shared/ServiceCard';
-
-
+import * as SecurityPanel from 'src/components/KFIA/Security/SecurityPanel';
+import * as SelectorComponent from 'src/components/KFIA/Shared/SelectorComponent';
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -149,6 +149,8 @@ components.set('SecurityCards',SecurityCards);
 components.set('MapLevelTabs',MapLevelTabs);
 components.set('MapLevel',MapLevel);
 components.set('ServiceCard',ServiceCard);
+components.set('SecurityPanel',SecurityPanel);
+components.set('SelectorComponent',SelectorComponent);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

@@ -91,7 +91,7 @@ export const Default = (props: SecurityCardsProps): JSX.Element => {
         ));
 
   return (
-    <main className="kfia-content kfia-section pt-6 md:pt-8 space-y-6 md:space-y-8">
+    <div className="kfia-content pt-6 md:pt-8 space-y-6 md:space-y-8">
     <section className="sm:hidden">
         {/* Mobile slider */}
         <div
@@ -109,6 +109,6 @@ export const Default = (props: SecurityCardsProps): JSX.Element => {
     <section className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {SecurityCardsList}
     </section>
-    </main>
+</div>
   );
 };
