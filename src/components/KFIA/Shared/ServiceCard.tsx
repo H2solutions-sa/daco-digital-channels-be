@@ -14,7 +14,8 @@ type ServieCardProps = ComponentProps & {
   CardLink :Field<Link>,
   CardTitle:Field<string>,
   CardSubTitle:Field<string>,
-  CardImg:ImageField
+  CardImg:ImageField,
+  Chips:{fields:{ ChipName: Field<string>, ChipIcon:ImageField } }[],
  }
 }
 type ServieCardListProps = ComponentProps & {
@@ -73,12 +74,38 @@ const CARD_BASE =
             <span>{card.fields.CardSubTitle?.value}</span>
           </div>
         ) : null}
+              {/* Divider */}
 
+        {/* Chips */}
+        {card.fields.Chips?.length > 0 ? (
+         <><div className="my-4 h-px w-full bg-[oklch(0.92_0_0)]"></div>
+         <div
+              className={`flex flex-wrap gap-2 justify-start`}
+            >
+              {card.fields.Chips.map((c, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-2 rounded-full px-3 text-xs leading-none bg-[oklch(0.96_0_0)] text-[color:var(--kfia-brand)] border border-[oklch(0.90_0_0)]/45 h-8"
+                >
+                    {c.fields.ChipIcon?.value?.src && 
+                    <Image
+                      src={c.fields.ChipIcon?.value?.src}
+                      alt={`${card.fields.CardTitle?.value} logo`}
+                      width={16}
+                      height={16}
+                    />
+                    }
+                  {c.fields.ChipName?.value}
+                </span>
+              )
+              )}
+            </div></>
+        ) : null}
       </div>
     </article>
     ));
   return (
-  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-level>
     {CardList}
   </div>
   );

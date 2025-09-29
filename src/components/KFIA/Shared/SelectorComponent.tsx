@@ -16,7 +16,7 @@ export const Default = (props: SelectorComponentProps): JSX.Element => {
     const groups = document.querySelectorAll<HTMLElement>("[data-level]");
     groups.forEach((el, idx) => {
       if (idx === activeGroup) {
-        el.style.display = "block";
+        el.style.display = "";
       } else {
         el.style.display = "none";
       }
