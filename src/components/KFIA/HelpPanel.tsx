@@ -25,7 +25,7 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
       aria-label="Help and Support"
       role="region"
     >
-        <div className="relative w-full overflow-hidden rounded-[32px] md:rounded-[40px]">
+      <div className="relative w-full overflow-hidden rounded-[32px] md:rounded-[40px]">
         {/* Background image */}
         <div className="absolute inset-0">
           {(props.fields.Background.value?.src  &&
@@ -36,8 +36,9 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
             className="object-cover"
             priority
           />)}
-          {/* Dark overlay for contrast */}
-          <div className="absolute inset-0 bg-black/40" />
+
+            {/* Brand overlay */}
+            <div className="absolute inset-0 bg-[color:var(--kfia-brand)]/35 mix-blend-multiply" />
         </div>
         <div className="relative z-10 text-center text-white px-6 py-16 md:py-20 lg:py-28">
 
@@ -50,24 +51,22 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
         <p className="mt-4 max-w-2xl mx-auto text-white/85 text-base md:text-lg leading-7">
           {props.fields.Subtitle?.value}
         </p>
-
+        </div>
+      </div>
         {/* Button */}
-        <div className="mt-8">
+        <div className="mt-6 flex justify-center">
           <Link
             href= {props.fields.ButtonLink?.value?.href}
             className="
-              inline-block px-6 py-3
-              text-base font-medium rounded-xl
-              bg-white text-[#1F1B4E]
-              shadow-sm hover:bg-slate-100
-              transition-all duration-200
+               inline-block px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 rounded-[12px]
+                sm:rounded-[14px] bg-[color:var(--kfia-brand)] text-white font-medium
+                 text-[14px] sm:text-[15px] md:text-[16px] shadow-md 
+                 hover:bg-[color:var(--kfia-brand)]/90 transition-colors 
             "
           >
            {props.fields.ButtonLink?.value?.text}
           </Link>
         </div>
-        </div>
-      </div>
     </section>
   );
 };

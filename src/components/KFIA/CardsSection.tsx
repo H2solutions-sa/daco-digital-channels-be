@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 import Image from 'next/image'
 import Link from 'next/link';
@@ -57,6 +57,8 @@ props.fields.items && props.fields.items.map((card,index)=>(
 
   return (
     <section id="shop-dine" className="kfia-section" aria-label="Shopping and Dining">
+      <Placeholder name="jss-cards-top-heading-section" rendering={props.rendering} />
+      
       {/* Page container */}
       <div className="w-full mx-auto px-4 sm:px-5 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]">
          <div className="hidden xl:grid grid-cols-3 gap-6 items-stretch">

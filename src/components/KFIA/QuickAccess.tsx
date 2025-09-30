@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import {  Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import {  Field, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ArrowUpRight } from "lucide-react";
 import Link from 'next/link';
 type Link = {
@@ -55,16 +55,13 @@ props.fields.items.map((quickTab,index) =>(
     </Link>
 ));
   return (
-        <section
-      id="parking-transport"
-      className="kfia-section"
-      aria-label="Quick Access"
-    >
-      <div className="w-full mx-auto px-4 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]">
+    <section id="parking-transport" className="kfia-section" aria-label="Quick Access">
+    <Placeholder name="jss-quick-access-top-heading-section" rendering={props.rendering} />
+    <div className="w-full mx-auto px-4 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]">
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
-    {QuickAccessItems}
-    </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
+        {QuickAccessItems}
+        </div>
     </div>
     </section>
   );

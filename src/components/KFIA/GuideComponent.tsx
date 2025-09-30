@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import {  Field, ImageField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from "next/image";
 import Link from 'next/link';
 
@@ -54,12 +54,13 @@ export const Default = (props: GuideComponentProps): JSX.Element => {
 
   ));
   return (
-        <section
+    <section
       id="guide"
       className="kfia-section bg-white w-full"
       aria-label="Travel Guide"
       role="region"
     >
+    <Placeholder name="jss-guide-top-heading-section" rendering={props.rendering} />
     <div className="w-full mx-auto px-4 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]">
         {/* Mobile: horizontal snap scroller */}
         <div className="md:hidden -mx-4 px-4">

@@ -4,7 +4,7 @@ import React from "react";
 import { ComponentProps } from 'lib/component-props';
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+
 type DesktopNavigationProps = ComponentProps & {
 fields:{
   items:navItems[];
@@ -44,10 +44,15 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
   const onMouseLeave = () => setOpenIndex(null);
 
   return (
+    <nav className="hidden xl:flex items-center gap-6 2xl:gap-8 text-[15px] 2xl:text-[16px] font-semibold text-[color:var(--kfia-brand)]">
     <div className="relative flex items-center flex-none">
       {props.fields.items?.map((menuItem, index) => (
         <div
-          key={index}
+                key={index}
+                className="inline-flex rounded-full border-2 border-transparent hover:border-[color:var(--kfia-brand)] transition-colors"
+              >
+        <div
+         
           className="relative flex items-center flex-none"
           onMouseEnter={hoverable ? () => onMouseEnter(index) : undefined}
           onMouseLeave={hoverable ? onMouseLeave : undefined}
@@ -63,7 +68,6 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
           >
             <span className="relative transition-colors group-hover:text-[color:var(--kfia-brand)]">
               {menuItem.fields.MenuTitle?.value}
-              <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[color:var(--kfia-brand)] scale-x-0 group-hover:scale-x-100 transition-transform origin-center"></span>
             </span>
             <ChevronDown
               className={`w-4 h-4 translate-y-[1px] text-slate-400 transition-transform ${
@@ -98,8 +102,10 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
             </div>
           )}
         </div>
+        </div>
       ))}
     </div>
+    </nav>
   );
 };
 
