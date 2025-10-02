@@ -13,7 +13,9 @@ export const Default = (props: SelectorComponentProps): JSX.Element => {
   const [activeGroup, setActiveGroup] = useState(0);
 
     useEffect(() => {
-    const groups = document.querySelectorAll<HTMLElement>("[data-level]");
+    //const groups = document.querySelectorAll<HTMLElement>("[data-level]");
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-level]'))
+  .filter(el => !el.parentElement?.closest('[data-level]'));
     groups.forEach((el, idx) => {
       if (idx === activeGroup) {
         el.style.display = "";

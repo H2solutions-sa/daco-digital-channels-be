@@ -69,7 +69,6 @@ export const Default = (props: MapLevelTabsProps): JSX.Element => {
       </div>
     ));
 
-
   return (
     <section data-level>
       <div className="mt-4">

@@ -30,7 +30,6 @@ import * as AutoHashScroll from 'src/components/KFIA/Common/AutoHashScroll';
 import * as OperatorCard from 'src/components/KFIA/Common/OperatorCard';
 import * as PanelShell from 'src/components/KFIA/Common/PanelShell';
 import * as SearchBar from 'src/components/KFIA/Common/SearchBar';
-import * as TabStrip from 'src/components/KFIA/Common/TabStrip';
 import * as AirlinesPanel from 'src/components/KFIA/Flights/airlines/AirlinesPanel';
 import * as MobileAirlineCard from 'src/components/KFIA/Flights/airlines/MobileAirlineCard';
 import * as share from 'src/components/KFIA/Flights/airlines/share';
@@ -76,6 +75,11 @@ import * as MapLevel from 'src/components/KFIA/Passenger-Guide/MapLevel';
 import * as ServiceCard from 'src/components/KFIA/Shared/ServiceCard';
 import * as SecurityPanel from 'src/components/KFIA/Security/SecurityPanel';
 import * as SelectorComponent from 'src/components/KFIA/Shared/SelectorComponent';
+import * as TabStrip from 'src/components/KFIA/Shop-Dine/TabStrip';
+import * as ShopDineContainer from 'src/components/KFIA/Shop-Dine/ShopDineContainer';
+import * as ImageCardSet from 'src/components/KFIA/Shop-Dine/ImageCardSet';
+import * as ZoneTabs from 'src/components/KFIA/Shop-Dine/ZoneTabs';
+
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -151,6 +155,9 @@ components.set('MapLevel',MapLevel);
 components.set('ServiceCard',ServiceCard);
 components.set('SecurityPanel',SecurityPanel);
 components.set('SelectorComponent',SelectorComponent);
+components.set('ShopDineContainer',ShopDineContainer);
+components.set('ImageCardSet',ImageCardSet);
+components.set('ZoneTabs',ZoneTabs);
 
 export const componentBuilder = new ComponentBuilder({ components });
 
