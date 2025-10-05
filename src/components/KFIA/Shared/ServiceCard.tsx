@@ -16,6 +16,7 @@ type ServieCardProps = ComponentProps & {
   CardSubTitle:Field<string>,
   CardImg:ImageField,
   Chips:{fields:{ ChipName: Field<string>, ChipIcon:ImageField } }[],
+  mediaOnTop:ImageField
  }
 }
 type ServieCardListProps = ComponentProps & {
@@ -29,8 +30,8 @@ export const Default = (props: ServieCardListProps): JSX.Element => {
 const CARD_BASE =
   "relative flex h-full flex-col rounded-2xl border border-[oklch(0.75_0_0)]/22 bg-white shadow-sm p-4 " +
   "focus-within:ring-2 focus-within:ring-[color:var(--kfia-brand)]/20";
-  const CardList =    props.fields.items &&
-    props.fields.items.map((card ,i ) => (
+  const CardList =
+    props.fields.items?.map((card ,i ) => (
    <article key={i} className={CARD_BASE} aria-label={card.fields.CardTitle?.value}>
       {/* External link */}
       {card.fields.CardLink?.value?.href ? (
@@ -44,7 +45,18 @@ const CARD_BASE =
           <SquareArrowOutUpRight className="h-4 w-4" />
         </Link>
       ) : null}
-
+      {/* Top media */}
+      {card.fields.mediaOnTop?.value?.src? (
+        <div className="-mx-4 -mt-4 mb-3 overflow-hidden rounded-t-2xl bg-slate-100">
+            <Image
+              src={card.fields.mediaOnTop.value?.src}
+              alt={`photo`}
+              width={800}
+              height={450}
+              className="h-44 w-full object-cover"
+            />
+        </div>
+      ) : null}
       {/* CONTENT */}
       <div className="flex-1">
         {/* Logo */}
@@ -103,7 +115,7 @@ const CARD_BASE =
         ) : null}
       </div>
     </article>
-    ));
+    )) ?? [];
   return (
   <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-level>
     {CardList}

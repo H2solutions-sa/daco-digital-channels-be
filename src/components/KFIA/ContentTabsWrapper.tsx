@@ -51,20 +51,27 @@ export const Default = (props: TabsListprops): JSX.Element => {
             key={index}
                className={[
                       // same text size & padding as screenshot
-                      "inline-flex items-center justify-center whitespace-nowrap px-3.5 py-2",
+                      "inline-flex items-center justify-center whitespace-nowrap",
                       "text-[13px] leading-none font-medium",
-                      // active pill vs plain text
-                       activeTab === index  
-                        ? "rounded-lg bg-[color:var(--kfia-brand,#60498C)] text-white shadow-sm ring-1 ring-[color:var(--kfia-brand,#60498C)]/35"
-                        : "text-[color:var(--kfia-brand,#60498C)]/90 hover:text-[color:var(--kfia-brand,#60498C)]",
-                      // focus
-                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand,#60498C)]/30",
-                      // keep hit-area consistent
-                      "min-w-[max-content]"
                     ].join(" ")}
           >
              <Link
-                      className="nav-link"
+                      className={[
+                    // layout
+                    "flex items-center justify-center gap-2 rounded-xl px-4 sm:px-5 py-2.5",
+                    "text-[14px] sm:text-[15px] leading-none font-semibold whitespace-nowrap",
+                    // MOBILE: fixed-ish width items so they slide; DESKTOP: flex to fill
+                    "min-w-[140px] flex-none snap-center md:min-w-0 md:flex-1",
+                    // equal height
+                    "min-h-[34px] md:min-h-[38px] text-center",
+                    // states
+                    activeTab === index  
+                      ? "bg-[color:var(--kfia-brand,#60498C)] text-white shadow-sm ring-1 ring-[color:var(--kfia-brand,#60498C)]/35"
+                      : "text-[color:var(--kfia-brand,#60498C)] hover:bg-[color:var(--kfia-brand,#60498C)]/15",
+                    // focus
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--kfia-brand,#60498C)]/30",
+                    "transition-colors",
+                  ].join(" ")}
                       role="tab"
                       href={`#${tab.displayName}`}
                       aria-controls={tab.displayName}
@@ -84,9 +91,9 @@ export const Default = (props: TabsListprops): JSX.Element => {
       >
         {activeTab === index && (
           <div key={index}>
-            <div data-tab-content="" className="p-5">
+            <div data-tab-content="">
               <div role="tabpanel">
-                <section className="kfia-content py-12 md:py-16">
+                <section className=" py-12 md:py-16">
                   <div className="space-y-8 -mt-6">
                     <Placeholder name={`jss-content-tab-${index}`} rendering={props.rendering} />
                     </div>
@@ -103,13 +110,11 @@ export const Default = (props: TabsListprops): JSX.Element => {
       <div className="pt-4 sm:pt-6"></div>
       <div className="py-2 sm:py-3">
       <div className="kfia-content">
-        <nav aria-label="Section tabs" className="relative">
+        <nav aria-label="Section tabs" className="py-2 sm:py-3">
           {/* Rail */}
           <div
             className="
-              rounded-2xl
-              bg-[color:var(--kfia-brand,#60498C)]/12
-              px-2 py-1
+             rounded-2xl bg-[color:var(--kfia-brand,#60498C)]/12 px-3 py-2
             "
           >
             {/* Row: evenly spaced like the reference */}
@@ -117,8 +122,6 @@ export const Default = (props: TabsListprops): JSX.Element => {
               {TabHeaders}
             </div>
             </div>
-                {/* Bottom hairline like the reference */}
-          <div className="h-px bg-slate-200/70 mt-2" />
         </nav>
         {TabInclusives}
       </div>
