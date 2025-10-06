@@ -6,11 +6,15 @@ import { ComponentProps } from 'lib/component-props';
 import { Menu, Search as SearchIcon, Phone } from "lucide-react";
 import { SearchOverlay } from "../header/SearchOverlay";
 
+type Link ={
+    href:string,
+    text:string
+}
 type HeaderProps = ComponentProps & {
 fields:{
 Logo:ImageField,
 //HeaderLinks:{fields:{ Link: Field<Link> } }[],
-ContactButton:Field<string>
+ContactButton:Field<Link>
 }
 }
 
@@ -60,24 +64,24 @@ export const Default = (props: HeaderProps): JSX.Element => {
           </button>
 
           {/* Mobile contact button (light grey) */}
-          <a
-            href={`tel:${props.fields.ContactButton.value}`}
+          <Link
+            href={props.fields.ContactButton?.value?.href}
             className="inline-flex xl:hidden h-9 w-9 items-center justify-center rounded-full bg-slate-100 border border-slate-300 text-slate-700 hover:bg-slate-50"
             aria-label="Contact us"
           >
             <Phone className="w-[18px] h-[18px]" />
-           <span> {props.fields.ContactButton.value}</span>
-          </a>
+           <span> {props.fields.ContactButton?.value?.text}</span>
+          </Link>
 
           {/* Desktop contact button (light grey) */}
-          <a
-            href={`tel:${props.fields.ContactButton.value}`}
+          <Link
+            href={props.fields.ContactButton?.value?.href}
             className="hidden xl:flex items-center gap-2 px-3 py-2 2xl:px-5 2xl:py-3 text-sm 2xl:text-base rounded-full bg-slate-100 border border-slate-300 text-slate-800 hover:bg-slate-50"
             aria-label="Contact us"
           >
             <Phone className="w-[16px] h-[16px] 2xl:w-[20px] 2xl:h-[20px]" />
-             <span>{props.fields.ContactButton.value}</span>
-          </a>
+             <span> {props.fields.ContactButton?.value?.text}</span>
+          </Link>
         </div>
       </div>
 

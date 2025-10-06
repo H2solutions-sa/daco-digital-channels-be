@@ -79,6 +79,9 @@ import * as TabStrip from 'src/components/KFIA/Shop-Dine/TabStrip';
 import * as ShopDineContainer from 'src/components/KFIA/Shop-Dine/ShopDineContainer';
 import * as ImageCardSet from 'src/components/KFIA/Shop-Dine/ImageCardSet';
 import * as ZoneTabs from 'src/components/KFIA/Shop-Dine/ZoneTabs';
+import * as ContactUsMap from 'src/components/KFIA/Contact-Us/ContactUsMap';
+import * as FeedbackForm from 'src/components/KFIA/Contact-Us/FeedbackForm';
+import * as ContactUsCard from 'src/components/KFIA/Contact-Us/ContactUsCard';
 
 export const components = new Map();
 
@@ -158,6 +161,10 @@ components.set('SelectorComponent',SelectorComponent);
 components.set('ShopDineContainer',ShopDineContainer);
 components.set('ImageCardSet',ImageCardSet);
 components.set('ZoneTabs',ZoneTabs);
+components.set('ContactUsMap',ContactUsMap);
+components.set('FeedbackForm',FeedbackForm);
+components.set('ContactUsCard',ContactUsCard);
+
 
 export const componentBuilder = new ComponentBuilder({ components });
 

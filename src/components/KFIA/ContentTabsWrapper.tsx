@@ -93,7 +93,7 @@ export const Default = (props: TabsListprops): JSX.Element => {
           <div key={index}>
             <div data-tab-content="">
               <div role="tabpanel">
-                <section className=" py-12 md:py-16">
+                <section>
                   <div className="space-y-8 -mt-6">
                     <Placeholder name={`jss-content-tab-${index}`} rendering={props.rendering} />
                     </div>
