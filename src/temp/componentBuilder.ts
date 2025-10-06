@@ -82,6 +82,9 @@ import * as ZoneTabs from 'src/components/KFIA/Shop-Dine/ZoneTabs';
 import * as ContactUsMap from 'src/components/KFIA/Contact-Us/ContactUsMap';
 import * as FeedbackForm from 'src/components/KFIA/Contact-Us/FeedbackForm';
 import * as ContactUsCard from 'src/components/KFIA/Contact-Us/ContactUsCard';
+import * as AboutKSA from 'src/components/KFIA/Eastern-Province/AboutKSA';
+import * as AboutKSAImage from 'src/components/KFIA/Eastern-Province/AboutKSAImage';
+import * as EventsCards   from 'src/components/KFIA/Eastern-Province/EventsCards';
 
 export const components = new Map();
 
@@ -164,6 +167,10 @@ components.set('ZoneTabs',ZoneTabs);
 components.set('ContactUsMap',ContactUsMap);
 components.set('FeedbackForm',FeedbackForm);
 components.set('ContactUsCard',ContactUsCard);
+components.set('AboutKSAImage',AboutKSAImage);
+components.set('AboutKSA',AboutKSA);
+components.set('EventsCards',EventsCards);
+
 
 
 export const componentBuilder = new ComponentBuilder({ components });
