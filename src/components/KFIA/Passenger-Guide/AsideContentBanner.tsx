@@ -7,7 +7,8 @@ type AsideContentBannerProps = ComponentProps & {
 fields:{
   Header:Field<string>,
   SubHeader:Field<string>,
-  Image:ImageField
+  Image:ImageField,
+  HeaderIcon:ImageField
 }
 }
 
@@ -16,7 +17,18 @@ export const Default = (props: AsideContentBannerProps): JSX.Element => {
 
   return (
     <div>
-          <h1 className="text-lg sm:text-2xl md:text-[22px] font-semibold text-[color:var(--kfia-brand)] leading-snug">
+          <h1 className="flex items-center gap-2 font-semibold text-[color:var(--kfia-brand)]"
+            style={{ fontSize: "var(--title-lg-size)" }}>
+             { props.fields.HeaderIcon.value?.src && 
+              <Image
+                  src={props.fields.HeaderIcon?.value?.src}
+                  alt={props.fields.Header?.value}
+                  width={24}
+                  height={24}
+                  className="object-cover"
+                  priority
+              />
+              }
               {props.fields.Header?.value}
           </h1>
           <p className="mt-1 text-sm sm:text-base text-[color:var(--kfia-subtitle)]">

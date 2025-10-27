@@ -8,6 +8,7 @@ import { useI18n } from "next-localization";
 import { useAutoMobile } from "./useAutoMobile";
 import MobileAirlineCard from "./MobileAirlineCard";
 import SearchBar from "../../Common/SearchBar";
+import { Plane, Globe, Phone as PhoneIcon, Mail } from "lucide-react";
 type AirlinesPanelProps = ComponentProps & {
   fields: {
     items: AirlineDataProps[];
@@ -33,9 +34,9 @@ type AirlineDataProps = ComponentProps & {
 };
 
 const th =
-  "px-3 py-3 text-[10px] sm:text-[11px] font-semibold tracking-wide text-white/90 uppercase text-left";
+  "px-3 md:py-4 lg:text-[13px] sm:text-[11px] font-semibold tracking-wider text-white/90 uppercase  text-left whitespace-nowrap";
 const td =
-  "px-3 py-4 align-middle whitespace-nowrap text-[14px] sm:text-[15px] text-neutral-800";
+  "px-3 py-4 md:py-5 align-middle whitespace-nowrap text-[16px] text-neutral-800";
 
 export const Default = (props: AirlinesPanelProps): JSX.Element => {
  const { t } = useI18n();
@@ -79,7 +80,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       
                       <div className="flex justify-center">
                         <div className="rounded-xl bg-white/10 p-1">
-                        <span className="px-4 py-2 rounded-full text-sm font-semibold bg-white text-[color:var(--kfia-brand,#5F488B)]"> {t('Airline')}</span>
+                        <span className=" px-6 sm:px-8 py-2.5 sm:py-3 rounded-[18px] font-semibold text-center min-w-[120px] sm:min-w-[140px] bg-white shadow-sm text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] bg-white text-[color:var(--kfia-brand,#5F488B)] uppercase"> {t('Airline')}</span>
                         </div>
                       </div>
                     )}
@@ -102,10 +103,30 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
             <table className="w-full min-w-[980px] table-auto border-collapse">
               <thead>
                 <tr className="bg-[#1E1B4F]">
-                  <th className={th}>{t('airline-column')}</th>
-                  <th className={th}>{t('website-column')}</th>
-                  <th className={th}>{t('phone-column')}</th>
-                  <th className={th}>{t('email-column')}</th>
+                  <th className={`${th} text-center !px-0`}>
+                    <span className="inline-flex w-full items-center justify-center gap-2">
+                    <Plane className="h-5 w-5 opacity-90" />
+                    {t('airline-column')}
+                    </span>
+                    </th>
+                  <th className={th}>
+                    <span className="inline-flex items-center gap-2">
+                     <Globe className="h-5 w-5 opacity-90" />
+                     {t('website-column')}
+                    </span>
+                  </th>
+                  <th className={th}>
+                   <span className="inline-flex items-center gap-2">
+                     <PhoneIcon className="h-5 w-5 opacity-90" />
+                     {t('phone-column')}
+                   </span>
+                  </th>
+                  <th className={th}>
+                    <span className="inline-flex items-center gap-2">
+                      <Mail className="h-5 w-5 opacity-90" />
+                      {t('email-column')}
+                    </span>
+                    </th>
                   <th className={`${th} text-center w-[64px]`}></th>
                 </tr>
               </thead>
@@ -115,9 +136,9 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                     key={i}
                     className="odd:bg-white even:bg-neutral-100/70 border-b border-neutral-200"
                   >
-                    <td className={td}>
-                      <div className="flex items-center gap-3">
-                        <span className="relative inline-block h-6 w-[168px] md:w-[188px]">
+                    <td className={`${td} text-center`}>
+                      <div className="flex flex-col items-center gap-2">
+                        <span className="relative block mx-auto h-6 w-[90px] sm:h-6 sm:w-[90px] md:h-7 md:w-[100px] w-[188px] md:w-[220px]">
                           {a.fields.logo?.value?.src && (
                             <Image
                               src={a.fields.logo?.value?.src}
@@ -128,7 +149,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                             />
                           )}
                         </span>
-                        <span className="font-semibold text-neutral-900">
+                         <span className="font-semibold text-[18px] text-neutral-900">
                           {a.fields.name.value}
                         </span>
                       </div>
@@ -140,8 +161,9 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                           href={a.fields.website?.value?.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-medium underline-offset-2 hover:underline"
+                          className="font-medium underline-offset-2 hover:underline inline-flex items-center gap-2 font-medium underline-offset-2 hover:underline"
                         >
+                          <Globe className="h-5 w-5 opacity-90" />
                           {a.fields.website?.value.text.replace(/^https?:\/\//, "")}
                         </a>
                       ) : (
@@ -153,8 +175,9 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       {a.fields.phone ? (
                         <a
                           href={`tel:${a.fields.phone?.value}`}
-                          className="tabular-nums font-medium"
+                          className="inline-flex items-center gap-2 font-medium underline-offset-2 hover:underline"
                         >
+                          <PhoneIcon className="h-5 w-5 opacity-90" />
                           {a.fields.phone?.value}
                         </a>
                       ) : (
@@ -166,8 +189,9 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       {a.fields.email ? (
                         <a
                           href={`mailto:${a.fields.email?.value}`}
-                          className="font-medium"
+                          className="inline-flex items-center gap-2 font-medium underline-offset-2 hover:underline"
                         >
+                          <Mail className="h-5 w-5 opacity-90" />
                           {a.fields.email?.value}
                         </a>
                       ) : (

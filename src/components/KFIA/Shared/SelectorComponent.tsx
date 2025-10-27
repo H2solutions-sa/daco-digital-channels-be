@@ -1,10 +1,11 @@
 import { JSX, useEffect, useState } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
-
+import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import Image from 'next/image';
 type SelectorComponentProps = ComponentProps & {
  fields:{
   Title:Field<string>,
+  TitleIcon:ImageField
   Selector:{fields:{ TabName: Field<string> } }[],
  }
 }
@@ -26,7 +27,15 @@ export const Default = (props: SelectorComponentProps): JSX.Element => {
   }, [activeGroup]);
   return (
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--kfia-brand)]">
+          <h2 className="flex gap-2 text-lg sm:text-xl font-semibold text-[color:var(--kfia-brand)]">
+            { props.fields.TitleIcon.value?.src &&
+              <Image
+              src={props.fields.TitleIcon.value?.src}
+              alt='luggage'
+              width={24}
+              height={24}
+              />
+            }
             {props.fields.Title?.value}
           </h2>
 

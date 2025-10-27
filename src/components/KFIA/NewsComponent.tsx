@@ -59,6 +59,7 @@ export const Default = (props: NewsComponentProps): JSX.Element => {
 
   return (
   <section className="w-full kfia-bg-muted">
+    <div className='kfia-section w-full mx-auto px-4 sm:px-5 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]'>
       <Placeholder name="jss-news-top-heading-section" rendering={props.rendering} />
       <div className="w-full mx-auto px-4 sm:px-5 md:px-6 max-w-[1200px] lg:max-w-[1320px] xl:max-w-[1440px]">
         {/* Mobile */}
@@ -82,6 +83,7 @@ export const Default = (props: NewsComponentProps): JSX.Element => {
           </div>
         </div>
       </div>
+    </div>
     </section>
   );
 };

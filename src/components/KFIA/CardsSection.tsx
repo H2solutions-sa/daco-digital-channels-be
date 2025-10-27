@@ -50,7 +50,7 @@ props.fields.items && props.fields.items.map((card,index)=>(
       {/* Text */}
       <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
         <h3 className="text-white text-lg sm:text-xl font-semibold">{card.fields.CardTitle?.value}</h3>
-        <p className="text-white/85 text-sm mt-1 leading-6">{card.fields.CardSubTitle?.value}</p>
+        <p className="text-white/85 mt-1 leading-6 break-words text-[14px] sm:text-[15px] md:text-[length:var(--paragraph1-size)] ">{card.fields.CardSubTitle?.value}</p>
       </div>
     </Link>
 ));

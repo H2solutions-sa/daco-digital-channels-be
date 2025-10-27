@@ -54,8 +54,7 @@ export const Default = (props: HeroCarouselProps): JSX.Element | null => {
     <section className="full-bleed relative" aria-label="Hero">
       <div
         className="
-          relative overflow-hidden 
-          h-[280px] sm:h-[360px] md:h-[480px] lg:h-[600px] xl:h-[720px]
+           relative overflow-hidden  h-[280px] sm:h-[360px] md:h-[480px] lg:h-[600px] xl:h-[720px] 
         "
       >
         {safeSlides.map((s, i) => (
@@ -84,17 +83,17 @@ export const Default = (props: HeroCarouselProps): JSX.Element | null => {
             <div className="kfia-content h-full flex items-center">
             <div className="max-w-[52rem] text-white px-4 sm:px-0">
                 {s.fields.Kicker?.value && (
-                  <p className="mb-2 text-xs sm:text-sm md:text-base font-medium opacity-90">
+                  <p className="mb-2 font-medium opacity-90 text-[14px] sm:text-[16px] md:text-[18px]">
                     {s.fields.Kicker.value}
                   </p>
                 )}
                 {s.fields.Title?.value && (
-                  <h1 className="text-xl sm:text-3xl md:text-5xl font-bold leading-tight whitespace-pre-line">
+                  <h1 className=" font-bold tracking-tight whitespace-pre-line text-[28px] sm:text-[36px] md:text-[length:var(--heading1-size)] leading-[1.15] md:leading-[1.1] xl:leading-[1.05] ">
                     {s.fields.Title.value}
                   </h1>
                 )}
                 {s.fields.Blurb?.value && (
-                  <p className="mt-3 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-lg opacity-90">
+                  <p className="mt-3 sm:mt-6 max-w-2xl opacity-90 text-[14px] sm:text-[15px] md:text-[18px]">
                     {s.fields.Blurb.value}
                   </p>
                 )}

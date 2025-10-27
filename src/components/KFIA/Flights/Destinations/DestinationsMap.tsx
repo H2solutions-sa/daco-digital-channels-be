@@ -1,316 +1,297 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import "leaflet/dist/leaflet.css";
+import { MapPin, Navigation } from "lucide-react";
+import { useI18n } from "next-localization";
+import DestinationsSearch from "./DestinationsSearch";
+import MapLegend from "./MapLegend";
+import {
+  ALL_DESTINATIONS,
+  BRAND_PURPLE,
+  DMM,
+  LAVENDER,
+  LIGHT,
+  SECONDARY_BLUE,
+  type Destination,
+} from "./destinations.data";
 
-/* -------------------------------- Types ---------------------------------- */
+/* Small stat card */
+function CardStat({
+  iconSrc,
+  value,
+  label,
+  tone = "brand",
+}: {
+  iconSrc: string;
+  value: number;
+  label: string;
+  tone?: "brand" | "teal" | "sky";
+}) {
+  const toneMap: Record<string, string> = {
+    brand: "text-[color:var(--kfia-brand)]",
+    teal: "text-teal-600",
+    sky: "text-sky-600",
+  };
 
-export type Destination = {
-  code: string;
-  city: string;
-  country: string;
-  lat: number;
-  lng: number;
-  airlines: string[];
-};
+  return (
+    <div className="flex-1 rounded-2xl border border-slate-200 bg-white shadow-sm px-4 py-4 sm:px-5 sm:py-5 xl:px-6 xl:py-6 flex items-center gap-4 sm:gap-5">
+      <div className="shrink-0 grid h-10 w-10 sm:h-12 sm:w-12 place-items-center">
+        <img src={iconSrc} alt="" aria-hidden className="h-10 w-10 sm:h-12 sm:w-12" draggable={false} />
+      </div>
+      <div className="min-w-0">
+        <div className={`leading-[1.05] font-semibold ${toneMap[tone]} text-[32px] sm:text-[38px] xl:text-[50px] tracking-tight`}>
+          {value}
+        </div>
+        <div className="text-slate-700 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[length:var(--paragraph1-size)]">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 type Props = {
   destinations?: Destination[];
   className?: string;
-  height?: number;             // default 700
-  anchorId?: string;           // default "destinations" (for smooth scroll)
+  height?: number;
+  anchorId?: string;
 };
 
-/* ---------------------------- KFIA anchor (DMM) --------------------------- */
-
-const DMM = { lat: 26.4711, lng: 49.7979 };
-
-/* ---------------------- Light/Dark basemap definitions -------------------- */
-
-const LIGHT = {
-  url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-  attr: '© OpenStreetMap © <a href="https://carto.com/attributions">CARTO</a>',
-};
-const DARK = {
-  url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-  attr: '© OpenStreetMap © <a href="https://carto.com/attributions">CARTO</a>',
-};
-
-/* ------------------------------ Brand Colors ------------------------------ */
-// Light blue for dots/markers (requested)
-const SECONDARY_BLUE = "#4D9CD3";
-// Lavender for lines (keeping brand feel)
-const LAVENDER = "#7C6AA9";
-
-/* ------------------------------ Destinations ------------------------------ */
-/* Extend freely. These are common/likely routes around DMM; tweak as needed. */
-export const ALL_DESTINATIONS: Destination[] = [
-  // GCC + nearby
-  { code: "DXB", city: "Dubai",          country: "UAE",            lat: 25.2528, lng: 55.3644, airlines: ["Emirates","flydubai","SAUDIA"] },
-  { code: "AUH", city: "Abu Dhabi",      country: "UAE",            lat: 24.4330, lng: 54.6511, airlines: ["Etihad"] },
-  { code: "SHJ", city: "Sharjah",        country: "UAE",            lat: 25.3286, lng: 55.5171, airlines: ["Air Arabia"] },
-  { code: "DOH", city: "Doha",           country: "Qatar",          lat: 25.2736, lng: 51.6081, airlines: ["Qatar Airways"] },
-  { code: "MCT", city: "Muscat",         country: "Oman",           lat: 23.5933, lng: 58.2844, airlines: ["Oman Air","SalamAir"] },
-  { code: "KWI", city: "Kuwait City",    country: "Kuwait",         lat: 29.2266, lng: 47.9689, airlines: ["Kuwait Airways","Jazeera"] },
-  { code: "BAH", city: "Manama",         country: "Bahrain",        lat: 26.2708, lng: 50.6336, airlines: ["Gulf Air","SAUDIA"] },
-
-  // Saudi domestic
-  { code: "RUH", city: "Riyadh",         country: "Saudi Arabia",   lat: 24.9576, lng: 46.6988, airlines: ["SAUDIA","flynas","flyadeal"] },
-  { code: "JED", city: "Jeddah",         country: "Saudi Arabia",   lat: 21.6702, lng: 39.1528, airlines: ["SAUDIA","flyadeal","flynas"] },
-  { code: "MED", city: "Madinah",        country: "Saudi Arabia",   lat: 24.5534, lng: 39.7051, airlines: ["SAUDIA","flynas"] },
-  { code: "TUU", city: "Tabuk",          country: "Saudi Arabia",   lat: 28.3654, lng: 36.6189, airlines: ["SAUDIA","flynas"] },
-  { code: "GIZ", city: "Jazan",          country: "Saudi Arabia",   lat: 16.9011, lng: 42.5858, airlines: ["SAUDIA","flynas"] },
-  { code: "TIF", city: "Taif",           country: "Saudi Arabia",   lat: 21.4830, lng: 40.5443, airlines: ["SAUDIA","flynas"] },
-  { code: "AHB", city: "Abha",           country: "Saudi Arabia",   lat: 18.2404, lng: 42.6566, airlines: ["SAUDIA","flynas"] },
-  { code: "YNB", city: "Yanbu",          country: "Saudi Arabia",   lat: 24.1442, lng: 38.0634, airlines: ["SAUDIA"] },
-  { code: "HOF", city: "Al-Ahsa",        country: "Saudi Arabia",   lat: 25.2853, lng: 49.4858, airlines: ["SAUDIA"] },
-
-  // Middle East / Levant / Iraq / Iran
-  { code: "AMM", city: "Amman",          country: "Jordan",         lat: 31.7226, lng: 35.9932, airlines: ["Royal Jordanian","flynas"] },
-  { code: "BEY", city: "Beirut",         country: "Lebanon",        lat: 33.8209, lng: 35.4884, airlines: ["MEA"] },
-  { code: "BGW", city: "Baghdad",        country: "Iraq",           lat: 33.2625, lng: 44.2346, airlines: ["Iraqi Airways","Fly Baghdad"] },
-  { code: "NJF", city: "Najaf",          country: "Iraq",           lat: 31.9897, lng: 44.4043, airlines: ["Fly Baghdad","Iraqi Airways"] },
-  { code: "EBL", city: "Erbil",          country: "Iraq",           lat: 36.2376, lng: 43.9632, airlines: ["Fly Baghdad","Iraqi Airways"] },
-  { code: "IKA", city: "Tehran",         country: "Iran",           lat: 35.4161, lng: 51.1522, airlines: ["Mahan Air","Iran Air"] },
-  { code: "MHD", city: "Mashhad",        country: "Iran",           lat: 36.2353, lng: 59.6409, airlines: ["Mahan Air"] },
-
-  // Turkey / Azerbaijan / Caucasus
-  { code: "IST", city: "Istanbul",       country: "Türkiye",        lat: 41.2753, lng: 28.7519, airlines: ["Turkish Airlines"] },
-  { code: "SAW", city: "Istanbul SAW",   country: "Türkiye",        lat: 40.9050, lng: 29.3210, airlines: ["Pegasus"] },
-  { code: "TZX", city: "Trabzon",        country: "Türkiye",        lat: 40.9966, lng: 39.7897, airlines: ["Pegasus"] },
-  { code: "GYD", city: "Baku",           country: "Azerbaijan",     lat: 40.4675, lng: 50.0498, airlines: ["AZAL"] },
-  { code: "TBS", city: "Tbilisi",        country: "Georgia",        lat: 41.6692, lng: 44.9547, airlines: ["Gulf Air (via)","others"] },
-
-  // Egypt / North Africa
-  { code: "CAI", city: "Cairo",          country: "Egypt",          lat: 30.1120, lng: 31.3990, airlines: ["EgyptAir","SAUDIA"] },
-  { code: "HBE", city: "Alexandria Borg",country: "Egypt",          lat: 30.9177, lng: 29.6964, airlines: ["Air Arabia Egypt","SAUDIA"] },
-  { code: "ATZ", city: "Assiut",         country: "Egypt",          lat: 27.0465, lng: 31.0117, airlines: ["Air Arabia Egypt"] },
-  { code: "HMB", city: "Sohag",          country: "Egypt",          lat: 26.3430, lng: 31.7375, airlines: ["Air Arabia Egypt"] },
-  { code: "SSH", city: "Sharm El-Sheikh",country: "Egypt",          lat: 27.9773, lng: 34.3949, airlines: ["EgyptAir"] },
-  { code: "KRT", city: "Khartoum",       country: "Sudan",          lat: 15.5895, lng: 32.5532, airlines: ["Badr","Tarco"] },
-
-  // Europe
-  { code: "LHR", city: "London",         country: "United Kingdom", lat: 51.4700, lng: -0.4543, airlines: ["British Airways","SAUDIA"] },
-  { code: "LGW", city: "London Gatwick", country: "United Kingdom", lat: 51.1537, lng: -0.1821, airlines: ["SAUDIA (seasonal)"] },
-  { code: "FRA", city: "Frankfurt",      country: "Germany",        lat: 50.0379, lng: 8.5622,  airlines: ["Lufthansa","SAUDIA"] },
-  { code: "MUC", city: "Munich",         country: "Germany",        lat: 48.3538, lng: 11.7861, airlines: ["Lufthansa"] },
-  { code: "CDG", city: "Paris",          country: "France",         lat: 49.0097, lng: 2.5479,  airlines: ["Air France","SAUDIA"] },
-  { code: "AMS", city: "Amsterdam",      country: "Netherlands",    lat: 52.3105, lng: 4.7683,  airlines: ["KLM"] },
-  { code: "VIE", city: "Vienna",         country: "Austria",        lat: 48.1103, lng: 16.5697, airlines: ["Austrian"] },
-  { code: "ZRH", city: "Zurich",         country: "Switzerland",    lat: 47.4647, lng: 8.5492,  airlines: ["Swiss"] },
-  { code: "ATH", city: "Athens",         country: "Greece",         lat: 37.9364, lng: 23.9445, airlines: ["Aegean"] },
-
-  // South Asia (some routes seasonal/connecting)
-  { code: "DEL", city: "Delhi",          country: "India",          lat: 28.5562, lng: 77.1000, airlines: ["Indigo (via)","others"] },
-  { code: "BOM", city: "Mumbai",         country: "India",          lat: 19.0896, lng: 72.8656, airlines: ["Indigo (via)","others"] },
-  { code: "COK", city: "Kochi",          country: "India",          lat: 10.1518, lng: 76.4019, airlines: ["Indigo (via)"] },
-  { code: "DAC", city: "Dhaka",          country: "Bangladesh",     lat: 23.8433, lng: 90.3978, airlines: ["Biman (via)"] },
-];
-
-
-/* -------------------------------- Component ------------------------------- */
 export default function DestinationsMap({
   destinations,
   className = "",
-  height = 700,
+  height = 680,
   anchorId = "destinations",
 }: Props) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [L, setL] = useState<any>(null); // store leaflet module
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const data = (destinations?.length ? destinations : ALL_DESTINATIONS).slice();
+  const {t} = useI18n();
+  const mapRef = useRef<any>(null);
+  const mapElRef = useRef<HTMLDivElement | null>(null);
+  const markersRef = useRef<Record<string, any>>({});
 
-  const data = (destinations && destinations.length ? destinations : ALL_DESTINATIONS).slice();
-  const tiles = useMemo(() => (theme === "dark" ? DARK : LIGHT), [theme]);
-
-  // Import Leaflet only on the client
-  useEffect(() => {
-    (async () => {
-      const leaflet = await import("leaflet");
-      setL(leaflet);
-    })();
-  }, []);
-
-  // Smooth scroll support
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.location.hash === `#${anchorId}`) {
-      requestAnimationFrame(() => {
-        document.getElementById(anchorId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    }
-  }, [anchorId]);
-
-  // Map setup (runs only when Leaflet is loaded)
-  useEffect(() => {
-    if (!ref.current || !L) return;
-
-    // Controls factory (moved inside to avoid L reference before load)
-    function PanControl(opts: { onPan: (dx: number, dy: number) => void }) {
-      return L.Control.extend({
-        options: { position: "bottomright" as any },
-        onAdd() {
-          const wrap = L.DomUtil.create("div", "leaflet-bar kfia-pan-ctrl");
-          wrap.style.display = "grid";
-          wrap.style.gridTemplateColumns = "40px 40px 40px";
-          wrap.style.gridTemplateRows = "40px 40px 40px";
-          wrap.style.gap = "6px";
-
-          const mkBtn = (label: string, title: string, onClick: () => void) => {
-            const b = L.DomUtil.create("button", "kfia-ctrl-btn", wrap);
-            b.type = "button";
-            b.title = title;
-            b.textContent = label;
-            b.style.width = "40px";
-            b.style.height = "40px";
-            b.style.borderRadius = "9999px";
-            b.style.background = "white";
-            b.style.cursor = "pointer";
-            L.DomEvent.on(b, "click", L.DomEvent.stop);
-            L.DomEvent.on(b, "click", onClick);
-            return b;
-          };
-
-          const empty = () => {
-            const s = L.DomUtil.create("span", "", wrap);
-            s.style.width = "40px";
-            s.style.height = "40px";
-            return s;
-          };
-
-          empty(); mkBtn("▲", "Pan up",   () => opts.onPan(0, -1)); empty();
-          mkBtn("◀", "Pan left", () => opts.onPan(-1, 0)); empty();
-          mkBtn("▶", "Pan right",() => opts.onPan( 1, 0)); empty();
-          mkBtn("▼", "Pan down", () => opts.onPan(0,  1)); empty();
-          return wrap;
-        },
-      });
-    }
-
-    function ToolsControl(opts: {
-      theme: "light" | "dark";
-      onToggleTheme: () => void;
-      onFullscreen: () => void;
-    }) {
-      return L.Control.extend({
-        options: { position: "bottomright" as any },
-        onAdd() {
-          const box = L.DomUtil.create("div", "leaflet-bar");
-          box.style.display = "flex";
-          box.style.flexDirection = "column";
-          box.style.gap = "8px";
-          const mk = (label: string, title: string, fn: () => void) => {
-            const b = L.DomUtil.create("button", "kfia-ctrl-btn", box);
-            b.type = "button";
-            b.title = title;
-            b.textContent = label;
-            b.style.width = "40px";
-            b.style.height = "40px";
-            b.style.borderRadius = "9999px";
-            b.style.background = "white";
-            b.style.cursor = "pointer";
-            L.DomEvent.on(b, "click", L.DomEvent.stop);
-            L.DomEvent.on(b, "click", fn);
-            return b;
-          };
-          mk(opts.theme === "dark" ? "🌙" : "☀️", "Toggle theme", opts.onToggleTheme);
-          mk("⛶", "Fullscreen", opts.onFullscreen);
-          return box;
-        },
-      });
-    }
-
-    // Init map
-    const map = L.map(ref.current, { zoomControl: true }).setView([DMM.lat, DMM.lng], 5);
-    (map.zoomControl as any).setPosition("topright");
-
-    const tile = L.tileLayer(tiles.url, { attribution: tiles.attr, maxZoom: 18 }).addTo(map);
-
-    // KFIA anchor marker
-    const home = L.circleMarker([DMM.lat, DMM.lng], {
-      radius: 6,
-      color: "#5F488B",
-      fillColor: "#5F488B",
-      fillOpacity: 1,
-      weight: 2,
-    }).addTo(map);
-    home.bindTooltip("KFIA (DMM)");
-
-    const bounds = L.latLngBounds([DMM.lat, DMM.lng], [DMM.lat, DMM.lng]);
-    const lines: any[] = [];
-
-    data.forEach((d) => {
-      const dest = L.latLng(d.lat, d.lng);
-      bounds.extend(dest);
-
-      const line = L.polyline([[DMM.lat, DMM.lng],[d.lat, d.lng]], {
-        color: LAVENDER, weight: 1.6, opacity: 0.85,
-      }).addTo(map);
-      lines.push(line);
-
-      const m = L.circleMarker(dest, {
-        radius: 5, color: SECONDARY_BLUE, fillColor: SECONDARY_BLUE, fillOpacity: 0.95, weight: 1,
-      }).addTo(map);
-
-      const popup = `
-        <div style="min-width:180px">
-          <b>DMM → ${d.code}</b><br/>
-          ${d.city}, ${d.country}<br/>
-          <i>Airlines:</i> ${d.airlines.join(", ")}
-        </div>
-      `;
-      m.bindPopup(popup);
-
-      m.on("mouseover", () => { m.openPopup(); line.setStyle({ weight: 2.6 }); });
-      m.on("mouseout", () => { m.closePopup(); line.setStyle({ weight: 1.6 }); });
-    });
-
-    map.fitBounds(bounds.pad(0.18));
-
-    // Controls
-    const Pan = PanControl({ onPan: (dx, dy) => map.panBy([dx * 120, dy * 120]) });
-    map.addControl(new (Pan as any)());
-
-    const Tools = ToolsControl({
-      theme,
-      onToggleTheme: () => setTheme((t) => (t === "dark" ? "light" : "dark")),
-      onFullscreen: () => {
-        const el = ref.current!;
-        if (!document.fullscreenElement) el.requestFullscreen?.();
-        else document.exitFullscreen?.();
-      },
-    });
-    map.addControl(new (Tools as any)());
-
-    return () => { map.remove(); tile.remove(); lines.forEach((l) => l.remove()); };
-  }, [L, tiles.url, tiles.attr, data, theme]);
-
-  // ---- Totals footer ----
-  const domesticCount = data.filter((d) => d.country === "Saudi Arabia").length;
+  const domesticCount = useMemo(
+    () => data.filter((d) => d.country === "Saudi Arabia").length,
+    [data]
+  );
   const internationalCount = data.length - domesticCount;
   const totalCount = data.length;
 
-  return (
-    <section className="scroll-mt-[96px] kfia-content kfia-section">
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-        <div className="px-5 md:px-7 py-4 border-b border-slate-200">
-          <h2 className="text-[16px] md:text-[17px] font-semibold text-[color:var(--kfia-lavender)]">
-            Destinations Map
-          </h2>
-        </div>
+  // ✅ Leaflet setup with safe dynamic import
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-        <div className={className} id={anchorId}>
-          <div ref={ref} style={{ height, width: "100%" }} />
-          <div
-            className="mt-3 md:mt-4 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm md:text-[15px] text-slate-800 flex flex-wrap items-center gap-x-4 gap-y-2"
-            aria-live="polite"
-          >
-            <span className="font-semibold text-slate-900">Destinations</span>
-            <span>Domestic: <b>{domesticCount}</b></span>
-            <span>International: <b>{internationalCount}</b></span>
-            <span className="text-slate-500">Total: <b>{totalCount}</b></span>
+    let map: any;
+    let L: any;
+
+    (async () => {
+      const leaflet = await import("leaflet");
+      L = leaflet;
+
+      if (!mapElRef.current) return;
+
+      map = L.map(mapElRef.current, { zoomControl: false }).setView([DMM.lat, DMM.lng], 5);
+      mapRef.current = map;
+
+      L.tileLayer(LIGHT.url, { attribution: LIGHT.attr, maxZoom: 18 }).addTo(map);
+
+      const ctrl = mapElRef.current.querySelector(".leaflet-control-container") as HTMLElement | null;
+      if (ctrl) ctrl.style.zIndex = "30";
+
+      L.circleMarker([DMM.lat, DMM.lng], {
+        radius: 7,
+        color: BRAND_PURPLE,
+        fillColor: BRAND_PURPLE,
+        fillOpacity: 1,
+        weight: 2,
+      })
+        .addTo(map)
+        .bindTooltip("KFIA (DMM)");
+
+      const store: Record<string, any> = {};
+      const bounds = L.latLngBounds([DMM.lat, DMM.lng], [DMM.lat, DMM.lng]);
+
+      data.forEach((d) => {
+        const destLatLng = L.latLng(d.lat, d.lng);
+        bounds.extend(destLatLng);
+
+        const line = L.polyline(
+          [
+            [DMM.lat, DMM.lng],
+            [d.lat, d.lng],
+          ],
+          { color: LAVENDER, weight: 1.8, opacity: 0.85 }
+        ).addTo(map);
+
+        const marker = L.circleMarker(destLatLng, {
+          radius: 6,
+          color: SECONDARY_BLUE,
+          fillColor: SECONDARY_BLUE,
+          fillOpacity: 0.95,
+          weight: 1,
+        }).addTo(map);
+
+        const popupHtml = `<div style="min-width:190px">
+            <b>DMM → ${d.code}</b><br/>
+            ${d.city}, ${d.country}<br/>
+            <i>Airlines:</i> ${d.airlines.join(", ")}
+          </div>`;
+
+        marker.on("mouseover", () => {
+          marker.bindPopup(popupHtml, { autoPan: true });
+          marker.openPopup();
+          line.setStyle({ weight: 2.8 });
+        });
+        marker.on("mouseout", () => {
+          marker.closePopup();
+          line.setStyle({ weight: 1.8 });
+        });
+
+        store[d.code.toUpperCase()] = { marker, line, data: d };
+      });
+
+      markersRef.current = store;
+      map.fitBounds(bounds.pad(0.18));
+    })();
+
+    // ✅ Proper cleanup to prevent `_leaflet_pos` errors
+    return () => {
+      try {
+        if (mapRef.current) {
+          mapRef.current.off();
+          mapRef.current.stop();
+          mapRef.current.remove();
+        }
+      } catch (err) {
+        console.warn("Leaflet cleanup error:", err);
+      } finally {
+        mapRef.current = null;
+      }
+    };
+  }, [data]);
+
+  const goTo = (dest: Destination) => {
+    const map = mapRef.current;
+    if (!map || !map._loaded) return;
+
+    const rec = markersRef.current[dest.code.toUpperCase()];
+    if (!rec) return;
+
+    map.flyTo([dest.lat, dest.lng], 6, { duration: 0.8 });
+    map.once("moveend", () => {
+      const L = mapRef.current?.constructor; // use existing Leaflet ref
+      if (!L) return;
+      const html = `<div style="min-width:190px">
+          <b>DMM → ${dest.code}</b><br/>
+          ${dest.city}, ${dest.country}<br/>
+          <i>Airlines:</i> ${dest.airlines.join(", ")}
+        </div>`;
+      L.popup({ autoPan: true, closeButton: true })
+        .setLatLng([dest.lat, dest.lng])
+        .setContent(html)
+        .openOn(map);
+      rec.line.setStyle({ weight: 3 });
+      setTimeout(() => rec.line.setStyle({ weight: 1.8 }), 1200);
+    });
+  };
+
+  const zoomIn = () => mapRef.current?.zoomIn();
+  const zoomOut = () => mapRef.current?.zoomOut();
+  const refit = () => {
+    const map = mapRef.current;
+    if (!map || !map._loaded) return;
+    const L = map.constructor;
+    const b = L.latLngBounds([DMM.lat, DMM.lng], [DMM.lat, DMM.lng]);
+    data.forEach((d) => b.extend([d.lat, d.lng]));
+    map.fitBounds(b.pad(0.18));
+  };
+
+  return (
+    <section id={anchorId} className={`${className} kfia-content kfia-section`}>
+      <div className="pt-0 -mt-8 md:-mt-12">
+        <div className="relative mx-auto max-w-[1200px] px-4 pt-10">
+          <div className="text-center mb-10">
+            <h1
+              className="font-semibold tracking-tight text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px]"
+              style={{ color: "var(--kfia-brand)", lineHeight: 1.1 }}
+            >
+              {t('flight-destinations')}
+            </h1>
+            <p className="kfia-subtitle mt-2 text-neutral-600 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[length:var(--paragraph1-size)]">
+             {t('destinations-subtitle')}
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-[1200px]">
+            <div style={{ ["--button-size" as any]: "16px" }}>
+              <DestinationsSearch
+                data={data}
+                onSelect={goTo}
+                className="w-full [&_button]:text-[var(--button-size)] [&_button]:text-white"
+              />
+            </div>
+            <div className="mt-2 mb-6 flex items-center gap-1 leading-none text-slate-600 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[length:var(--paragraph3-size)]">
+              <MapPin className="h-3.5 w-3.5 opacity-70" />
+              <span>{t('dest-search-hint')}</span>
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:gap-6 xl:grid-cols-[360px_minmax(0,1fr)] items-stretch">
+            <aside className="flex flex-col h-full overflow-hidden rounded-2xl border border-slate-200 bg-[#F5F5F6] shadow-sm order-2 xl:order-1">
+              <div className="flex items-center justify-center border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
+                <h3
+                  className="font-semibold text-center"
+                  style={{ color: "var(--kfia-brand)", fontSize: "var(--heading6-size)" }}
+                >
+                  {t('destinations-overview')}
+                </h3>
+              </div>
+              <div className="flex flex-col flex-1 gap-4 sm:gap-5 p-4 sm:p-6">
+                <CardStat iconSrc="/-/media/Project/Daco-Digital-Channels/Icons/destinations/total-globe-pin.svg" value={totalCount} label={t('total-destinations')} tone="brand" />
+                <CardStat iconSrc="/-/media/Project/Daco-Digital-Channels/Icons/destinations/saudi-outline-teal.svg" value={domesticCount} label={t('domestic')} tone="teal" />
+                <CardStat iconSrc="/-/media/Project/Daco-Digital-Channels/Icons/destinations/earth-blue.svg" value={internationalCount} label={t('International')} tone="sky" />
+              </div>
+            </aside>
+
+            <div className="flex flex-col gap-3 order-1 xl:order-2">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div className="pointer-events-none absolute inset-x-0 top-0 z-[5] h-16 sm:h-20 xl:h-24 bg-gradient-to-b from-white/60 to-transparent" />
+                <div className="w-full [--map-h:65vh] xl:[--map-h:680px]" ref={mapElRef} style={{ height: "var(--map-h)" }} />
+                <MapLegend />
+
+                <div className="pointer-events-auto absolute left-3 bottom-3 z-[2000] flex items-center gap-2 xl:left-4 xl:bottom-4">
+                  <button
+                    type="button"
+                    onClick={zoomIn}
+                    className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-[color:var(--kfia-brand)] shadow-sm hover:bg-slate-50"
+                    aria-label="Zoom in"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    onClick={zoomOut}
+                    className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-[color:var(--kfia-brand)] shadow-sm hover:bg-slate-50"
+                    aria-label="Zoom out"
+                  >
+                    –
+                  </button>
+                  <button
+                    type="button"
+                    onClick={refit}
+                    className="grid h-10 w-10 place-items-center rounded-xl bg-[color:var(--kfia-brand)] text-white shadow-sm hover:opacity-95"
+                    aria-label="Recenter map"
+                  >
+                    <Navigation className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <div className="sr-only">Interactive destination map. Drag to pan, scroll to zoom.</div>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
+      </div>
     </section>
   );
 }
