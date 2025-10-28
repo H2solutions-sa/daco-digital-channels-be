@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX} from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {  Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import { AlertCircle } from "lucide-react";
@@ -12,13 +12,14 @@ type WeatherBarProps = ComponentProps & {
 fields:{
   Text:Field<string>,
   Button:Field<Link>
+  isAvailable:Field<boolean>
 }
 }
 
 export const Default = (props: WeatherBarProps): JSX.Element => {
-
   return (
-    /* Full-bleed background but LOW z-index so menus can overlay it */
+    <>
+  { props.fields.isAvailable.value === true && 
     <div
       role="region"
       aria-label="Weather disruption alert"
@@ -53,5 +54,7 @@ export const Default = (props: WeatherBarProps): JSX.Element => {
         </div>
       </div>
     </div>
+    }
+    </>
   );
 };

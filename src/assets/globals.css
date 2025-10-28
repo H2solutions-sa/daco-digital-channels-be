@@ -54,6 +54,11 @@
     margin-left: -50vw;
     margin-right: -50vw;
   }
+  .full-bleed-carousel{
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -299,4 +304,8 @@
 }
 .list-disc{
   list-style-type:  disc !important;
+}
+
+article .slick-track{
+  display: flex;
 }

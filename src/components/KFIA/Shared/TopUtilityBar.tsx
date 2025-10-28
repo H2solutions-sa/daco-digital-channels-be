@@ -19,7 +19,7 @@ export const Default = (): JSX.Element => {
     </div>
   );
   return (
-    <div className="kfia-bleed bg-white border-b border-gray-200 sticky top-0 z-20">
+    <div className="bg-white border-b border-gray-200 sticky top-0 z-20">
       <div className="kfia-content kfia-content--flush">
         <div className="h-8 sm:h-9 flex items-center">
           <div className="ml-auto flex items-center divide-x divide-gray-300 overflow-x-auto text-[11px] sm:text-xs">

@@ -86,6 +86,7 @@ import * as AboutKSA from 'src/components/KFIA/Eastern-Province/AboutKSA';
 import * as AboutKSAImage from 'src/components/KFIA/Eastern-Province/AboutKSAImage';
 import * as EventsCards   from 'src/components/KFIA/Eastern-Province/EventsCards';
 import * as FlipCard from 'src/components/KFIA/Eastern-Province/FlipCard';
+import * as LoungeCards from  'src/components/KFIA/Lounges/LoungeCards';
 export const components = new Map();
 
 components.set('ColumnSplitter', ColumnSplitter);
@@ -171,6 +172,7 @@ components.set('AboutKSAImage',AboutKSAImage);
 components.set('AboutKSA',AboutKSA);
 components.set('EventsCards',EventsCards);
 components.set('FlipCard',FlipCard);
+components.set('LoungeCards', LoungeCards);
 
 
 

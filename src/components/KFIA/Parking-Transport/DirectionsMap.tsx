@@ -19,7 +19,7 @@ fields:{
 export const Default = (props: DirectionsMapProps): JSX.Element => {
 
   return (
-     <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
+     <div className="">
           <div className="relative w-full overflow-hidden rounded-xl border border-slate-200">
             {props.fields.MapImage?.value?.src && 
             <Image

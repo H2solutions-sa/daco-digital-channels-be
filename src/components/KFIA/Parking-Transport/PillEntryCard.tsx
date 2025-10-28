@@ -2,7 +2,8 @@ import { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import { useI18n } from 'next-localization';
 import { MapPin } from "lucide-react";
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import Image from "next/image";
 
 type PillEntryCardListProps = ComponentProps & {
  fields:{
@@ -15,6 +16,7 @@ type PillEntryCardProps = ComponentProps & {
   PillTitle:Field<string>,
   Location:Field<string>,
   Details: Field<string>
+  Image:ImageField
  }
 }
 
@@ -22,7 +24,7 @@ export const Default = (props: PillEntryCardListProps): JSX.Element => {
 const {t} = useI18n();
 
   const dropOffCardList = props.fields.items && props.fields.items.slice(0,4).map((pillCard, i) => (
-              <div key={i} className="snap-start shrink-0 w-[100%] h-[340px]">
+              <div key={i} className="snap-start shrink-0 w-[100%] h-[540px]">
                     <div
                       className={[
                         "h-full min-h-[340px] flex flex-col p-4",
@@ -34,6 +36,20 @@ const {t} = useI18n();
                         <span className="inline-block h-[6px] w-[6px] rounded-full bg-[color:var(--kfia-secondary)]" />
                         {pillCard.fields.PillTitle?.value}
                       </div>
+
+                      {pillCard.fields.Image?.value?.src && (
+                        <div className="mt-4">
+                          <div className="relative w-full overflow-hidden rounded-lg bg-slate-100 aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/9]">
+                            <Image
+                              src={pillCard.fields.Image?.value?.src}
+                              alt={pillCard.fields.PillTitle?.value}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                          </div>
+                        </div>
+                      )}
 
                       <div className="mt-4 flex-1 min-h-0 flex flex-col gap-4 md:block">
                         <div className="shrink-0">
@@ -63,7 +79,7 @@ const {t} = useI18n();
             ));
 
   const pickUpCardList = props.fields.items && props.fields.items.slice(4,8).map((pickUpPillCard, c) => (
-              <div key={c} className="snap-start shrink-0 w-[100%] h-[340px]">
+              <div key={c} className="snap-start shrink-0 w-[100%] h-[540px]">
                     <div
                       className={[
                         "h-full min-h-[340px] flex flex-col p-4",
@@ -75,7 +91,19 @@ const {t} = useI18n();
                         <span className="inline-block h-[6px] w-[6px] rounded-full bg-[color:var(--kfia-secondary)]" />
                         {pickUpPillCard.fields.PillTitle?.value}
                       </div>
-
+ {pickUpPillCard.fields.Image?.value?.src && (
+                        <div className="mt-4">
+                          <div className="relative w-full overflow-hidden rounded-lg bg-slate-100 aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/9]">
+                            <Image
+                              src={pickUpPillCard.fields.Image?.value?.src}
+                              alt={pickUpPillCard.fields.PillTitle?.value}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                          </div>
+                        </div>
+                      )}
                       <div className="mt-4 flex-1 min-h-0 flex flex-col gap-4 md:block">
                         <div className="shrink-0">
                           <div className="flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-slate-900">
@@ -113,30 +141,6 @@ const {t} = useI18n();
           </h2>
         </div>
 
-        {/* Intro: Drop Off */}
-        <div className="px-5 md:px-7 pt-6 md:pt-7">
-          <h3 className="text-[16px] md:text-[18px] font-semibold text-slate-900">{t("Drop-off-title")}</h3>
-          <p className="mt-2 text-[14px] md:text-[15px] text-slate-800 leading-relaxed">
-            {t("drop-off-description")}
-          </p>
-        </div>
-
-        {/* Drop-off: mobile swipe / desktop grid */}
-        <div className="px-5 md:px-7 py-6 md:py-7">
-          {/* Mobile swipeable row */}
-          <div className="md:hidden -mx-1 no-scrollbar flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1">
-            {dropOffCardList}
-          </div>
-
-          {/* Tablet/Desktop grid (unchanged) */}
-          <div className="hidden md:grid grid-cols-2 gap-6">
-            {dropOffCardList}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="h-px bg-slate-200 mx-5 md:mx-7" />
-
         {/* Intro: Pick Up */}
         <div className="px-5 md:px-7 pt-6 md:pt-7">
           <h3 className="text-[16px] md:text-[18px] font-semibold text-slate-900">
@@ -157,6 +161,30 @@ const {t} = useI18n();
           {/* Tablet/Desktop grid (unchanged) */}
           <div className="hidden md:grid grid-cols-2 gap-6">
             {pickUpCardList}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px bg-slate-200 mx-5 md:mx-7" />
+
+        {/* Intro: Drop Off */}
+        <div className="px-5 md:px-7 pt-6 md:pt-7">
+          <h3 className="text-[16px] md:text-[18px] font-semibold text-slate-900">{t("Drop-off-title")}</h3>
+          <p className="mt-2 text-[14px] md:text-[15px] text-slate-800 leading-relaxed">
+            {t("drop-off-description")}
+          </p>
+        </div>
+
+        {/* Drop-off: mobile swipe / desktop grid */}
+        <div className="px-5 md:px-7 py-6 md:py-7">
+          {/* Mobile swipeable row */}
+          <div className="md:hidden -mx-1 no-scrollbar flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1">
+            {dropOffCardList}
+          </div>
+
+          {/* Tablet/Desktop grid (unchanged) */}
+          <div className="hidden md:grid grid-cols-2 gap-6">
+            {dropOffCardList}
           </div>
         </div>
       </section>

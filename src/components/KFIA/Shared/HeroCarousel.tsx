@@ -51,7 +51,7 @@ export const Default = (props: HeroCarouselProps): JSX.Element | null => {
   }, [multi, safeSlides.length]);
 
   return (
-    <section className="full-bleed relative" aria-label="Hero">
+    <section className="full-bleed-carousel relative" aria-label="Hero">
       <div
         className="
            relative overflow-hidden  h-[280px] sm:h-[360px] md:h-[480px] lg:h-[600px] xl:h-[720px] 
