@@ -36,7 +36,7 @@ const two = (n: number) => (n < 10 ? `0${n}` : `${n}`);
 function genRowsForDay(day: Date): { arrivals: Row[]; departures: Row[] } {
   const key = fmtKey(day);
   const rnd = mulberry32(seedFromKey(key));
-  const isFuture = startOfDay(day).getTime() > TODAY.getTime();
+  const isFuture = startOfDay(day).getTime() > TODAY().getTime();
 
   const countA = 9 + Math.floor(rnd() * 5); // 9..13
   const countD = 9 + Math.floor(rnd() * 5);
@@ -88,7 +88,7 @@ function genRowsForDay(day: Date): { arrivals: Row[]; departures: Row[] } {
 const DATA: Record<string, { arrivals: Row[]; departures: Row[] }> = (() => {
   const out: Record<string, { arrivals: Row[]; departures: Row[] }> = {};
   for (let i = -3; i <= 14; i++) {
-    const d = new Date(TODAY);
+    const d = new Date(TODAY());
     d.setDate(d.getDate() + i);
     out[fmtKey(d)] = genRowsForDay(d);
   }
