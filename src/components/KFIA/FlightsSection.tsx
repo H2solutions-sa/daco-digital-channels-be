@@ -146,7 +146,7 @@ export const Default = (props: FlightsSectionProps): JSX.Element => {
   }
 
   const seeAllHref =
-    tab === "arrivals" ? "/flights/arrivals#arrivals" : "/flights/departures#departures";
+    tab === "arrivals" ? "/Flights#Arrivals" : "/Flights#Departures";
   const seeAllLabel = tab === "arrivals" ? "SEE ALL ARRIVALS" : "SEE ALL DEPARTURES";
   const rows = tab === "arrivals" ? rowsArr : rowsDep;
 
