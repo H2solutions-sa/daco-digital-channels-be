@@ -1,115 +1,112 @@
+// app/components/flightSection/MiniFlightsTable.tsx
 "use client";
-import Image from "next/image";
 
-export type FlightStatusSmall = "LANDED" | "LATE" | "ON TIME" | "CANCELLED";
+import AirlineLogo from "../Flights/Airlines/AirlineLogo";
+
+export type FlightStatusSmall =
+  | "LANDED"
+  | "DELAYED"
+  | "CANCELLED"
+  | "BOARDING"
+  | "DEPARTED";
+
 export type RowSmall = {
   flight: string;
-  airlineLogo: string;
-  destination: string;   // e.g., "Beirut (BEY)"
-  sch: string;           // scheduled time string
-  status: FlightStatusSmall;
+  airlineLogo?: string;
+  destination: string;
+  sch: string;
+  status: FlightStatusSmall | "LATE" | "ON TIME";
   gate?: string;
   counter?: string;
 };
 
-// Updated chip classes already use brand colors defined in global CSS
+type Mode = "arrivals" | "departures";
+
+/* Convert neutral/legacy labels into our canonical chips */
+function normalizeStatus(s: RowSmall["status"], mode: Mode): FlightStatusSmall {
+  if (s === "LATE") return "DELAYED";
+  if (s === "ON TIME") return mode === "departures" ? "BOARDING" : "LANDED";
+  return s as FlightStatusSmall;
+}
+
 const statusClass = (s: FlightStatusSmall) =>
   ({
     LANDED: "kfia-chip kfia-chip--landed",
-    LATE: "kfia-chip kfia-chip--late",
-    "ON TIME": "kfia-chip kfia-chip--on-time",
+    DEPARTED: "kfia-chip kfia-chip--departed",
+    BOARDING: "kfia-chip kfia-chip--boarding",
+    DELAYED: "kfia-chip kfia-chip--late",
     CANCELLED: "kfia-chip kfia-chip--cancelled",
   }[s]);
 
-export default function MiniFlightsTable({ rows }: { rows: RowSmall[] }) {
+function CardRow({ r, mode }: { r: RowSmall; mode: Mode }) {
+  const st = normalizeStatus(r.status, mode);
+  return (
+    <li className="rounded-xl border border-slate-200 bg-white p-3 md:p-4 mb-2.5 md:mb-3">
+      {/* Row 1 */}
+      <div className="flex items-center gap-3 md:gap-4">
+        <span className="text-[color:var(--kfia-brand)] font-semibold text-[13px] md:text-[14px]">{r.flight}</span>
+        <AirlineLogo
+          flightNo={r.flight}
+          airlineLogo={r.airlineLogo}
+          sizes="96px"
+          className="h-4 w-[56px] md:h-[18px] md:w-[72px] object-contain"
+        />
+        <div className="min-w-0 text-[13px] md:text-[14px] text-slate-900 font-medium">
+          <span className="block truncate" title={r.destination}>{r.destination}</span>
+        </div>
+      </div>
+
+      {/* Row 2 */}
+      <div className="mt-3 flex items-center justify-end gap-2">
+        <span className="tabular-nums text-[13px] md:text-[14px] font-semibold text-slate-900">{r.sch}</span>
+        <span className={`${statusClass(st)} inline-flex items-center justify-center rounded-full leading-none whitespace-nowrap text-[10px] md:text-[11px] px-2 py-[4px] md:py-[5px] min-w-[72px] md:min-w-[84px]`}>
+          {st}
+        </span>
+      </div>
+    </li>
+  );
+}
+
+export default function MiniFlightsTable({ rows, mode }: { rows: RowSmall[]; mode: Mode }) {
   return (
     <div className="mt-4">
-      {/* ===== Mobile Table ===== */}
-      <ul className="md:hidden divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
-        {rows.map((r, i) => (
-          <li key={`${r.flight}-${i}`} className="p-3">
-            <div className="grid grid-cols-[auto_auto_minmax(0,1fr)_auto_auto] items-center gap-3">
-              {/* Flight */}
-              <div className="text-[13px] font-semibold text-[color:var(--kfia-lavender)] whitespace-nowrap">
-                {r.flight}
-              </div>
-
-              {/* Airline Logo */}
-              <span className="relative block h-5 w-14">
-                <Image
-                  src={r.airlineLogo}
-                  alt="Airline logo"
-                  fill
-                  sizes="56px"
-                  className="object-contain"
-                  priority={i < 2}
-                />
-              </span>
-
-              {/* Destination */}
-              <div className="text-[13px] text-slate-900 truncate">
-                {r.destination}
-              </div>
-
-              {/* Scheduled Time */}
-              <div className="text-[13px] tabular-nums text-slate-800 whitespace-nowrap">
-                {r.sch}
-              </div>
-
-              {/* Status */}
-              <div className="justify-self-end">
-                <span
-                  className={`${statusClass(r.status)} text-[11px] px-2 py-1`}
-                >
-                  {r.status}
-                </span>
-              </div>
-            </div>
-          </li>
-        ))}
+      <ul className="lg:hidden">
+        {rows.map((r, i) => (<CardRow key={`${r.flight}-${i}`} r={r} mode={mode} />))}
       </ul>
 
-      {/* ===== Desktop Table ===== */}
-      <div className="hidden md:block">
-        <table className="w-full table-auto border-separate border-spacing-0 text-sm">
+      <div className="hidden lg:block">
+        <table className="w-full table-fixed border-separate border-spacing-0">
+          <colgroup>
+            <col className="w-1/5" /><col className="w-1/5" /><col className="w-1/5" /><col className="w-1/5" /><col className="w-1/5" />
+          </colgroup>
           <thead>
-            <tr className="text-[color:var(--kfia-lavender)]">
-              <th className="kfia-th">FLIGHT</th>
-              <th className="kfia-th">AIRLINE</th>
-              <th className="kfia-th">DESTINATION</th>
-              <th className="kfia-th w-[90px]">SCH</th>
-              <th className="kfia-th w-[120px]">STATUS</th>
+            <tr className="text-[color:var(--kfia-brand)]">
+              <th className="kfia-th text-[15px] font-semibold pl-2"><div className="flex justify-start">FLIGHT</div></th>
+              <th className="kfia-th text-[15px] font-semibold px-2"><div className="flex justify-center">AIRLINE</div></th>
+              <th className="kfia-th text-[15px] font-semibold pl-2"><div className="flex justify-start">DESTINATION</div></th>
+              <th className="kfia-th text-[15px] font-semibold px-2"><div className="flex justify-center">SCH</div></th>
+              <th className="kfia-th text-[15px] font-semibold pl-2"><div className="flex justify-start">STATUS</div></th>
             </tr>
           </thead>
-          <tbody>
-            {rows.map((r, i) => (
-              <tr key={`${r.flight}-${i}`}>
-                <td className="kfia-td pr-4 whitespace-nowrap text-[color:var(--kfia-lavender)]">
-                  {r.flight}
-                </td>
-                <td className="kfia-td pr-4">
-                  <span className="relative block h-6 w-14 mx-auto">
-                    <Image
-                      src={r.airlineLogo}
-                      alt="Airline logo"
-                      fill
-                      sizes="56px"
-                      className="object-contain"
-                      priority={i < 2}
-                    />
-                  </span>
-                </td>
-                <td className="kfia-td pr-4">{r.destination}</td>
-                <td className="kfia-td pr-4 whitespace-nowrap">{r.sch}</td>
-                <td className="kfia-td">
-                  <span
-                    className={`${statusClass(r.status)} text-[12px] px-2 py-1`}
-                  >
-                    {r.status}
-                  </span>
-                </td>
-              </tr>
-            ))}
+          <tbody className="text-[14px]">
+            {rows.map((r, i) => {
+              const st = normalizeStatus(r.status, mode);
+              return (
+                <tr key={`${r.flight}-${i}`}>
+                  <td className="kfia-td pl-2 whitespace-nowrap text-[color:var(--kfia-brand)]">{r.flight}</td>
+                  <td className="kfia-td px-2">
+                    <div className="flex justify-center">
+                      <AirlineLogo flightNo={r.flight} airlineLogo={r.airlineLogo} sizes="72px" priority={i < 2} className="h-5 w-[72px] object-contain" />
+                    </div>
+                  </td>
+                  <td className="kfia-td pl-2">{r.destination}</td>
+                  <td className="kfia-td px-2"><div className="text-center tabular-nums">{r.sch}</div></td>
+                  <td className="kfia-td pl-2">
+                    <span className={`${statusClass(st)} text-[12px] px-2 py-1 min-w-[84px] inline-flex items-center justify-center rounded-full leading-none whitespace-nowrap`}>{st}</span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

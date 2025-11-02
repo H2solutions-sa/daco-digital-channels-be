@@ -20,8 +20,8 @@ import {
   MAX_DATE_KEY,
 } from "./date";
 
-import { fetchFlights, filterByTab } from "../../../../lib/flights/api";
-import type { FlightApi, FlightsApiResponse } from "../../../../lib/flights/types";
+import { fetchFlights } from "../../../../lib/flights/api";
+import type { FlightApi } from "../../../../lib/flights/types";
 
 /* ======================= Helpers: mapping + filters ======================= */
 const two = (n: number) => (n < 10 ? `0${n}` : `${n}`);
@@ -46,17 +46,47 @@ function titleCase(s?: string | null) {
 }
 
 /** Map API statuses to the big-table status union (or undefined for upcoming). */
-function normalizeBigStatus(s?: string | null): Row["status"] {
+function normalizeBigStatus(
+  s?: string | null,
+  moveType?: "A" | "D"
+): Row["status"] {
   const u = (s || "").toUpperCase();
   if (!u) return undefined;
-  if (u.includes("CANCEL")) return "CANCELLED";
-  if (u.includes("DELAY")) return "DELAYED";
-  if (u.includes("BOARD")) return "BOARDING";
-  if (u.includes("LANDED")) return "LANDED";
-  if (u.includes("DEPART")) return "LANDED";
-  return undefined;
-}
 
+  if (u.includes("CANCEL")) return "CANCELLED";
+  if (u.includes("DELAY") || u.includes("LATE")) return "DELAYED";
+
+  if (moveType === "D") {
+    if (u.includes("DEPART") || u.includes("AIRBORNE") || u.includes("TAKE OFF")) return "DEPARTED";
+    if (u.includes("GATE CLOSED") || u.includes("FINAL CALL") || u.includes("GATE CHANGED")) return "DEPARTED";
+    if (u.includes("BOARD") || u.includes("COUNTER OPEN")) return "BOARDING";
+    return "BOARDING";
+  }
+
+  // Arrivals
+  if (u.includes("LAND")) return "LANDED";
+  if (u.includes("CAROUSEL OPEN") || u.includes("CAROUSEL CLOSED")) return "LANDED";
+  if (u.includes("APPROACH") || u.includes("EARLY")) return "LANDED";
+  return "LANDED";
+}
+const getMoveType = (f: FlightApi): "A" | "D" | undefined => {
+  const v = (f as any)?.ARR_DEP;
+  if (!v) return undefined;
+  const u = String(v).toUpperCase();
+  return u === "A" || u === "D" ? u : undefined;
+};
+const toCity = (f: any) => {
+  const eng = f?.ROUTING_ENG || f?.ROUTING_CITY_ENG || f?.ROUTING_CITY || f?.ROUTING_NAME_ENG;
+  const fallback = f?.ROUTING || f?.ROUTE || f?.DEST || f?.ORIGIN;
+  return (eng || fallback || "").toString().trim();
+};
+const toIata = (f: any) => {
+  const raw = f?.ROUTING || f?.IATA || f?.IATA_CODE || f?.ROUTING_IATA;
+  const m = String(raw || "").match(/^[A-Z]{3}$/i)
+    ? String(raw).toUpperCase()
+    : (String(raw || "").match(/\b([A-Z]{3})\b/)?.[1] ?? "");
+  return (m || "").toUpperCase();
+};
 /* -------------------- Counter extraction + formatting -------------------- */
 
 const pad2 = (v: string | number) => `${v}`.padStart(2, "0");
@@ -134,25 +164,40 @@ function logoFor(code: string, apiLogo?: string | null) {
 }
 
 /** Convert one FlightApi item into the big-table Row shape (tab-aware for counter). */
-function toBigRow(f: FlightApi, tab: "arrivals" | "departures"): Row {
+const toBigRow = (f: FlightApi): Row => {
+  const move = getMoveType(f);
   const code = f.AIRLINE?.trim() ?? "";
   const num = f.FL_NUMBER?.trim() ?? "";
-  const scheduled = hhmm(f.SCH_TIME);
-  const estimated = hhmm(f.EST_TIME);
+  const scheduled = hhmm((f as any).SCH_TIME);
+  const estimated = hhmm((f as any).EST_TIME);
 
-  const counter = tab === "departures" ? prettyCounter(extractCounter(f as any)) : "—";
+  const isDeparture = move === "D";
+  const gate = isDeparture ? ((f as any).GATE_1 ?? "") : "";
+  const carousel = !isDeparture ? ((f as any).BAGGAGE_1 ?? "") : "";
+  const gateOrCarousel = isDeparture ? gate : carousel;
+
+  const city = toCity(f as any) || "";
+  const iata = toIata(f as any) || "";
+  const destination = city
+    ? (iata ? `${titleCase(city)} (${iata})` : titleCase(city))
+    : (iata ? `(${iata})` : "");
+
+  const counter = isDeparture ? prettyCounter(extractCounter(f as any)) : "—";
 
   return {
     scheduled,
     estimated,
     airlineLogo: logoFor(code, (f as any).AIRLINE_LOGO),
     flightNo: `${code} ${num}`,
-    destination: `${titleCase((f as any).ROUTING_ENG)} (${(f as any).ROUTING})`,
-    gate: (f as any).GATE_1 ?? "",
+    destination,
+    gate: gateOrCarousel,
     counter,
-    status: normalizeBigStatus((f as any).FL_STATUS_1),
+    status: normalizeBigStatus(
+      (f as any).FL_STATUS_1 || (f as any).PUB_RMK_ENG || (f as any).PUB_RMK,
+      move
+    ),
   };
-}
+};
 
 /** Filter flights by the selected calendar day (using SCH_TIME) */
 function filterByDay(list: FlightApi[], day: Date) {
@@ -203,24 +248,95 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
         setLoading(true);
         setErr(null);
 
-        const data = (await fetchFlights()) as FlightsApiResponse;
+        // Server filters by ARR/DEP; top controls payload size
+        const raw = await fetchFlights({ tab, top: 500 });
 
-        if (!didInitFromPayload && (data as any)?.CURRENT_TIME) {
-          setSelectedDate(startOfDay(new Date((data as any).CURRENT_TIME)));
+        const currentTime =
+          (raw as any)?.CURRENT_TIME ??
+          (raw as any)?.current_time ??
+          null;
+
+        let flights: FlightApi[] = [];
+        if (Array.isArray((raw as any)?.FLIGHTS)) flights = (raw as any).FLIGHTS;
+        else if (Array.isArray((raw as any)?.flights)) flights = (raw as any).flights;
+        else if (Array.isArray((raw as any)?.results)) flights = (raw as any).results;
+        else if (Array.isArray(raw)) flights = raw as FlightApi[];
+        else flights = [];
+
+        // 🔒 Defensive client-side filter by ARR_DEP (in case upstream ignored it)
+        const want = tab === "arrivals" ? "A" : "D";
+        const byDir = flights.filter(
+          (f) => ((f as any)?.ARR_DEP || "").toUpperCase() === want
+        );
+
+        if (!didInitFromPayload && currentTime) {
+          setSelectedDate(startOfDay(new Date(currentTime)));
           setDidInitFromPayload(true);
         }
 
-        const byTab = filterByTab((data as any).FLIGHTS, tab);
-        const byDay = filterByDay(byTab, selectedDate);
-        const mapped = byDay.map((f) => toBigRow(f, tab));
-        mapped.sort((a, b) => a.scheduled.localeCompare(b.scheduled));
+        const byDay = filterByDay(byDir, selectedDate);
+        const mapped = byDay
+          .map((f) => toBigRow(f))
+          .sort((a, b) => a.scheduled.localeCompare(b.scheduled));
 
         if (alive) {
+          if (process.env.NODE_ENV !== "production") {
+            const countA = flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "A").length;
+            const countD = flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "D").length;
+            console.debug(`[FlightsPanel] fetched: A=${countA} D=${countD} | showing ${tab}=${mapped.length}`);
+          }
+
           setRows(mapped);
           setVisible(PAGE_SIZE);
+
+          // Persist lightweight maps for Journey pages (keyed by flightNo)
+          if (typeof window !== "undefined") {
+            const statusMap = Object.fromEntries(
+              mapped.map((r) => [r.flightNo, r.status || ""])
+            );
+            const destMap = Object.fromEntries(
+              mapped.map((r) => [r.flightNo, r.destination || ""])
+            );
+
+            // ✅ Journey seed + quick lookup map
+            const journeySeed = mapped.map((r) => {
+              const iata = r.destination.match(/\(([A-Z]{3})\)/i)?.[1] ?? "";
+              const city = r.destination.replace(/\s*\([A-Z]{3}\)\s*$/,"");
+              const from = tab === "departures" ? "DMM" : iata;
+              const to = tab === "departures" ? iata : "DMM";
+              return {
+                flightNo: r.flightNo,
+                sched: r.scheduled,               // "HH:mm"
+                from,                             // IATA
+                to,                               // IATA
+                destinationLabel: city,           // city name
+                gate: r.gate || "",
+                status: r.status || "",
+                tab,                              // "arrivals" | "departures"
+              };
+            });
+
+            const journeyByFlightNo: Record<string, any> = Object.fromEntries(
+              journeySeed.map((j) => [j.flightNo, j])
+            );
+
+            try {
+              localStorage.setItem("kfia:statusMap", JSON.stringify(statusMap));
+              localStorage.setItem("kfia:destMap", JSON.stringify(destMap));
+              localStorage.setItem("kfia:journeySeed", JSON.stringify(journeySeed));
+              localStorage.setItem("kfia:journeyByFlightNo", JSON.stringify(journeyByFlightNo));
+              localStorage.setItem("kfia:selectedDatePretty", new Intl.DateTimeFormat(undefined, {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }).format(selectedDate));
+              localStorage.setItem("kfia:selectedDateISO", selectedDate.toISOString());
+            } catch {}
+          }
         }
       } catch (e: any) {
-        if (alive) setErr(e.message ?? "Failed to load flights");
+        console.error("FlightsPanel: failed to load flights", e);
+        if (alive) setErr(e?.message ?? "Failed to load flights");
       } finally {
         if (alive) setLoading(false);
       }
