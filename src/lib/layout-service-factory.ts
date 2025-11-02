@@ -8,16 +8,13 @@ import {
 import config from 'temp/config';
 import clientFactory from 'lib/graphql-client-factory';
 
-/**
- * Recursively rewrite URLs in the layout service response
- * Converts http://uat-cm.dammamairports.sa:8080 to https://uat-cm.dammamairports.sa
- */
+ 
 function rewriteUrls(obj: any): any {
   if (typeof obj === 'string') {
-    // Rewrite URLs: remove port :8080 and change http to https
+    // Rewrite URLs: remove port :8080 from any URL and force HTTPS
     return obj
-      .replace(/http:\/\/uat-cm\.dammamairports\.sa:8080/g, 'https://uat-cm.dammamairports.sa')
-      .replace(/https:\/\/uat-cm\.dammamairports\.sa:8080/g, 'https://uat-cm.dammamairports.sa');
+      .replace(/http:\/\/([^:]+):8080/g, 'https://$1')   // http://anything:8080 → https://anything
+      .replace(/https:\/\/([^:]+):8080/g, 'https://$1'); // https://anything:8080 → https://anything
   }
 
   if (Array.isArray(obj)) {
