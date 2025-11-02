@@ -3,9 +3,56 @@ import {
   RestLayoutService,
   GraphQLLayoutService,
   constants,
+  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
 import clientFactory from 'lib/graphql-client-factory';
+
+/**
+ * Recursively rewrite URLs in the layout service response
+ * Converts http://uat-cm.dammamairports.sa:8080 to https://uat-cm.dammamairports.sa
+ */
+function rewriteUrls(obj: any): any {
+  if (typeof obj === 'string') {
+    // Rewrite URLs: remove port :8080 and change http to https
+    return obj
+      .replace(/http:\/\/uat-cm\.dammamairports\.sa:8080/g, 'https://uat-cm.dammamairports.sa')
+      .replace(/https:\/\/uat-cm\.dammamairports\.sa:8080/g, 'https://uat-cm.dammamairports.sa');
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(rewriteUrls);
+  }
+
+  if (obj && typeof obj === 'object') {
+    const result: any = {};
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        result[key] = rewriteUrls(obj[key]);
+      }
+    }
+    return result;
+  }
+
+  return obj;
+}
+
+/**
+ * Wrapper class that intercepts Layout Service responses and rewrites URLs
+ */
+class LayoutServiceWrapper implements LayoutService {
+  constructor(private inner: LayoutService) {}
+
+  async fetchLayoutData(
+    itemPath: string,
+    language?: string,
+    req?: any,
+    res?: any
+  ): Promise<LayoutServiceData> {
+    const data = await this.inner.fetchLayoutData(itemPath, language, req, res);
+    return rewriteUrls(data);
+  }
+}
 
 /**
  * Factory responsible for creating a LayoutService instance
@@ -16,7 +63,7 @@ export class LayoutServiceFactory {
    * @returns {LayoutService} service instance
    */
   create(siteName: string): LayoutService {
-    return process.env.FETCH_WITH === constants.FETCH_WITH.GRAPHQL
+    const baseService = process.env.FETCH_WITH === constants.FETCH_WITH.GRAPHQL
       ? new GraphQLLayoutService({
           siteName,
           clientFactory,
@@ -39,6 +86,9 @@ export class LayoutServiceFactory {
           siteName,
           configurationName: config.layoutServiceConfigurationName,
         });
+
+    // Wrap the service with URL rewriting logic
+    return new LayoutServiceWrapper(baseService);
   }
 }
 

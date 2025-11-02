@@ -7,8 +7,8 @@ const publicUrl = jssConfig.publicUrl;
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  // Set assetPrefix to our public URL
-  assetPrefix: publicUrl,
+  // Remove assetPrefix to fix CSS loading issues
+  // assetPrefix: publicUrl,
 
   // Allow specifying a distinct distDir when concurrently running app in a container
   distDir: process.env.NEXTJS_DIST_DIR || '.next',
@@ -54,10 +54,18 @@ const nextConfig = {
         port: '',
       },
       {
-      protocol: 'https',
-      hostname: 'sc104sc.dev.local',
-    },
-    ]
+        protocol: 'https',
+        hostname: 'sc104sc.dev.local',
+      },
+      {
+        protocol: 'https',
+        hostname: 'uat-cm.dammamairports.sa',
+      },
+      {
+        protocol: 'https',
+        hostname: 'daco.cm',
+      },
+    ],
   },
 
   async rewrites() {

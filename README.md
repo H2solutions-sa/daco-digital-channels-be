@@ -2,7 +2,55 @@
 
 ## Recent Changes Made
 
-### 1. tsconfig.json - Disabled strict TypeScript rules
+### 1. Updated Sitecore CM URL Configuration (UAT Environment)
+
+**Files Changed:**
+- `.env.local` (lines 8, 16)
+- `src/temp/config.js` (lines 6, 10, 12)
+- `next.config.js` (lines 60-67)
+
+**Changes:**
+- Updated `SITECORE_API_HOST` from `https://daco.cm` → `https://uat-cm.dammamairports.sa`
+- Updated `SITECORE_LAYOUT_SERVICE_HOST` from `https://daco.cm` → `https://uat-cm.dammamairports.sa`
+- Removed `:8080` port from `publicUrl` fallback
+- Added `uat-cm.dammamairports.sa` to Next.js image hostname whitelist (kept `daco.cm` as fallback)
+
+**Why:** The IIS server port was changed from 443 to 8080 for the CM server. The application needed to use the proper UAT domain name instead of the internal `daco.cm` hostname.
+
+---
+
+### 2. Added URL Rewriting Logic to Layout Service
+
+**File Changed:**
+- `src/lib/layout-service-factory.ts` (lines 11-91)
+
+**Changes:**
+- Added `rewriteUrls()` function that recursively walks through Sitecore's Layout Service JSON response
+- Created `LayoutServiceWrapper` class to intercept and transform responses
+- Automatically rewrites all URLs from `http://uat-cm.dammamairports.sa:8080` or `https://uat-cm.dammamairports.sa:8080` to `https://uat-cm.dammamairports.sa` (removes port, forces HTTPS)
+
+**Why:** When Sitecore's IIS runs on port 8080, it includes the port number in all media URLs (images, documents, etc.). This causes issues because:
+- External users access the site via WAF/load balancer on standard HTTPS (port 443)
+- Including `:8080` in URLs makes them inaccessible from the public internet
+- This wrapper ensures all URLs are cleaned before rendering, regardless of Sitecore's configuration
+
+---
+
+### 3. Added sxa-jss Layout Service Configuration
+
+**File Changed:**
+- `sitecore/config/kfia-app.config` (lines 163-169)
+
+**Changes:**
+- Added `<config name="sxa-jss">` section with `IncludeServerUrlInMediaUrls` set to `false`
+
+**Why:** The `.env.local` uses `LAYOUT_SERVICE_CONFIGURATION_NAME=sxa-jss`, but the Sitecore config only had settings for "default" and "jss" layouts. Without this configuration, Sitecore was including the full server URL (with port) in all media paths. This setting tells Sitecore to generate relative URLs instead.
+
+**Note:** This config file needs to be deployed to the Sitecore CM server at `App_Config/Include/zzz/kfia-app.config` and IIS must be restarted for changes to take effect.
+
+---
+
+### 4. tsconfig.json - Disabled strict TypeScript rules
 
 - Changed `"noUnusedParameters": true` → `false` (line 31)
 - Changed `"noUnusedLocals": true` → `false` (line 30)
