@@ -309,3 +309,14 @@
 article .slick-track{
   display: flex;
 }
+
+.mobile-toggle-menu{
+  position: absolute;
+  top: 10px;
+}
+@media screen and (max-width:1270px) {
+  header img{
+        position: relative;
+    margin-inline: 35px;
+  }
+}

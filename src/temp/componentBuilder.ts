@@ -96,6 +96,8 @@ import * as ImageCardSet from 'src/components/KFIA/Shop-Dine/ImageCardSet';
 import * as ShopDineContainer from 'src/components/KFIA/Shop-Dine/ShopDineContainer';
 import * as TabStrip from 'src/components/KFIA/Shop-Dine/TabStrip';
 import * as ZoneTabs from 'src/components/KFIA/Shop-Dine/ZoneTabs';
+import * as PopupEntryCard from 'src/components/KFIA/Parking-Transport/PopupEntryCard';
+import * as TaxiPriceListModal from 'src/components/KFIA/Parking-Transport/TaxiPriceListModal';
 
 export const components = new Map();
 
@@ -189,6 +191,8 @@ components.set('ImageCardSet', ImageCardSet);
 components.set('ShopDineContainer', ShopDineContainer);
 components.set('TabStrip', TabStrip);
 components.set('ZoneTabs', ZoneTabs);
+components.set('PopupEntryCard',PopupEntryCard);
+components.set('TaxiPriceListModal',TaxiPriceListModal);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

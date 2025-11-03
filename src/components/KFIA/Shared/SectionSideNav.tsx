@@ -30,8 +30,8 @@ export const Default = (props: SideNavTabs): JSX.Element => {
     <div id="facilities-body" className="mx-auto my-6 max-w-[1200px] px-4 md:px-6">
      <div
       className="
-        grid gap-6 lg:gap-8
-        md:grid-cols-[minmax(240px,290px)_minmax(0,1fr)]
+        grid gap-6
+        md:grid-cols-[minmax(240px,280px)_minmax(0,1fr)]
       "
     >
       <aside className={`relative md:sticky md:top-6`}>
