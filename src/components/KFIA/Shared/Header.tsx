@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ImageField , Field, Placeholder} from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { Menu, Search as SearchIcon, Phone } from "lucide-react";
+import {  Search as SearchIcon, Phone } from "lucide-react";
 import { SearchOverlay } from "../header/SearchOverlay";
 
 type Link ={
@@ -13,18 +13,13 @@ type Link ={
 type HeaderProps = ComponentProps & {
 fields:{
 Logo:ImageField,
-//HeaderLinks:{fields:{ Link: Field<Link> } }[],
-ContactButton:Field<Link>
+ContactButton:Field<Link>,
 }
 }
 
 export const Default = (props: HeaderProps): JSX.Element => {
-//  const { scrollOrNavigate } = useScrollOrNavigate();
 
-//  const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
        <header className="bg-white relative z-40 font-sans">
       <div
@@ -32,14 +27,6 @@ export const Default = (props: HeaderProps): JSX.Element => {
         style={{ maxWidth: "1460px", margin: "0 auto" }}
       >
         <div className="flex items-center gap-3 sm:gap-4 md:gap-4 xl:gap-5 shrink-0">
-          <button
-            className="xl:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 hover:bg-slate-50"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu className="w-[20px] h-[20px]" />
-          </button>
-
         <Link href="/" className="shrink-0 block" aria-label="KFIA Home">
         {props.fields.Logo.value?.src &&
             <Image src={props.fields.Logo.value?.src} alt="KFIA" width={160} height={30} className="sm:hidden" priority /> }
@@ -86,7 +73,7 @@ export const Default = (props: HeaderProps): JSX.Element => {
       </div>
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
-
+      <Placeholder name="jss-mobile-navigation" rendering={props.rendering} />
 
     </header>
   );

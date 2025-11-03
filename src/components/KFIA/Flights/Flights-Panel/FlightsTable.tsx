@@ -6,8 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useI18n } from "next-localization";
+import AirlineLogo from "../Airlines/AirlineLogo";
 
-export type FlightStatus = "LANDED" | "DELAYED" | "CANCELLED" | "BOARDING";
+export type FlightStatus =
+  | "LANDED"
+  | "DELAYED"
+  | "CANCELLED"
+  | "BOARDING"
+  | "DEPARTED";
+
 export type Row = {
   scheduled: string;
   estimated: string;
@@ -19,15 +26,18 @@ export type Row = {
   /** For future dates, leave undefined to render a dash (—) */
   status?: FlightStatus;
 };
+
 const statusClass = (s?: FlightStatus) =>
   s
     ? {
         LANDED: "kfia-chip kfia-chip--landed",
         DELAYED: "kfia-chip kfia-chip--late",
         CANCELLED: "kfia-chip kfia-chip--cancelled",
-        BOARDING: "kfia-chip kfia-chip--on-time",
+        BOARDING: "kfia-chip kfia-chip--boarding",
+        DEPARTED: "kfia-chip kfia-chip--departed",
       }[s]
     : "";
+
 
 /* -------- helpers -------- */
 const toSlug = (x: string) => encodeURIComponent(x.trim().replace(/\s+/g, "-"));
@@ -66,7 +76,12 @@ const { t } = useI18n();
             {r.scheduled}
           </span>
           <span className="relative h-5 w-16 sm:h-6 sm:w-20">
-            <Image src={r.airlineLogo} alt="" fill sizes="80px" className="object-contain" />
+                 <AirlineLogo
+                      flightNo={r.flightNo}
+                      airlineLogo={r.airlineLogo}
+                      sizes="80px"
+                      className="h-5 w-20 sm:h-6 sm:w-[88px] object-contain"
+                    />
           </span>
         </div>
 
@@ -220,13 +235,12 @@ export default function FlightsTable({
                     </td>
                     <td className={`${cell} text-center`}>
                       <span className="relative inline-block h-6 w-[80px] md:w-[92px]">
-                        <Image
-                          src={r.airlineLogo}
-                          alt={`${r.flightNo} airline logo`}
-                          fill
-                          sizes="92px"
-                          className="object-contain"
-                          priority={i < 2}
+                        <AirlineLogo
+                        flightNo={r.flightNo}
+                        airlineLogo={r.airlineLogo}
+                        priority={i < 2}
+                        sizes="92px"
+                        className="mx-auto h-6 w-[90px] object-contain"
                         />
                       </span>
                     </td>

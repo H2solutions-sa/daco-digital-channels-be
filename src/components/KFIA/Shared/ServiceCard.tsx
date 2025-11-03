@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import Image from "next/image";
 import { SquareArrowOutUpRight, MapPin } from "lucide-react";
 import { ComponentProps } from 'lib/component-props';
-import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 type Link = {
   href:string,
@@ -91,11 +91,27 @@ const CARD_BASE =
         {/* Chips */}
         {card.fields.Chips?.length > 0 ? (
          <><div className="my-4 h-px w-full bg-[oklch(0.92_0_0)]"></div>
+         {card.fields.Chips.map((c, i) => (
          <div
-              className={`flex flex-wrap gap-2 justify-start`}
+              className={`flex flex-wrap gap-2 ${c.fields.ChipName?.value.includes("+") ? "justify-center" : "justify-start" }`}
             >
-              {card.fields.Chips.map((c, i) => (
-                <span
+              
+                {c.fields.ChipName?.value.includes("+") ? (
+                  <a  key={i}
+                  className="inline-flex items-center gap-2 rounded-full px-3 text-xs leading-none bg-[oklch(0.96_0_0)] text-[color:var(--kfia-brand)] border border-[oklch(0.90_0_0)]/45 h-8"
+                href={`tel:${c.fields.ChipName?.value}`}>
+                   {c.fields.ChipIcon?.value?.src && 
+                    <Image
+                      src={c.fields.ChipIcon?.value?.src}
+                      alt={`${card.fields.CardTitle?.value} logo`}
+                      width={16}
+                      height={16}
+                    />
+                    }
+                  {c.fields.ChipName?.value}
+                </a>
+                ):
+                (<span
                   key={i}
                   className="inline-flex items-center gap-2 rounded-full px-3 text-xs leading-none bg-[oklch(0.96_0_0)] text-[color:var(--kfia-brand)] border border-[oklch(0.90_0_0)]/45 h-8"
                 >
@@ -108,16 +124,16 @@ const CARD_BASE =
                     />
                     }
                   {c.fields.ChipName?.value}
-                </span>
-              )
-              )}
-            </div></>
+                </span>)}
+            </div> ))}
+            </>
         ) : null}
       </div>
     </article>
     )) ?? [];
   return (
-  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-level>
+  <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]" data-level>
+    <Placeholder rendering={props.rendering} name="jss-popup-card"/>
     {CardList}
   </div>
   );
