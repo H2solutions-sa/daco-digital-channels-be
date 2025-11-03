@@ -38,8 +38,12 @@
 # Error logs and test files
 errorlogsitecore.txt
 bigjsoncm.json
+bigjson.json
+home.html
+
+# Claude Code config
+.claude/
 
 # Compressed archives
 *.tar.gz
 *.zip
-!src/components/KFIA.zip
