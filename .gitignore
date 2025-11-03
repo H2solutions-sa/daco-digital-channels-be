@@ -30,4 +30,16 @@
 
 # vercel
 .vercel
-!
+
+# Sitecore packages and folders (important: ignore any folder with "sitecore" in the name)
+**/sitecore-packages/
+**/sitecore*/
+
+# Error logs and test files
+errorlogsitecore.txt
+bigjsoncm.json
+
+# Compressed archives
+*.tar.gz
+*.zip
+!src/components/KFIA.zip
