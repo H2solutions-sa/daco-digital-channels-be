@@ -29,6 +29,16 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  // Skip SSG entirely when DISABLE_SSG_FETCH is true
+  if (process.env.DISABLE_SSG_FETCH?.toLowerCase() === 'true') {
+    return {
+      props: {
+        headLinks: [],
+        layoutData: null,
+      },
+    };
+  }
+
   const site = siteResolver.getByName(config.sitecoreSiteName);
   const errorPagesService = new GraphQLErrorPagesService({
     clientFactory,
@@ -41,13 +51,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
   let resultErrorPages: ErrorPages | null = null;
 
-  if (process.env.DISABLE_SSG_FETCH?.toLowerCase() !== 'true') {
-    try {
-      resultErrorPages = await errorPagesService.fetchErrorPages();
-    } catch (error) {
-      console.log('Error occurred while fetching error pages');
-      console.log(error);
-    }
+  try {
+    resultErrorPages = await errorPagesService.fetchErrorPages();
+  } catch (error) {
+    console.log('Error occurred while fetching error pages');
+    console.log(error);
   }
 
   return {
