@@ -5,10 +5,14 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 
 export const Default = (): JSX.Element => {
-  const [now, setNow] = useState(new Date());
-  useEffect(() => { const i = setInterval(() => setNow(new Date()), 60_000); return () => clearInterval(i); }, []);
-  const hh = now.getHours().toString().padStart(2,"0");
-  const mm = now.getMinutes().toString().padStart(2,"0");
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    setNow(new Date()); // Set initial time on client
+    const i = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(i);
+  }, []);
+  const hh = now?.getHours().toString().padStart(2,"0") || "--";
+  const mm = now?.getMinutes().toString().padStart(2,"0") || "--";
 
   const Item = ({ icon, label, hideLabelOnMobile=false }:{
     icon: React.ReactNode; label: string; hideLabelOnMobile?: boolean;

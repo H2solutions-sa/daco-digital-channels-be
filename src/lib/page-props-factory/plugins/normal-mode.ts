@@ -46,8 +46,14 @@ class NormalModePlugin implements Plugin {
 
     // Fetch dictionary data if layout data was present
     if (!props.notFound) {
-      const dictionaryService = this.getDictionaryService(props.site.name);
-      props.dictionary = await dictionaryService.fetchDictionaryData(props.locale);
+      try {
+        const dictionaryService = this.getDictionaryService(props.site.name);
+        props.dictionary = await dictionaryService.fetchDictionaryData(props.locale);
+      } catch (error) {
+        console.error('Dictionary service error - using empty dictionary:', error);
+        // Fallback to empty dictionary when Sitecore Rendering Host is misconfigured
+        props.dictionary = {};
+      }
     }
 
     // Initialize links to be inserted on the page
