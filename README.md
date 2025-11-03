@@ -1,5 +1,39 @@
 # Sitecore JSS Next.js Sample Application
 
+## Quick Start (After Cloning)
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Configure Environment Variables ⚠️ **REQUIRED**
+Copy the example environment file and configure it:
+```bash
+cp .env.local.example .env.local
+```
+
+**Important:** The `.env.local` file contains all Sitecore connection settings and is required for the app to run. Without it, you'll get 500 errors about missing 'route' properties.
+
+Key variables in `.env.local`:
+- `PORT=8080` - Run Next.js on port 8080
+- `SITECORE_API_HOST` - Sitecore CM server URL
+- `SITECORE_API_KEY` - API key for Sitecore access
+- `LAYOUT_SERVICE_CONFIGURATION_NAME=sxa-jss` - Layout service configuration
+
+### 3. Build and Run
+```bash
+# Development mode
+npm run start:connected
+
+# Production mode
+npm run start:production
+```
+
+The app will be available at `http://localhost:8080`
+
+---
+
 ## Recent Changes Made
 
 ### 1. Updated Sitecore CM URL Configuration (UAT Environment)
