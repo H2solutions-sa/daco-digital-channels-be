@@ -1,0 +1,45 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>API Keys</PackageName>
+      <Author />
+      <Version />
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Settings/Services/API Keys/{59B41B5F-E22E-460B-941E-FB64FE8DA8FC}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Services/API Keys/KFIA API Key/{08BECE0B-5FC2-4A9E-A31B-E8AC709A46BF}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Services/Rendering Hosts/{895E25C4-12B2-4B2C-8233-82F3B79EEF53}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Services/Rendering Hosts/Default/{DFFEE92B-0441-45A4-9207-67810B72BD46}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name />
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

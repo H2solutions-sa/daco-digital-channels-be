@@ -31,9 +31,9 @@
 # vercel
 .vercel
 
-# Sitecore packages and folders (important: ignore any folder with "sitecore" in the name)
-**/sitecore-packages/
+# Sitecore folders (ignore any folder with "sitecore" in the name, except sitecore-packages)
 **/sitecore*/
+!**/sitecore-packages/
 
 # Error logs and test files
 errorlogsitecore.txt

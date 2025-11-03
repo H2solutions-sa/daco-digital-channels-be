@@ -1,0 +1,494 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Layout-250907</PackageName>
+      <Author />
+      <Version />
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/layout/{EB2E4FFD-2761-4653-B052-26A64D385227}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Controllers/{75D27C2B-5F88-4CC8-B1DE-8412A1628408}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/{E18F4BC6-46A2-4842-898B-B6613733F06F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/Default/{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/Feed/{73966209-F1B6-43CA-853A-F1DB1C9A654B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/JSON/{0B4A31C9-712D-4578-A396-2DDC0F34B63A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/Mobile/{B039EBE1-5813-4243-81AE-EA55B2352D80}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Devices/Print/{46D2F427-4CE5-4E1F-BA10-EF3636F43534}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/{75CC5CE4-8979-4008-9D3C-806477D57619}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/{470A0483-80DC-4425-93B9-9C79C7C57A11}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/{2CC13DA6-69A8-42F8-88FC-0EF57790381A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/{14CBB70E-107B-4BED-95A4-F9F4D0EAE32A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/Accordion Mvc Layout/{09BD444B-FABC-47EA-981D-2C8271655469}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/Carousel Mvc Layout/{B8AB7438-FF88-41A2-B0FD-493FB644E1B2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/Flip Mvc Layout/{B794ED3A-F795-4C94-B366-FCFDF57D75AE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/Snippet Mvc Layout/{411E4948-E7F2-4D86-BEAD-451F79D83BCF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Composites/Tab Mvc Layout/{4A6F3558-D2AD-4183-B232-A426B4681E72}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Json/{FD526E46-0CE5-4A70-8511-D81FA206E3D6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Json/JSON Layout/{72C595AD-68BB-44BC-B5CD-2A857039515F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Overlays/{F4ED18F0-060D-45D8-BDD3-0F710C8E4D4A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/Experience Accelerator/Overlays/Overlay Layout/{0349837C-0A21-4138-B4F8-A5A67756AA16}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Feature/JSS Experience Accelerator/{14777140-28FC-427B-8098-724E936DF199}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/{10335194-8652-470A-9445-FD7C4FB21B4E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Experience Accelerator/{8DC9CF14-8C70-489E-A925-54427E01343B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Experience Accelerator/MVC/{ACE39933-CEA5-4A07-B91C-0FCFC97CBD13}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Experience Accelerator/MVC/MVC Layout/{BCFC7537-EFF4-434C-96F5-BF4F55FD175B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Experience Accelerator/Presentation/{FB83419B-01B0-4319-A323-A0814FF0B8F8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Experience Accelerator/Presentation/Metadata Layout/{5B9A4AFC-77E4-45D0-8B52-0B375A54EE4E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Headless Services/{5F86FDAD-E33B-4084-8EA9-5EC778D59F13}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/Headless Services/Form Layout/{893B9732-5D5C-4D3C-B7E8-F81D64573519}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/JSS Experience Accelerator/{45D82CF0-E533-4589-B8E7-A919B4CDA647}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/JSS Experience Accelerator/Presentation/{AA3D07F8-CC60-4E58-B09B-D1B86445B987}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Foundation/JSS Experience Accelerator/Presentation/JSS Layout/{96E5F4BA-A2CF-4A4C-A4E7-64DA88226362}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Modules/{5D05E4C6-D8AC-44ED-B046-2FFB290FCD2C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Project/{DA04B275-8838-4A3A-AFEE-817CF1FDD2EB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Sample Layout/{14030E9F-CE92-49C6-AD87-7D49B50E42EA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/{6E14276A-FD7F-40EC-9880-4EA96135AE9D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/{1DF8B7A1-C81B-4FA7-A886-CF11E81693EA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Common Layout/{7AE92CCA-8C93-491E-92A0-F25222C9746B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Imported/{628B9194-A52D-4653-AAE4-899D90E0A227}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Sample MVC/{078B0B37-EF5C-422F-83C7-07B2396A9713}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Sample Newsletter/{BB5D00D6-D01F-44F5-8038-1D21C25B5AA4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Sample Newsletter/Newsletter Layout/{8F1F6DC7-08FF-4E3A-BA0D-924BDC354540}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Single Column Layout/{EFC2DACE-785A-4504-B5F8-340B912BDD44}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/{3C68BB95-44CD-4943-971F-42F050985444}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Alternating Columns/{FA02CCAD-DA54-48CB-AD06-47854C2BE088}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Basic Layout/{9BE56802-4ADD-46F6-BEDC-B89EA88D5C83}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Call To Action Focus/{D35BA0F3-B378-466C-ADF3-0EF1D5F41369}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Image Focus/{8057C257-6951-49DF-AB48-D3690C21699F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Three Column Long/{26BC23EC-50EF-41A2-B950-80E8A371EAE0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Templates/Two Column/{BE1016DD-679B-4463-9FC4-22FA9A590A65}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Text Message Layout/{A74817EB-726E-46DB-B151-AB5E6AC3F6F4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Email/Two Column Layout/{2EB4CC7C-5EEC-4B4A-AB9A-A2B740C48A60}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Feed Delivery Layout/{A57C19C2-8EE3-4DEC-AA39-0B8D522D59EB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/FXM/{728EBB00-AF93-4F78-8B43-9395087CB76F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/FXM/ExperienceEditor/{C72C238F-018E-469E-9440-3EDD7420A8C8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/System/Simulated Device Layout/{BE4C2E57-D07D-4982-A6CC-679133913C4F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Models/{B87CD5F0-4E72-429D-90A3-B285F1D038CA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Models/Feature/{709C05C5-0439-4E1A-9D47-11E824C87B39}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Models/Foundation/{CB5EF5CD-A46D-444F-AA9F-9465766F185D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Models/Project/{0CADFE65-0E55-424A-B396-45A7445694E2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/{1CE3B36C-9B0C-4EB5-A996-BFCB4EAA5287}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/content/{8AE1C245-A4FA-46AE-9B35-4FBC15F63169}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/{FAFA53AE-289F-48FA-86F5-0B41F89AA60D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/body-area/{3B733A70-540B-43A8-852F-D8BF0C71360C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/column-1/{49E60580-01B5-4D81-A0D9-79D46E847603}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/column-2/{FBC95A8C-8C0B-4890-9BC2-EBA2E949C85A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/column-3/{DA3D29D7-D4D2-48E5-9DA4-9A9A19FCD0B7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/footer-area/{1E033E8C-E709-4D5E-ABF6-3916A7999039}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/header-area/{F7AC8410-8BB8-4311-AAD0-B4310424B089}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/preview-area/{4C0C089C-D307-46C9-8C9A-319497005166}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/SampleNewsletter/{ABAD07D7-0F4A-45C7-9193-18A2E1177A62}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/SampleNewsletter/newsletter/{5B28B45A-4394-472A-A6F8-661FEBB4AB7C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/SampleNewsletter/newsletter_head/{611F6D52-7EAB-4C09-9000-E8144434F3F1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/two-column-left/{10D03D41-9430-4D09-8A44-CF24212D2A64}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Email/two-column-right/{4355E254-4558-4269-A30C-F05CF80FCA0D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/{1B59149D-7ED3-4D58-86A9-32EDED8C0368}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/{D69B80B0-7203-4EFE-803A-2B75A2C21A01}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/{0AF57516-0E55-4DE5-AB2A-AC31C470843C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/accordion-content/{14527022-777A-4E01-9CD3-8957CC7549E9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/accordion-content-layout/{FF9AB4FA-A960-4409-AE78-5FA6E351527C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/accordion-heading/{D7E39089-E1B6-4497-AB1F-055B4CE1F451}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/accordion-heading-layout/{4C89FCA7-EA8B-4299-BD4E-FBED244BCC65}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/section-content/{8C3B9C0D-0E64-4300-9F62-0EE6EE1FB7B4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/section-content-layout/{6D416C4A-6B7D-445F-8578-A8DF5AC7DA64}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/section-title/{71807894-074E-4EE2-B763-B9E7BFA7EFC6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/section-title-layout/{21BED208-C3B7-4E2B-B2A3-B4F8B49F18DD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/slide/{9D009327-2606-4A84-8891-761A5B4D8C7D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/slide-layout/{A8F193A8-B6FA-4167-9AC6-4E2476129D17}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/tab-container/{09E0DE53-B69F-4337-8121-065410DCDF78}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/tab-content-layout/{16BAF0ED-BA7C-44A7-BFD5-1142EA662488}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/tab-heading/{DE3FAF00-B9D8-4A3D-87C1-69B67457602F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Composites/tab-heading-layout/{E0DEC348-8634-497E-A380-2CB427547CB9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Events/{4CA087DB-9CA3-42EA-932A-AE14F42E030B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Events/eventlist/{F995E2A4-418C-4191-808F-3E410CF6E01E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Forms/{7ECB5AE1-6B22-4C8C-BBAD-C04313546665}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Forms/sitecore forms wrapper/{66684733-6EC9-4B66-8D6D-72591FF24E59}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Json/{71AF8C1E-AD74-471A-9C65-1318EC40AF4F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Json/json content/{9B24E332-7ABE-474E-92B4-3AE6C61779C9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Json/json list/{9BEE8DC9-251A-428B-9D53-D3FA7DBC4794}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Json/jsonresults/{893BE0B1-988E-4F77-8F6D-1BC1D8B23734}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/{8531D6B1-27AD-439A-97C8-5074D717D6B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/filelist/{9DEB95BC-FFA1-4ED9-8513-B99364475B6E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/image/{811406DC-4362-4F8A-9382-119DCC1E39B4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/medialink/{EF729047-FC9A-4B09-AACC-93C62DA27BE0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/playlist/{809C2B71-CACA-40CD-AB97-60026DFBDF86}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Media/reusableimage/{7530C67E-B738-4788-A4F1-27BFD4E1DF93}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/{1B8AAB12-754E-4793-8254-5EB58EFA65E1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/archive/{E07C4155-3785-44CB-A708-173E0F35B2B6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/breadcrumb/{A0D407E3-ECE6-4CC3-8BA3-34E6FAF8C52A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/link/{98A680B5-8527-47B8-AA0C-6C99F8E56E8B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/linklist/{D1A4DA5A-B396-422C-9619-22B8F8F1C163}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Navigation/navigation/{3E8D6790-628A-4C05-9096-9075FED0C57A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Overlays/{E4A3B0EA-DA6A-4FFF-B730-7B0E60012251}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Overlays/overlay/{2B4CADDD-75D2-4DF7-86E0-8BC35EA8DC7C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/{E0C97F51-39B0-4F12-A4BE-1FE8878D0281}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/fieldeditor/{E7738A58-42D2-4B9B-9D29-A1CCEA5E927E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/page content/{AE5D0524-A8EB-4D1D-B4AC-60E124295965}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/pagelist/{8F27F2ED-CC63-465C-8AB6-79151288B650}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/promo/{C0073E80-5953-4ED2-87B2-9E6B9ABECEE7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/reusablerichtext/{8BE69D51-F1A4-4922-8067-B74FDE41D1C5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/richtext/{BD80A583-92E5-4817-A16C-1CE8711740BF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Page Content/title/{21007BB3-9BD5-489D-8D50-CEDC2625DF21}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/{2A617006-D38A-4E03-9FA2-738221980F03}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/column/{638FD41A-DF44-4289-B271-DD8C0DD0A302}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/container/{CF6A13E0-2257-48C0-BDC1-3D2B297F574D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/edit-panel/{4998E98D-ED09-48C6-A4FA-20FEF0D113EB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/row/{DD78CF08-4457-4489-93BE-025FF5290F16}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/PageStructure/toggle/{E1088DE1-C522-4028-A278-DA80916E24EC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Search/{57F84714-36FC-4CA7-A727-BE8EF380F387}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Search/searchbox/{0495A8BF-AD6F-46C5-85CF-48695F216C25}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Search/searchresults/{6B926164-D8DA-4E76-9A12-9D705D7AC4E0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Security/{8B1771E7-2A9A-445F-B6B2-4783A1A0C8D8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Security/social-login/{1EBC1A84-99A1-4E6E-97D7-47A436E66F0F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Taxonomy/{B1E44C30-B706-412E-80D7-E72DDFF70CDA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Taxonomy/tagcloud/{ADBE284A-AD9A-48B3-9C0E-C59B3DF8F702}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/Experience Accelerator/Taxonomy/taglist/{5D661F75-DE91-4D46-8A5E-AE51EED1064E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/{70E90FD5-6D55-400D-B493-9B58742569F6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Media/{9C7FC08A-9E4E-447C-9C62-D7B3C960680B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Navigation/{BC41D27E-0DFF-420E-872A-524CDF3E3871}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Content/{7391C5B0-0892-4369-A3DF-1FB7DBD0C293}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/{F5D31F6D-5866-4883-B212-B08483DB8610}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/{A539233A-1277-479A-84A0-D5951C864D74}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column1/{65122B20-1990-4335-9906-B9A556F6B7E2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column2/{CADBB81D-5F25-4ABE-BCF1-8D762BE211D5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column3/{17702B14-F444-49E5-82C3-02CAB16E3DE9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column4/{218F9444-1D78-432A-8CB9-9C68C9D915DD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column5/{75A505DD-9830-47E9-90BC-6C46DF737781}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column6/{9EE9FEDF-DB8B-47A6-806D-A42DCDE1A638}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column7/{17C4D8B6-7017-462E-8611-409F2081184C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/Column8/{FA10E340-F3E0-47F5-90B3-6A14AF8B638B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Container/{97CBC3BC-B376-47AA-9238-240672E912A5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/{B2518BC2-410E-439B-8371-FE60183C2308}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row1/{62C2E219-905C-4D5E-99F6-5561CC68715A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row2/{CDAB3B5E-342F-4438-998C-384A46135330}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row3/{7F46B996-DBDC-4BC2-A9D7-CCE87C108DE7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row4/{FEE2EF23-BD82-4E21-81E4-3C8183443870}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row5/{96512213-1B14-4BCC-B1D4-9F7879EC8F4F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row6/{61453E1A-A9E9-4538-B18D-B0D8616D9DCB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row7/{48FBDB3B-AB40-4720-8B13-890E792471DC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/Row8/{2871EEDE-298F-4BC0-A423-02B5EE68C856}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/{928A480F-8D07-4CC1-8B73-B46E20AABACC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/{42DEC84A-79A0-44BE-A539-1598A6BD5420}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/{5B814F55-CE5B-46E4-9951-AFCB6ED1DD60}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/body-bottom/{5DA07257-84D4-4C2E-B48C-DF55A0F86A7F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/body-top/{537D9BBE-F76E-4A5F-90C4-98E466ED57D3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/footer/{5EAE73BB-147B-4B72-A398-550CFD4C0229}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/head/{F954F04D-1345-44EB-8705-7698583B26BF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/header/{AB7B68CD-7B8C-4C78-9145-AA08E956F753}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/json/{A000BB41-0966-4499-A78D-634B1D01E6FD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/MVC/main/{BE787B18-B4D8-4F92-8E71-08CD9DB74C4F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/Placeholder Settings/{8CAFA8A1-72E1-44F7-A697-B0A16F78BCC9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Experience Accelerator/Placeholder Settings/fallback/{1002B31B-2686-416A-84A8-2B9996A61FA6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Headless Services/{CD7C6C29-BC79-4341-97DF-EB65A7E50B7E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/Headless Services/form-main/{46442EBD-6CCB-4F63-96F8-49B8C2858E9F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/{7ABD67CB-78B2-42A2-85AB-DA3CB9985583}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/Placeholder Settings/{D0B8E95C-6CED-4423-BC03-4F5B140D9B00}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/Placeholder Settings/Footer/{49E56593-BB61-41CA-8B9A-806B11486366}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/Placeholder Settings/Header/{21F39740-9A0D-40D1-8341-0896179C9A1B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/Placeholder Settings/Main/{284D388A-9D4E-4742-A298-EC6871592D4B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/{F5F0FBE3-61AD-4967-A5D8-8D760331D6A1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/{4B769921-3172-432C-A6CF-A039DB6C09CC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/bus-content-tab/{AF7E84AE-42FD-42A6-80D1-18C8AF5DD0C4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/car-rental-content-tab/{999F0BEA-698C-4F6F-B553-4FE84E229045}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/driving-directions-content-tab/{7CE11614-4775-4736-ACA4-A9B6F841EE68}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/first-side/{7A241A28-AD6B-4E13-8879-8D4B1FD61DB8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/navigation/{E5F997F6-2148-413F-A39D-AB4194EF6C46}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/parking-content-tab/{05C15CC3-B001-40C0-AB50-CF88DE1BC2BB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/pickup-content-tab/{58FD2162-B973-4479-93F0-EE1F96CD4CE1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/second-side/{6D606C11-12A5-47D9-B4DC-B8F5E2FB6F43}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/taxi-content-tab/{D203C465-88BD-45A8-9CC0-FC588B436AF4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/Project/Daco Digital Channels/valet-content-tab/{A4AF76EB-19A0-4C06-9C68-B487C790C940}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Placeholder Settings/webedit/{809528B1-588A-42A7-93C1-41E73800100A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/{32566F0E-7686-45F1-A12F-D7260BD78BC3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/{DA61AD50-8FDB-4252-A68F-B4470B1C9FE8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/{53179E7E-602C-4B52-8334-B79A27BF0B89}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Accessibility/{A7A0B8D0-A0B5-41FF-AAB4-BC8C49163558}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Accessibility/SkipLink/{BA1B7D2A-99F1-44FC-A757-AC0737AAECFA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Analytics/{056FEBC0-062F-4E78-A8A4-EE3C23A83B27}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Analytics/Google Analytics/{DF1F7B6F-0AB0-438D-B0B8-2F1BE4692953}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Compliancy/{E498EB09-0371-4A83-A667-0FF806216DA6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Compliancy/Privacy Warning/{3A91FC31-BA4C-4BC7-B6E4-29B4BB768736}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/{1D2BF8FD-1784-4B3D-A527-6D6BA19A50E5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/Accordion/{DEE8DDA7-AF00-48F6-9C60-19AB73EBA80D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/Carousel/{5A21C781-8E74-4DD0-8261-8CCDA1BF0454}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/Flip/{00C953FE-D508-4836-96A4-CF60887AE5F1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/Snippet/{00E2C7CF-2247-4596-B878-E6BB3850A77F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Composites/Tabs/{886B8CCC-816E-4D3A-BF05-4876B6C23686}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Context/{4E84A709-4E0E-4967-B8CE-DB262E127654}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Context/Language Selector/{0F77C4A9-0727-4FE2-8E22-511A565B9959}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Context/SiteSelector/{7E905ED5-E2A7-41A4-90E4-1C5E4807074E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Engagement/{4B55CB72-9727-45C3-BE43-40D9608DB2D5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Engagement/Disqus/{ACDA272A-F7B6-42A5-9FDF-C6323FB160E8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Engagement/Facebook Comments/{4DF237E8-B788-4145-A5C1-3F2158107BE8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Events/{E391A616-AF8C-42AE-A00B-AB55E4D31A4B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Events/Event Calendar/{C71B8E71-7FF8-46B0-800E-C5621EFE1D4B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Events/Event List/{52E40C93-F091-47C1-84DD-491DBCDC54B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Forms/{D04C718A-7D8B-4A13-AD85-938DBBB174D1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Forms/Forms Scripts/{24374313-44B3-4E9C-9C55-C4194019D1B3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Forms/Sitecore Form Wrapper/{6AB4EE29-CB78-4DCE-A316-3E6C3D5513F5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Generic Meta Rendering/{FC72DEDF-1FFD-409A-8172-52A2846AE4B1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Generic Meta Rendering/HTMLSnippet/{3ED31F2A-93BE-40CA-A073-69CD9517D0BA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Horizon/{D3E4AF1A-CE89-492A-BCA5-AED22EB44962}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Horizon/Inline Editor/{0E789111-50BC-4F15-B11F-3444158EC5DA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/JSON/{B98E8878-A735-42BE-B7DC-B97AA792035B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/JSON/JSON Content/{D933486D-2944-40BC-956F-033246F7367A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/JSON/JSON List/{D8C494B3-981D-47BF-8FC4-00EBA63FFEBC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/JSON/JSON Results/{E082338F-800E-42FE-8AED-87F586960F24}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Layout Services/{BA6505E4-ED0E-499A-8803-AD2EAFD5FCF6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Layout Services/JSON/{302F63E3-2214-4D85-B9D4-88544C8DD723}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Layout Services/JSON/Page layout as JSON/{AFA8325E-9653-4E88-8839-1777A56B5FB1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Maps/{BD9E7647-78E6-4A22-82F4-3429EEA3ACD3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Maps/Map/{4DD74227-4504-4102-A802-76241F372B9E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/{FD1A575D-7552-4C3E-A52D-D389D40803BB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/File List/{67B0BBCC-6926-4468-84E0-55B6A32B8BB6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Gallery/{DC7CD1BE-7E89-4D96-B52B-72653ADF82B1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Image/{4A0D4E0B-BC20-4F2E-BD84-A4BD35834E86}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Media Link/{B3D80586-1081-4C7C-835F-DD75B2681CC8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Playlist/{F16CE601-EECF-4DFC-B278-DE5F9562551B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Reusable Image/{69D0A00E-FF06-4B17-BE59-BED330577680}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Media/Video/{3C84ED23-7591-45E0-8850-1AE96D1342B1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/{09766691-6A8C-4D16-9178-10A60EC2E973}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/Archive/{1B1FDBF9-551B-4A00-A6D8-BB2FB7B62A62}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/Breadcrumb/{BFBD9DE2-3ABF-4078-BBCB-C95C5B2D863F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/Link List/{4646BD4F-05FF-4A19-9600-4D74F2F1548B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/Link/{3972C278-7E7A-4C2B-A293-66AF860F5C3A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Navigation/Navigation/{9D3BA81A-EECE-4B5A-9862-0239A9D53EEC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/{EAD24A34-436F-4D59-B67A-44D45ED4A75C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Field Editor/{76891D2D-6653-483F-AE86-A77FE6E96AC6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Page Content/{8B0393E9-EE25-4F0B-A5FD-777B3AD2C737}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Page List/{2E991AA4-4B08-43D2-AD2B-17C11E69A499}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Pagination/{390954AF-B5B3-4A61-928E-0FF2E1E78F94}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Plain HTML/{6DDA07A9-18D3-47A0-AB74-DF54956DD5F1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Promo/{51C13F03-8364-4F61-B860-2EC6CA7439B3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Reusable Plain HTML/{F0DE3E5B-F5E0-4299-B3A2-59C234B985C3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/ReusableRichText/{87182F78-4399-4896-8D59-9D6A45282F8A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/RichText/{DCEE78E1-1843-4456-A13A-F10A12191630}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Content/Title/{99A633FC-B9A9-44A0-B78A-BCBB08DD02C9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/{FDBF3744-1B67-4222-9853-F9CF81AAA697}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/Column Splitter/{C25766C8-9AFD-4D28-87FE-147774F6806D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/Container/{896A2C68-1362-4E88-8BA0-1805AE6D4837}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/Divider/{5B9272A5-E147-4C16-B9F7-41CCDCB4CB5D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/EditModePanel/{FE0F0660-13A7-4AC0-A71A-6CBFE2D158BE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/IFrame/{334E98C2-3C70-4E32-8B2A-B32DC49C1660}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/Row Splitter/{2DA9B139-FB9C-4FD7-BE84-CB066B2D7CC3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Page Structure/Toggle/{60A49017-0BB4-4D92-AB59-587E6C618B30}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/{12BB77CD-77CE-4CA2-AB52-31726BAA56C5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Aggregated Facet Filter/{8A3142A0-9688-461A-8C6F-5729BC064D35}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Checklist Filter/{2B2EC80B-13E2-445D-BA1A-8B8F037DED66}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Date Filter/{09EAAD94-9FE3-4649-A8B1-EB19AA1ABDFB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Dropdown Filter/{B036EA2E-A7A1-4FFC-B296-F8E5212C46AC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Facet Slider/{F7330AA2-C915-4007-AA17-688C4FC4D6FF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Facet Summary/{51F98EDE-1FFE-4C36-9B29-C37435B8A048}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Load More/{8B668FFA-D23C-43DB-A86F-D47D1D97090C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Location Filter/{1FCE892D-2141-4BA0-9884-CA7C0EC2B1B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Managed Range Filter/{3C09F738-A63B-451B-A976-8925364316C4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Page Selector/{C4060A7D-74EF-4998-9B8A-737EDB4E41B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Page Size/{EFEEAB82-D1B1-44F0-ADD3-07EDAE59A49E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Radius Filter/{0530B0DA-35E3-405A-A50E-48B0199E8E22}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Range Slider Filter/{FF6523B5-E93D-4396-8990-38FC537D71AD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Results Count/{5B249C53-F580-4623-8613-3AF9614126FE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Results Variant Selector/{54A41030-BFF4-49E5-90FC-42A99E602863}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Search Box/{EECE4E4B-4E5F-42FD-A934-7AFD048AFD03}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Search Results/{FAE0D244-55C1-4F1B-8ED5-590C9F131CEE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Search/Sort Results/{39E187C6-54FC-4E70-948A-7D20DB073793}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Security/{24F52562-16A6-4546-80DE-6A04B0FE0A61}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Security/Login/{596DBC32-8F3B-4B67-9CAA-889B5F8DF538}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Security/Logout/{E7AF0BB2-969E-4B4F-86AC-62FC4F2FE2D6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Security/Social Login Wrapper/{CC2EB160-8FA6-4894-B599-2CEE7FC76820}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/{B381EBCF-814C-46A4-8DEF-B2A042885C29}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/BrowserTitle/{3EA2AA92-8885-4C28-9C5D-37E94721A481}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/CanonicalUrl/{5DA64EA1-D631-4880-A1F6-9C5291B4E1AE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/CustomMetadata/{B9EE29F7-2CCE-4172-9E51-D65DB818E3FA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/Favicon/{E3E3F484-0C27-42CC-9F36-E2D33430C8CD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/OpenGraphMetaData/{B07712AD-28B9-4B93-A524-D8BD29CA9D8D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/SeoMetaData/{CA9D504B-B04F-4327-BCEB-A789BA5C3865}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/TwitterMetaData/{0A6935A8-3AC2-4977-8677-1F4360B212EE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/SiteMetadata/Viewport/{3B138D20-BB25-449D-898A-670997743402}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Social/{17CEB3A4-3FE1-4AFA-9A1C-501EDD597CF9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Social/AddThis/{A4C39F97-D5B8-4BA5-940F-876610268EC8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Social/Feed/{4C2C5B52-BD8B-48C1-B9AF-D92E5785F27C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Social/Social Media Share/{195DEDC5-415F-48D5-AC31-11025ABB860B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Social/Twitter/{09ED2F12-913C-4675-B3C8-0FB978CFA7DC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/StickyNotes/{AD2264CF-F4B7-4315-9AF8-D31B5730C2BA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/StickyNotes/StickyNote/{619D4185-E73C-4C51-8407-3927E4812B98}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Taxonomy/{50909C03-3538-4579-BBEF-3E4DF765695C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Taxonomy/Tag Cloud/{2400E52D-F9B3-445D-8629-A69720A22B44}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/Experience Accelerator/Taxonomy/Tag List/{CE780A09-737D-4E58-89B5-31A85101447D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/{3B50355A-5E7C-4379-AD1F-A0B73D3A5AA9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Media/{7D6B7B5E-74BF-48B6-BD71-744FF80D9B52}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Media/Image/{AB2EDBA0-3960-4F12-B765-579DC231894A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Navigation/{0C3C4D4B-E20E-44DE-A996-5553F224012B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Navigation/LinkList/{4956263D-1195-4D6E-931B-800EA625FF6F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Navigation/Navigation/{1DEB067F-0BB1-405E-94F5-2ABB537A6160}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Content/{2001C9A8-2F50-4772-A2FE-0FFC1DDC0758}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Content/PageContent/{C5F905F8-FD1F-444E-A9E5-AC6B774FF0DE}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Content/Promo/{2492BAC4-DA07-4C86-87F0-9873D40E2276}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Content/RichText/{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Content/Title/{3836D951-BB14-43AC-9231-649B7F245DC5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Structure/{85DABD6D-9C7D-4249-9E84-25C0F657B7E2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Structure/Column Splitter/{15CABDFF-FFD9-48F4-826D-A4C3D7868D3A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Structure/Container/{7A1D9A21-B8D7-42F9-9B0B-92ABF8D1974F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Feature/JSS Experience Accelerator/Page Structure/Row Splitter/{5F6BF7C9-C80C-4BBD-AD78-8DA749B35206}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/{180D4942-2B10-4375-BC06-E0D94220A68F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Experience Accelerator/{B82C4291-DF80-46DE-BB0E-5B4346EF88CB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Experience Accelerator/Dynamic Placeholders/{C42B5D47-E770-449C-88D0-DE7EEFD6A6B6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Experience Accelerator/Dynamic Placeholders/PartialDesign Dynamic Placeholder/{455948A7-9860-4312-B818-994E723E8B9A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Experience Accelerator/MVC/{11026C37-580E-47FE-9BD0-733AB826A6CF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Experience Accelerator/MVC/Field Renderer/{8E463E2C-8848-4F0F-A7BB-8321AFB79CF4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Headless Services/{E09F6F5C-D528-4DE3-9A74-E5A9C9AACA6C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Headless Services/BYOC Component/{D9C6BA6C-7416-44B3-AEE6-07B58DA14B5A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Headless Services/FEaaS Component/{DB9D8C60-325A-4032-9923-E1044156F8E2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/Headless Services/form/{3D45FBD5-B222-4C4B-85D9-45BF0BC1C515}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/{108240CB-6175-464B-AE01-A3AE79B3C433}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/Dynamic Placeholders/{C2420291-C9E1-433C-9F91-F93A05499DCB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/Dynamic Placeholders/PartialDesign Dynamic Placeholder/{57573AF2-9D3C-4078-AAB7-35E580E4823B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/FEaaS/{65FD1874-619D-440F-B53F-EBF1C3BAE99F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/FEaaS/BYOC Wrapper/{DDC43BE7-D77A-4CE3-9282-03DD036EEC6D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Foundation/JSS Experience Accelerator/FEaaS/FEaaS Wrapper/{CAA0C742-F052-49FB-825B-A03494798DB7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Modules/{F6F41DF7-80BE-4E31-9B8F-4C3772628EB1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/{1995806F-0A84-42B5-93B0-88F0E2FF872C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/{A5EA9FE2-5608-4537-A8CB-80D1E0D67979}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/{8C96B1A1-1495-4B45-A765-B37755EFD872}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/CardsSection/{6618ECB3-AC3D-48ED-9925-1C642D0BC200}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Flights/{9A54FA10-11E0-42F9-BF2D-49E54E4BB541}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Flights/Destinations/{C36F9519-9B12-47BF-A807-AD33CCEF2795}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Flights/Destinations/DestinationsMap/{052C8EF2-7FE1-45E8-AE3D-6DBADEFF668A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/FlightsSection/{9E4DF914-BC9E-48A8-B413-0679E06E9CB0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/GuideComponent/{ACF95FCA-8DEF-4602-BEFF-53C3E0C6AE84}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/HelpPanel/{8358B355-FFBC-41B9-B5E3-44507369A2F8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/NewsComponent/{D12C28A3-AB3C-4477-B2B8-C40B62B5572C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Parking-Transport/{54B9C674-F011-453A-9824-F2BEF1186682}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Parking-Transport/ImageBanner/{B12D051D-9B62-49CF-8EB4-E735E11CF77A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Parking-Transport/ParkingCalculator/{C6F59E68-F888-4CC6-B9AF-EAF38F7FC4C7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/QuickAccess/{1783349E-0EEF-4A91-8247-09E950A89954}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/{33E490D5-DC52-4521-B0E0-4EE9D31298A4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/ContentBlock/{CBE6C1EB-0155-4E70-8F44-5C3A71F1884C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/ContentHeader/{9F9BAA81-2AC4-4BEF-A293-647041E99D9B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/ContentTabsWrapper/{6B4EEB11-F2F3-4FC6-94C7-5F81D96E9151}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/DesktopNavigation/{EE9A74C6-46AC-4F40-8A83-C2B13F8683E9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/Footer/{692E7FB8-B092-4170-BBE8-662DE3582315}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/Header/{3F165F57-A316-45A4-BE29-06F0BB3357CD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/HeroCarousel/{03E07101-4296-4072-8BFC-2783EE271E68}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/TopUtilityBar/{63D2B709-6F56-4CBC-BA63-1DD62C00C5AD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/Shared/WeatherBar/{756740B3-9953-48F9-B55B-97FA217F6242}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/TopHeadingSection/{61499850-D073-4DE8-B472-2A0C8EE10595}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Project/Daco Digital Channels/KFIA/TwoColumnContainer/{F5D9A060-8412-4621-8C92-3959ADFCAC78}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Sample/{1936B96E-DA1F-4A3A-8AAF-8C46268E2D84}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/Sample/Sample Rendering/{493B3A83-0FA7-4484-8FC9-4680991CF743}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/{F4008F10-BBB2-4565-B652-467491361D5A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/{A688EF23-B1C3-4594-851A-22A0A4FAEBF3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Body Text/{7C38B48C-9107-41A0-A9C8-F45A89659C84}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Call To Action/{2A517EBD-B1B9-4887-9FE5-5D0773F7B2C7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Display Body/{3C190C98-A109-4364-BCAE-C3AA5B7B36AC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Display Footer/{BAB508E2-ADDB-4D9E-9A6C-DA0940E219B9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Display Sidebar/{FAD75BF4-2FD7-4C2F-AF76-10E799AF5BFF}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Footer/{38788088-93B0-4FB6-A80A-F47BD8D37694}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Header/{DABFE2BE-8343-450D-85F4-0C05511ADF71}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Image/{D8A321E7-B69D-4441-B967-E35B0698082F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Main Image/{027661AA-FEE2-4401-9D9A-207A3FCED8E8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Preview/{B86B69EC-4AF3-4F92-94F8-8DC2F06CB5FB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/{C4736730-DC65-4B40-A237-EBDB4B4CB5C8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Call to Action/{F7539AE8-F96C-4D93-87A4-CEBA02E6B14F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Content/{75CF2D93-EFF1-46E6-8DBA-575656A62955}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Footer/{7429DFC1-4BAE-4CDC-BA38-AA7AB27EED33}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Header/{7B33308F-2118-4C3C-95A0-F12D389AE5CD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Image/{13D138CA-D979-4CF0-A664-F647B1E2187D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/List/{1BB68678-1954-4315-A063-392BE3F84C7A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Sample Newsletter/Two Column Call to Action/{66F89B1A-C696-4089-A50F-C2B11A09D874}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Set Page Title/{69EB7A6D-ACEF-4D06-A923-804918AA245E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Text Message/{D169744B-6343-45D8-831E-658E8560E9CB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Three Column/{B0694405-76FC-4A7A-95D2-C9E71F4F0269}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Two Column Body Text/{426365ED-7CB5-4DF3-8CA9-000276E5ACC5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Email/Two Column/{7A484A27-1FAB-440F-A5F6-4330A024520E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Feeds/{03ADA6B9-D09F-4552-A1B0-E6AAF9C3FED9}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Feeds/FeedRenderer/{86F838F5-7E87-45BB-876F-C021324AC8B0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/FieldRenderer/{E1AF4AA3-3B5D-4611-8C71-959AD261E5B7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Forms/{170D26EB-92B1-4384-A691-3CC52CDA2579}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/Forms/Mvc Form/{6B5B0FE6-5C85-4487-BA7E-F8C2ECC186A8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/ItemRenderer/{CDD3F213-81BB-4770-8FEC-4E1DD65EAA66}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/WebEdit/{B4A0FB13-9758-427C-A7EB-1A406C045192}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/WebEdit/Hidden Rendering/{0777B05D-6AC0-44BE-9605-052E0DB5993D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/WebEdit/WebEdit Content Editor/{683331AD-FF41-442C-9CFE-9872C0A7150E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Renderings/System/WebEdit/WebEdit Ribbon/{054FE55F-E3FB-46C6-8CB0-948F368B6579}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/{39522E9A-9B6E-4CB4-850C-23D0D3ADFD0C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phablet/{C158AB86-AAEE-420A-A40E-3B25DC92F218}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phablet/Android Phablet Landscape/{1875D4AC-A81F-4558-B26A-D61D96F80C9C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phablet/No Silverlight Support Trait/{A6D17A1A-EBD4-4420-A7AD-46AEED770D7F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phone/{51378BDE-D05B-4B97-9907-A62CB5585F50}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phone/Android Phone Landscape/{3200F4B4-638D-4E1C-BA6D-30B7504F0F99}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Phone/No Silverlight Support Trait/{C88AEF33-7AB9-4116-8BFA-F3CFE45217C6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Tablet/{2DE5862D-5053-4F3C-9115-1F06A09091FD}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Tablet/Android Tablet Portrait/{D8AE44E7-80D8-4BAC-9C40-03F459C8D6A1}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Android Tablet/No Silverlight Support Trait/{D3BA27C5-42B0-4BEF-8C0E-D3ADEBDF32A0}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Blackberry/{E1DC505A-F86F-4C05-B409-AE2246AD3441}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Blackberry/No Flash Support Trait/{09A8720B-1CE8-4DF4-8835-DD09AE77A131}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Blackberry/No Silverlight Support Trait/{1E8500FE-5D28-47E0-B91C-4614B22E949B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Feature Phone/{73D4FFF4-6D9E-40E4-8B84-A495A838E0E8}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/HD TV/{69B47A34-D529-4245-90C0-0858C66582BB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/HD TV/No Flash Support Trait/{3D42A36C-6318-42AE-A345-ADDFFE257F9B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/HD TV/No Silverlight Support Trait/{20A23402-C1FA-411F-B1F1-218FCFB39ED2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPad/{D3637C97-404C-4CCD-9745-F795190D298B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPad/iPad landscape/{0CFBCE35-CCB8-48C5-A1DB-124DEFBF2E47}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPad/No Flash Support/{67BC6A5D-F71A-4B22-A89F-105B70F1C288}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPad/No Silverlight Support/{0D076DCA-8C80-4744-B27C-BBC72973DE62}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPhone/{88CA41B4-1661-4C75-8C98-1D952F56D815}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPhone/iPhone Landscape/{38D3EF6C-497B-44D8-AC0E-3EF6DE427BBC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPhone/No Flash Support/{09726803-2905-4F21-AC8A-5D95F904DBC3}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/iPhone/No Silverlight Support/{4A88A0C7-9899-4A90-9845-DAAEE73FBE44}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/None/{0F1228C5-631B-48FC-B17B-6175BEFEB2F5}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Windows Phone/{618DA108-0F8B-44D6-9384-C3E0B29B8878}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Windows Phone/No Flash Support Trait/{7011B2FF-EE6C-44FF-BBEC-54C50B19ECC4}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Simulators/Windows Phone/Windows Phone Landscape/{967A64A6-FD7F-4336-B863-0DF807245A11}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/{EB443C0B-F923-409E-85F3-E7893C8C30C2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/App Center Sync/{6E81ADDC-1FEE-4062-BE5A-227E0142189D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/{5E25B717-0AF0-46CA-9631-2A7D4BB24B1C}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Body Block Two Column/{7889FD50-4324-4438-BBE4-25452E2B82FA}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Body Block/{BFAF85F4-0256-4846-BDE3-D44C74FE6A42}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Call To Action Block/{340A8528-3E66-4DF6-82E0-4228CC8C684F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Footer/{BF323449-F257-4EFB-9FF5-8248CA227393}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Header Image Block/{E89D305C-CF92-4445-ABC1-9EAB38F72ED7}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Header Text Block/{EF1E93F3-9F52-4D3E-9A98-E7718D59557D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Image/{785B699A-2554-49CA-AAA0-1837737C58ED}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Left Image Block/{C6EC9020-29AE-4311-9AB9-9A8B9B0C8200}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Preview Block/{5A67BD04-F5C3-4114-98CE-B4DB50DC980B}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Email/Right Image Block/{25DA1965-420B-4528-ACDC-14A159BD4034}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/{7AFE877B-A2CD-4E95-9131-67C071C1C88A}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Sample Datasource Sublayout/{9EB73C4C-1AF7-47C7-85B8-93E08176D4D2}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Sample Inner Sublayout/{CE4ADCFB-7990-4980-83FB-A00C1E3673DB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Sample Sublayout/{885B8314-7D8C-4CBB-8000-01421EA8F406}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Social/{7C3EBDE2-FE67-4B69-A819-057B3C681410}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Social/Connector/{E8E2CBDC-B86F-473A-9C34-1F6D145AA81D}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Social/Sharing/{EB40A2CF-04D1-42E0-B740-A18559BAC0C0}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Layout</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
