@@ -7,19 +7,17 @@
 npm install
 ```
 
-### 2. Configure Environment Variables ⚠️ **REQUIRED**
-Copy the example environment file and configure it:
-```bash
-cp .env.local.example .env.local
-```
+### 2. Environment Configuration ✅ **Already Included**
+The `.env.local` file is included in the repository with UAT environment settings.
+No manual configuration needed!
 
-**Important:** The `.env.local` file contains all Sitecore connection settings and is required for the app to run. Without it, you'll get 500 errors about missing 'route' properties.
-
-Key variables in `.env.local`:
-- `PORT=8080` - Run Next.js on port 8080
-- `SITECORE_API_HOST` - Sitecore CM server URL
+Pre-configured variables:
+- `PORT=8080` - Runs Next.js on port 8080
+- `SITECORE_API_HOST=https://uat-cm.dammamairports.sa` - UAT Sitecore CM server
 - `SITECORE_API_KEY` - API key for Sitecore access
 - `LAYOUT_SERVICE_CONFIGURATION_NAME=sxa-jss` - Layout service configuration
+
+**Note:** If you need different settings (dev/prod), modify `.env.local` or use `.env.local.example` as a template.
 
 ### 3. Build and Run
 ```bash
