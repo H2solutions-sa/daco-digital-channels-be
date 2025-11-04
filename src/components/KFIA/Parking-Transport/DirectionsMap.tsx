@@ -37,7 +37,7 @@ export const Default = (props: DirectionsMapProps): JSX.Element => {
             <Link
               href={props.fields.MapLink?.value?.href}
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#4D9CD3] px-4 md:px-5 py-2.5 text-white hover:opacity-90 text-[13px] md:text-[14px] font-medium"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[color:var(--kfia-secondary)] px-4 md:px-5 py-2.5 text-white hover:opacity-90 font-medium"
             >
               <ExternalLink className="h-[16px] w-[16px]" />
               {props.fields.MapLink?.value?.text}

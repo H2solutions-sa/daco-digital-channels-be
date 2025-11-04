@@ -81,14 +81,14 @@ export const Default = (props: HeroCarouselProps): JSX.Element | null => {
             {/* Copy */}
             <div className="absolute inset-0">
             <div className="kfia-content h-full flex items-center">
-            <div className="max-w-[52rem] text-white px-4 sm:px-0">
+            <div className="max-w-[60%] text-white px-4 sm:px-0">
                 {s.fields.Kicker?.value && (
                   <p className="mb-2 font-medium opacity-90 text-[14px] sm:text-[16px] md:text-[18px]">
                     {s.fields.Kicker.value}
                   </p>
                 )}
                 {s.fields.Title?.value && (
-                  <h1 className=" font-bold tracking-tight whitespace-pre-line text-[28px] sm:text-[36px] md:text-[length:var(--heading1-size)] leading-[1.15] md:leading-[1.1] xl:leading-[1.05] ">
+                  <h1 className="font-bold tracking-tight whitespace-pre-line text-[28px] sm:text-[36px] md:text-[length:var(--heading1-size)] leading-[1.15] md:leading-[1.1] xl:leading-[1.05]">
                     {s.fields.Title.value}
                   </h1>
                 )}

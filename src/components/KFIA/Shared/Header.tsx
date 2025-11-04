@@ -57,7 +57,6 @@ export const Default = (props: HeaderProps): JSX.Element => {
             aria-label="Contact us"
           >
             <Phone className="w-[18px] h-[18px]" />
-           <span> {props.fields.ContactButton?.value?.text}</span>
           </Link>
 
           {/* Desktop contact button (light grey) */}
