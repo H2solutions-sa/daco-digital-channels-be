@@ -1,9 +1,10 @@
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import Image from "next/image";
 import { SquareArrowOutUpRight, MapPin } from "lucide-react";
 import { ComponentProps } from 'lib/component-props';
 import { Field, ImageField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 type Link = {
   href:string,
   text:string
@@ -27,6 +28,14 @@ type ServieCardListProps = ComponentProps & {
 
 
 export const Default = (props: ServieCardListProps): JSX.Element => {
+    const pathname = usePathname();
+    const [isShopDine, setIsShopDine] = useState(false);
+  
+  useEffect(() => {
+    // Check if the URL contains "Shope-dine" (case-insensitive)
+    setIsShopDine(pathname?.toLowerCase().includes("shop"));
+    console.log(pathname.includes("Shop"));
+  }, [pathname]);
 const CARD_BASE =
   "relative flex h-full flex-col rounded-2xl border border-[oklch(0.75_0_0)]/22 bg-white shadow-sm p-4 " +
   "focus-within:ring-2 focus-within:ring-[color:var(--kfia-brand)]/20";
@@ -132,7 +141,12 @@ const CARD_BASE =
     </article>
     )) ?? [];
   return (
-  <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]" data-level>
+  <div className={`mt-5 grid gap-5 sm:grid-cols-2 ${
+        isShopDine 
+          ? "lg:grid-cols-4"
+          :  CardList.length < 3
+      ? "lg:grid-cols-3"
+      : "lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"}`} data-level>
     <Placeholder rendering={props.rendering} name="jss-popup-card"/>
     {CardList}
   </div>

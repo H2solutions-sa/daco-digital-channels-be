@@ -19,7 +19,7 @@ export const Default = (props: ContentHeaderProps): JSX.Element => {
     <div className="relative w-full">
       {/* No top spacing at all */}
       <div className="max-w-[1100px] mx-auto px-4 pt-0 pb-0 text-center">
-        <h2 className=" text-center font-semibold text-brand leading-tight sm:leading-snug text-[24px] sm:text-[32px] md:text-[40px] lg:text-[length:var(--heading2-size)] ">
+        <h2 className="  text-[color:var(--kfia-brand)] font-semibold tracking-tight leading-tight text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] scroll-mt-[72px] md:scroll-mt-[84px] xl:scroll-mt-[96px] ">
           {props.fields.Title?.value}
         </h2>
         <p className=" kfia-subtitle mt-2 leading-relaxed max-w-3xl mx-auto text-[13px] sm:text-[14px] md:text-[15px] lg:text-[length:var(--paragraph1-size)] ">

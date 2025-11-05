@@ -22,21 +22,22 @@ fields:{
 export const Default = (props: AccordionProps): JSX.Element => {
    const internalId = useId();
 
-  const [uncontrolledOpenIndex, setUncontrolledOpenIndex] = useState<number | null>(null);
+  //const [uncontrolledOpenIndex, setUncontrolledOpenIndex] = useState<number | null>(null);
 
   // resolve controlled vs uncontrolled
-  const openIndex = props.controlledOpenIndex ?? uncontrolledOpenIndex;
+  // const openIndex = props.controlledOpenIndex ?? uncontrolledOpenIndex;
 
-  const setOpenIndex = (index: number) => {
-    const newIndex = openIndex === index ? null : index; // close if same one clicked
-    if (props.controlledOpenIndex === undefined) {
-      setUncontrolledOpenIndex(newIndex);
-    }
-    props.onToggle?.(newIndex);
-  };
+  // const setOpenIndex = (index: number) => {
+  //   const newIndex = openIndex === index ? null : index; // close if same one clicked
+  //   if (props.controlledOpenIndex === undefined) {
+  //     setUncontrolledOpenIndex(newIndex);
+  //   }
+  //   props.onToggle?.(newIndex);
+  // };
 const AccordionList = props.fields.items 
 && props.fields.items.map((accordion,index) => {
-  const isOpen = openIndex === index;
+  const [isOpen, setIsOpen] = useState(false);
+ // const isOpen = openIndex === index;
 
   return(
       <div className={`border border-slate-200 rounded-lg bg-white`}>
@@ -45,7 +46,7 @@ const AccordionList = props.fields.items
         type="button"
         aria-expanded={isOpen}
         aria-controls={`acc-panel-${internalId}`}
-         onClick={() => setOpenIndex(index)}
+         onClick={() => setIsOpen(!isOpen)}
         className="
           w-full text-left
           grid grid-cols-[auto_1fr_auto] items-center gap-x-2 sm:gap-x-2.5

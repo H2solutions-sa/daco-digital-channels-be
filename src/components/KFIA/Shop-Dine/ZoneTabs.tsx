@@ -49,7 +49,7 @@ export const Default = (props: ZoneTabsProps): JSX.Element => {
             {tab.fields.TabName?.value}
           </Link>)
      )
-    };
+    }
   </div>
  const ZoneTabInclusives =
     props.fields.items &&
@@ -62,7 +62,7 @@ export const Default = (props: ZoneTabsProps): JSX.Element => {
         <Placeholder name={`jss-Zone-level-${i}`} rendering={props.rendering} />
         )}
       </div>
-    ));
+    ))
   return (
     <section data-level>
       <div className="mt-4">

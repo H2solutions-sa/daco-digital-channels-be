@@ -43,9 +43,9 @@ export const Default = (props: HelpPanelProps): JSX.Element => {
         <div className="relative z-10 text-center text-white px-6 py-16 md:py-20 lg:py-28">
 
         {/* Title */}
-        <h3 className="font-sans font-semibold tracking-tight text-3xl md:text-5xl lg:text-6xl">
+        <h2 className=" font-semibold tracking-tight text-[28px] sm:text-[36px] md:text-[length:var(--heading2-size)]">
           {props.fields.Title?.value}
-        </h3>
+        </h2>
 
         {/* Subtitle */}
         <p className="mt-4 max-w-2xl mx-auto text-white/85 text-base md:text-lg leading-7">

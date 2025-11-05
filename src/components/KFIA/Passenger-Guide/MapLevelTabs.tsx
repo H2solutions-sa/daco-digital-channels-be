@@ -1,8 +1,9 @@
-import { JSX ,useState } from 'react';
+import { JSX ,useEffect,useState } from 'react';
 import Link from 'next/link';
 import {  ArrowLeft } from "lucide-react";
 import { Field,Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
+import { usePathname } from 'next/navigation';
 
 type MapTabsWrapperProps = ComponentProps & {
   id: string; // Sitecore ID
@@ -24,6 +25,13 @@ export const Default = (props: MapLevelTabsProps): JSX.Element => {
     const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
+     const pathname = usePathname() ?? "";
+      const [isAirportMap, setIsAirportMap] = useState(false);
+        
+      useEffect(() => {
+          // Check if the URL contains "Shope-dine" (case-insensitive)
+          setIsAirportMap(pathname?.toLowerCase().includes("map"));
+      }, [pathname]);
   const MapTabHeaders =
   <div
       role="tablist"
@@ -72,12 +80,14 @@ export const Default = (props: MapLevelTabsProps): JSX.Element => {
 
   return (
     <>
-    <div className="kfia-content p-0 mt-8 mb-4">
+    {isAirportMap ?
+    (<div className="kfia-content p-0 mt-8 mb-4">
         <Link className="inline-flex items-center gap-2 text-[color:var(--kfia-brand)] hover:underline text-[14px] sm:text-[15px] font-medium" href="/guide/passenger">
           <ArrowLeft className="h-4 w-4" />
           Back to Passenger Guide
         </Link>
-      </div>
+      </div>):<></>
+    }
     <section className='kfia-content kfia-section pt-6 md:pt-8 mt-8 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 md:p-6 shadow-sm' data-level>
       <div className="mt-4">
         {MapTabHeaders}

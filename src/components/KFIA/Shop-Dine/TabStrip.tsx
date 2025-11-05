@@ -72,7 +72,7 @@ export const Default = (props: TabStripProps): JSX.Element => {
                     )}
                   {t.fields.Link?.value?.text}
                 </Link>
-              );
+              )
             })}
           </div>
         </div>

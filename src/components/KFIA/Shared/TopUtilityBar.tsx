@@ -1,7 +1,8 @@
 import { JSX } from 'react';
 import { useEffect, useState } from "react";
-import { Clock, Sun, Building2, Accessibility } from "lucide-react";
+import { Clock, Sun, Accessibility } from "lucide-react";
 import LanguageSwitcher from './LanguageSwitcher';
+import Image from 'next/image';
 
 
 export const Default = (): JSX.Element => {
@@ -17,7 +18,7 @@ export const Default = (): JSX.Element => {
   const Item = ({ icon, label, hideLabelOnMobile=false }:{
     icon: React.ReactNode; label: string; hideLabelOnMobile?: boolean;
   }) => (
-    <div className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-xs text-slate-700 shrink-0 px-2">
+    <div style={{cursor:"pointer"}} className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-xs text-slate-700 shrink-0 px-2">
       <span className="w-4 h-4 grid place-items-center" aria-hidden>{icon}</span>
       <span className={hideLabelOnMobile ? "hidden sm:inline whitespace-nowrap" : "whitespace-nowrap"}>{label}</span>
     </div>
@@ -30,7 +31,21 @@ export const Default = (): JSX.Element => {
             <Item icon={<Clock className="w-3.5 h-3.5" />} label={`${hh}:${mm}`} />
             <Item icon={<Sun className="w-3.5 h-3.5" />} label="30°C Dammam" />
             <LanguageSwitcher/>
-            <Item icon={<Building2 className="w-3.5 h-3.5" />} label="Corporate" hideLabelOnMobile />
+             {/* Corporate site logo (SVG) */}
+            <Item
+              icon={
+                <Image
+                  src="/-/media/Project/Daco Digital Channels/Icons/icon-logo-top.svg"
+                  alt=""                // decorative; label text provides the meaning
+                  width={14}
+                  height={14}
+                  className=""
+                  priority={false}
+                />
+              }
+              label="Corporate Site"
+              hideLabelOnMobile
+            />
             <Item icon={<Accessibility className="w-3.5 h-3.5" />} label="Accessibility" hideLabelOnMobile />
           </div>
         </div>

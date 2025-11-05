@@ -101,10 +101,10 @@ export const Default = (): JSX.Element => {
   const {t} = useI18n();
   return (
        <div className="max-w-[980px] mx-auto mt-2">
-          <h1 className="text-center leading-tight text-[color:var(--kfia-brand)] mb-8 sm:mb-10 text-[30px] sm:text-[38px] md:text-[46px]">
+          <h1 className=" text-center text-[color:var(--kfia-brand)] mb-4 sm:mb-6 text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1]">
            {t("Form-Title")}
           </h1>
-          <p className="text-center text-neutral-600 text-[13.5px] sm:text-[14px] mt-2">
+          <p className=" text-center text-[color:var(--kfia-brand)] kfia-subtitle mb-6 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[length:var(--subtitle-size)] w-[55%] m-auto">
            {t("Form-Subtitle")}
           </p>
 

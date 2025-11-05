@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ImageField , Field, Placeholder} from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 import {  Search as SearchIcon, Phone } from "lucide-react";
-import { SearchOverlay } from "../header/SearchOverlay";
+import  SearchOverlay  from "../../KFIA/header/SearchOverlay";
 
 type Link ={
     href:string,
@@ -57,7 +57,6 @@ export const Default = (props: HeaderProps): JSX.Element => {
             aria-label="Contact us"
           >
             <Phone className="w-[18px] h-[18px]" />
-           <span> {props.fields.ContactButton?.value?.text}</span>
           </Link>
 
           {/* Desktop contact button (light grey) */}

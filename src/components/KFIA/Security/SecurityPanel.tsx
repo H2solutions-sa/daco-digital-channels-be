@@ -23,7 +23,7 @@ export const Default = (props: SecurityPanelProps): JSX.Element => {
 const SecurityPanel = props.fields.items &&
 props.fields.items.map((securityCard, i) => (
     <section
-      className={`rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] p-4 sm:p-5 ${securityCard.fields.StylingClass?.value}`}
+      className={`rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] p-4 sm:p-5 ${i == props.fields.items.length-1 ? "md:col-span-2":""}`}
     >
       <div key={i} className="flex items-center gap-2">
         {/* Icon in subtle badge to match Figma */}

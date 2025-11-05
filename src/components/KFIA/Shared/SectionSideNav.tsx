@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { Field, ImageField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,6 @@ type Linkfield = {
 type SideNavTabs = ComponentProps &{
   fields:{
   items:SectionSideNavProps[],
-  back:Field<Linkfield>,
   }
 }
 type SectionSideNavProps = ComponentProps & {
@@ -26,28 +25,35 @@ type SectionSideNavProps = ComponentProps & {
 
 export const Default = (props: SideNavTabs): JSX.Element => {
     const pathname = usePathname() ?? "";
+    const [isPassenger, setIsPassenger] = useState(false);
+      
+    useEffect(() => {
+        // Check if the URL contains "Shope-dine" (case-insensitive)
+        setIsPassenger(pathname?.toLowerCase().includes("passenger"));
+    }, [pathname]);
+
   return (
-    <div id="facilities-body" className="mx-auto my-6 max-w-[1200px] px-4 md:px-6">
+    <div id="facilities-body" className="mx-auto my-6 max-w-[1200px] px-4 md:px-6 kfia-content kfia-section pt-6 md:pt-8">
      <div
       className="
-        grid gap-6
-        md:grid-cols-[minmax(240px,280px)_minmax(0,1fr)]
+       grid gap-5 md:gap-6 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] items-start
       "
     >
-      <aside className={`relative md:sticky md:top-6`}>
+      <aside className='relative rounded-2xl overflow-hidden md:overflow-visible'>
+      <aside className={`relative`}>
+
       {/* Back link */}
-      {props.fields.back && (
-        <div className="mb-3 sm:mb-4 md:mb-0 md:absolute md:-top-9 md:left-0">
+      {isPassenger ? 
+        (<div className="mb-3 sm:mb-4 md:mb-0 md:absolute md:-top-9 md:left-0">
           <Link
-            href={props.fields.back?.value?.href}
+            href="guide/passenger"
             className="inline-flex items-center gap-2 text-[14px] sm:text-[15px] font-medium text-[color:var(--kfia-brand)] hover:underline"
           >
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" /> 
-            {props.fields.back?.value?.text ?? "Back"}
+            {"Back to Passenger Guide"}
           </Link>
-        </div>
-      )}
-
+        </div>): <></>
+        }
       {/* Sidebar nav */}
       <nav
         className="w-full rounded-2xl bg-[oklch(0.97_0_0)] p-3 sm:p-4"
@@ -96,6 +102,8 @@ export const Default = (props: SideNavTabs): JSX.Element => {
         </ul>
       </nav>
       </aside>
+      </aside>
+     
        <section
         className="
           rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 md:p-6
