@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ImageField , Field, Placeholder} from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 import {  Search as SearchIcon, Phone } from "lucide-react";
-import { SearchOverlay } from "../header/SearchOverlay";
+import  SearchOverlay  from "../../KFIA/header/SearchOverlay";
 
 type Link ={
     href:string,

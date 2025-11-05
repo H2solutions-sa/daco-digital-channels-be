@@ -14,7 +14,7 @@ export const Default = (): JSX.Element => {
   const Item = ({ icon, label, hideLabelOnMobile=false }:{
     icon: React.ReactNode; label: string; hideLabelOnMobile?: boolean;
   }) => (
-    <div className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-xs text-slate-700 shrink-0 px-2">
+    <div style={{cursor:"pointer"}} className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-xs text-slate-700 shrink-0 px-2">
       <span className="w-4 h-4 grid place-items-center" aria-hidden>{icon}</span>
       <span className={hideLabelOnMobile ? "hidden sm:inline whitespace-nowrap" : "whitespace-nowrap"}>{label}</span>
     </div>
@@ -35,7 +35,7 @@ export const Default = (): JSX.Element => {
                   alt=""                // decorative; label text provides the meaning
                   width={14}
                   height={14}
-                  className="inline-block"
+                  className=""
                   priority={false}
                 />
               }

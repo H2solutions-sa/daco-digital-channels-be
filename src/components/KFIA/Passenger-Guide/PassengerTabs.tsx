@@ -7,13 +7,14 @@ interface PassengerTabsProps {
 }
 
 export const Default = (props: PassengerTabsProps): JSX.Element => {
-
+ 
   const [mode, setMode] = useState<"arriving" | "departing">("arriving");
   const {t} = useI18n();
   useEffect(() => {
     const el = document.getElementById("guide-mode-live");
     if (el) el.textContent = `Showing ${mode} topics`;
   }, [mode]);
+
 
 
   return (
@@ -30,7 +31,7 @@ export const Default = (props: PassengerTabsProps): JSX.Element => {
           onClick={() => setMode("arriving")}
           onKeyDown={(e) => (e.key === "ArrowRight" ? setMode("departing") : undefined)}
           className={`px-4 py-2 rounded-full border text-sm font-semibold focus:outline-none focus-visible:ring-2
-            ${mode === "arriving"
+            ${mode === "arriving" 
               ? "bg-[color:var(--kfia-brand)] text-white border-transparent"
               : "bg-white text-slate-800 border-slate-300 hover:bg-slate-50"}`}
         >

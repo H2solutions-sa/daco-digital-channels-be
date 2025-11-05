@@ -25,7 +25,7 @@ export const shopDine: MenuItem[] = [
   { label: "Duty Free",          href: "/shop-dine/duty-free" },
 ];
 
-export const facilities: MenuItem[] = [
+export const facilitiesServices: MenuItem[] = [
   { label: "ATMs/Banks/Exchange", href: "/facilities/atms-banks-exchange" },
   { label: "Disability Support",  href: "/facilities/disability-support" },
   { label: "Toilet & Prayer Rooms", href: "/facilities/toilet-prayer-rooms" },
