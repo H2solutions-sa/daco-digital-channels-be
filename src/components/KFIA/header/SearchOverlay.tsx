@@ -14,7 +14,7 @@ import {
 /* ─────────────────────────── Types ─────────────────────────── */
 
 type SearchItem = {
-  href: string;
+  href: string; 
   label: string;
   section?: string;       // e.g., "Flights", "Facilities & Services"
   keywords?: string[];    // synonyms, tags
