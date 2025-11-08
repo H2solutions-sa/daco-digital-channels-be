@@ -12,7 +12,7 @@ type Link = {
 
 type navItems = ComponentProps & {
   fields: {
-    MenuTitle: Field<string>;
+    MenuTitle: Field<Link>;
     MenuLinks: { displayName: string; fields: { Link: Field<Link> } }[];
   };
 };
@@ -87,14 +87,14 @@ export const Default = (props: MobileNavigationProps): JSX.Element => {
                 };
 
                 return (
-                  <li key={sec.fields.MenuTitle?.value}>
+                  <li key={sec.fields.MenuTitle?.value.text}>
                     <div className="flex items-center justify-between px-2.5 py-2.5 rounded-lg hover:bg-slate-50">
                       <button
                         type="button"
                         className="text-[15px] font-semibold text-left"
                         onClick={goDefault}
                       >
-                        {sec.fields.MenuTitle?.value}
+                        {sec.fields.MenuTitle?.value?.text}
                       </button>
 
                       {hasKids && (
