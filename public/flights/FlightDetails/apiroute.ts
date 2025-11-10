@@ -8,7 +8,6 @@ const UAT = "https://uat.dammamairports.sa/AODPAPI/api/v1";
 const PROD = (process.env.AODP_PROD_BASE || "http://aodb.cd/api/v1").replace(/\/+$/, "");
 const isInternal = process.env.AODP_INTERNAL_NETWORK === "1";
 
-const TOP_MIN = 10, TOP_MAX = 1000, TOP_DEFAULT = 500;
 
 async function fetchUpstream(url: string) {
   const ac = new AbortController();
@@ -21,22 +20,11 @@ async function fetchUpstream(url: string) {
     clearTimeout(t);
   }
 }
-
-export async function GET(req: NextRequest) {
-  const q = new URL(req.url).searchParams;
-  const arrDep = q.get("arr_dep");
-  const topRaw = q.get("top");
-  const top = Number.isFinite(Number(topRaw))
-    ? Math.max(TOP_MIN, Math.min(TOP_MAX, parseInt(topRaw!, 10)))
-    : TOP_DEFAULT;
+export async function GET(_req: Request, ctx: any) {
+  const { airline, number } = (ctx?.params ?? {}) as { airline: string; number: string };
 
   const basePreferred = isInternal ? PROD : UAT;
-  const build = (base: string) => {
-    const u = new URL(`${base}/flights`);
-    if (arrDep === "A" || arrDep === "D") u.searchParams.set("$filter", `ARR_DEP eq '${arrDep}'`);
-    u.searchParams.set("$top", String(top));
-    return u.toString();
-  };
+  const build = (base: string) => `${base}/flight/${encodeURIComponent(airline)}/${encodeURIComponent(number)}`;
 
   const firstURL = build(basePreferred);
   try {
@@ -53,8 +41,8 @@ export async function GET(req: NextRequest) {
     }
 
     if (isInternal) {
-      const fallbackURL = build(UAT);
-      const fb = await fetchUpstream(fallbackURL);
+      const fbURL = build(UAT);
+      const fb = await fetchUpstream(fbURL);
       if (fb.ok) {
         return new NextResponse(fb.text, {
           status: 200,
@@ -66,9 +54,10 @@ export async function GET(req: NextRequest) {
           },
         });
       }
+      // Minimal error body
       return NextResponse.json(
         { error: "Upstream unavailable" },
-        { status: fb.status || 502, headers: { "cache-control": "no-store", "x-upstream-first": firstURL, "x-upstream-fallback": fallbackURL } }
+        { status: fb.status || 502, headers: { "cache-control": "no-store", "x-upstream-first": firstURL, "x-upstream-fallback": fbURL } }
       );
     }
 
@@ -100,4 +89,3 @@ export async function GET(req: NextRequest) {
     );
   }
 }
-

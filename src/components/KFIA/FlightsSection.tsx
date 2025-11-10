@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 import { fetchFlights } from "../../lib/flights/api";
 import type { FlightApi } from "../../lib/flights/types";
+import { useI18n } from 'next-localization';
 
 
 
@@ -144,10 +145,10 @@ export const Default = (props: FlightsSectionProps): JSX.Element => {
   function handleSearch() {
     setShowQuickLook(true);
   }
-
+  const {t} = useI18n();
   const seeAllHref =
-    tab === "arrivals" ? "/Flights#Arrivals" : "/Flights#Departures";
-  const seeAllLabel = tab === "arrivals" ? "SEE ALL ARRIVALS" : "SEE ALL DEPARTURES";
+    tab === "arrivals" ? "/Flights#arrivals" : "/Flights#departures";
+  const seeAllLabel = tab === "arrivals" ? t("see-all-arrivals") : t("see-all-departures");
   const rows = tab === "arrivals" ? rowsArr : rowsDep;
 
   return (

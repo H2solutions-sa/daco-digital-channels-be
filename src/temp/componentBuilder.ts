@@ -99,6 +99,7 @@ import * as ImageCardSet from 'src/components/KFIA/Shop-Dine/ImageCardSet';
 import * as ShopDineContainer from 'src/components/KFIA/Shop-Dine/ShopDineContainer';
 import * as TabStrip from 'src/components/KFIA/Shop-Dine/TabStrip';
 import * as ZoneTabs from 'src/components/KFIA/Shop-Dine/ZoneTabs';
+import * as JourneyTimelineHandler from 'src/components/KFIA/Flights/FlightDetails/JourneyTimelineHandler';
 
 export const components = new Map();
 
@@ -195,6 +196,7 @@ components.set('ImageCardSet', ImageCardSet);
 components.set('ShopDineContainer', ShopDineContainer);
 components.set('TabStrip', TabStrip);
 components.set('ZoneTabs', ZoneTabs);
+components.set ('JourneyTimelineHandler',JourneyTimelineHandler);
 
 export const componentBuilder = new ComponentBuilder({ components });
 

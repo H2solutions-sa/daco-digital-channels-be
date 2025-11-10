@@ -263,7 +263,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
         else if (Array.isArray(raw)) flights = raw as FlightApi[];
         else flights = [];
 
-        // 🔒 Defensive client-side filter by ARR_DEP (in case upstream ignored it)
+        //Defensive client-side filter by ARR_DEP (in case upstream ignored it)
         const want = tab === "arrivals" ? "A" : "D";
         const byDir = flights.filter(
           (f) => ((f as any)?.ARR_DEP || "").toUpperCase() === want
@@ -298,7 +298,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
               mapped.map((r) => [r.flightNo, r.destination || ""])
             );
 
-            // ✅ Journey seed + quick lookup map
+            //Journey seed + quick lookup map
             const journeySeed = mapped.map((r) => {
               const iata = r.destination.match(/\(([A-Z]{3})\)/i)?.[1] ?? "";
               const city = r.destination.replace(/\s*\([A-Z]{3}\)\s*$/,"");
@@ -508,7 +508,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
             <FlightsTable
               rows={visibleRows}
               forceMobile={forceMobile}
-              showCounter={tab === "departures"}   // 👈 hide column on arrivals
+              showCounter={tab === "departures"}   //hide column on arrivals
             />
           )}
 
@@ -601,7 +601,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                     <FlightsTable
                       rows={visibleRows}
                       forceMobile={false}
-                      showCounter={tab === "departures"} // 👈 hide column on arrivals (fullscreen too)
+                      showCounter={tab === "departures"} //hide column on arrivals (fullscreen too)
                     />
                   )}
                   {canLoadMore && visibleRows.length > 0 && (

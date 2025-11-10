@@ -17,7 +17,7 @@ type Link = {
 }
 type navItems = ComponentProps &{
   fields:{
-      MenuTitle:Field<string>,
+      MenuTitle:Field<Link>,
       MenuLinks:{displayName:string, fields:{ Link: Field<Link>} }[],
   }
 }
@@ -66,9 +66,9 @@ export const Default = (props: DesktopNavigationProps): JSX.Element => {
             aria-expanded={openIndex === index}
             className="group inline-flex items-center gap-1 px-2 py-1.5 xl:px-3 xl:py-2 rounded-md whitespace-nowrap touch-manipulation"
           >
-            <span className="relative transition-colors group-hover:text-[color:var(--kfia-brand)]">
-              {menuItem.fields.MenuTitle?.value}
-            </span>
+            <Link href={menuItem.fields.MenuTitle?.value?.href} className="relative transition-colors group-hover:text-[color:var(--kfia-brand)]">
+              {menuItem.fields.MenuTitle?.value?.text}
+            </Link>
             <ChevronDown
               className={`w-4 h-4 translate-y-[1px] text-slate-400 transition-transform ${
                 openIndex === index ? "rotate-180" : ""

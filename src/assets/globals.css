@@ -319,4 +319,7 @@ article .slick-track{
         position: relative;
     margin-inline: 35px;
   }
+  .site-icon{
+    margin-inline:0;
+  }
 }

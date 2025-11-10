@@ -3,17 +3,15 @@ import { useEffect, useState } from "react";
 import { Clock, Sun, Accessibility } from "lucide-react";
 import LanguageSwitcher from './LanguageSwitcher';
 import Image from 'next/image';
+import { useI18n } from 'next-localization';
 
 
 export const Default = (): JSX.Element => {
-  const [now, setNow] = useState<Date | null>(null);
-  useEffect(() => {
-    setNow(new Date()); // Set initial time on client
-    const i = setInterval(() => setNow(new Date()), 60_000);
-    return () => clearInterval(i);
-  }, []);
-  const hh = now?.getHours().toString().padStart(2,"0") || "--";
-  const mm = now?.getMinutes().toString().padStart(2,"0") || "--";
+  const {t} = useI18n();
+  const [now, setNow] = useState(new Date());
+  useEffect(() => { const i = setInterval(() => setNow(new Date()), 60_000); return () => clearInterval(i); }, []);
+  const hh = now.getHours().toString().padStart(2,"0");
+  const mm = now.getMinutes().toString().padStart(2,"0");
 
   const Item = ({ icon, label, hideLabelOnMobile=false }:{
     icon: React.ReactNode; label: string; hideLabelOnMobile?: boolean;
@@ -39,11 +37,11 @@ export const Default = (): JSX.Element => {
                   alt=""                // decorative; label text provides the meaning
                   width={14}
                   height={14}
-                  className=""
+                  className="site-icon"
                   priority={false}
                 />
               }
-              label="Corporate Site"
+              label={t("Corporate-Site")}
               hideLabelOnMobile
             />
             <Item icon={<Accessibility className="w-3.5 h-3.5" />} label="Accessibility" hideLabelOnMobile />
