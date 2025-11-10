@@ -159,7 +159,7 @@ export const Default = (props: FlightsSectionProps): JSX.Element => {
       <div className="mx-auto w-full max-w-[1440px] px-3 sm:px-4 md:px-8 kfia-section">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_560px] gap-y-8 lg:gap-y-0 lg:gap-16 xl:gap-24 2xl:gap-28 lg:items-stretch">
           {/* Left Column */}
-          <div className="flex flex-col justify-center max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="flex flex-col justify-center max-w-xl mx-auto lg:mx-0 text-center lg:text-start">
             <h2 className=" font-semibold tracking-tight text-[color:var(--kfia-brand)] text-[24px] sm:text-[32px] md:text-[length:var(--heading2-size)]">
               {props.fields.Title?.value}
               <br className="hidden sm:block" /> 

@@ -107,11 +107,11 @@ export const Default = (props: HeroCarouselProps): JSX.Element | null => {
         {multi && (
           <>
             {/* Mobile small arrows */}
-            <div className="absolute right-3 bottom-[max(1rem,env(safe-area-inset-bottom))] md:hidden z-10">
+            <div className="absolute right-3 bottom-[max(1rem,env(safe-area-inset-bottom))] md:hidden z-10 rtl:right-auto rtl:left-3">
               <ArrowGroup size="sm" onPrev={prev} onNext={next} />
             </div>
             {/* Desktop arrows */}
-            <div className="hidden md:block absolute right-10 lg:right-14 top-1/2 -translate-y-1/2 z-10">
+            <div className="hidden md:block absolute right-10 lg:right-14 top-1/2 -translate-y-1/2 z-10 rtl:right-auto rtl:left-10 rtl:lg:left-14">
               <ArrowGroup size="xl" onPrev={prev} onNext={next} />
             </div>
 
@@ -170,7 +170,7 @@ function ArrowGroup({
           className={`${base} ${dim}`}
           onClick={onPrev}
         >
-          <ChevronLeft className={icon} aria-hidden />
+          <ChevronLeft className={`${icon} rtl:rotate-180`} aria-hidden />
         </button>
         <button
           type="button"
@@ -178,7 +178,7 @@ function ArrowGroup({
           className={`${base} ${dim}`}
           onClick={onNext}
         >
-          <ChevronRight className={icon} aria-hidden />
+          <ChevronRight className={`${icon} rtl:rotate-180`} aria-hidden />
         </button>
       </div>
     </div>
