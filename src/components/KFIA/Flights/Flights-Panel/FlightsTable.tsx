@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useI18n } from "next-localization";
@@ -130,15 +129,27 @@ const { t } = useI18n();
 export default function FlightsTable({
   rows,
   forceMobile = false,
-  showCounter = true, // 👈 new prop (arrivals will pass false)
+  showCounter = true,
+  tab
 }: {
   rows: Row[];
   forceMobile?: boolean;
   showCounter?: boolean;
+  tab?: "arrivals" | "departures"
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const [activeTab, setActiveTab] = useState<"arrivals" | "departures">(
+    tab ?? "departures"
+  );
 
+  useEffect(() => {
+    if (!tab) {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes("arrivals")) setActiveTab("arrivals");
+      else if (hash.includes("departures")) setActiveTab("departures");
+    }
+  }, [tab]);
   // Measure the available width in a wrapper that is always present
   const measureRef = useRef<HTMLDivElement | null>(null);
 
@@ -183,7 +194,7 @@ export default function FlightsTable({
         // Mobile list
         <div>
           {rows.map((r, i) => {
-            const href = `${pathname}?flight=${toSlug(r.flightNo)}#journey`;
+            const href = `${pathname}/${activeTab === "arrivals" ? "ArrivalDetails" : "DepartureDetails"}?flight=${toSlug(r.flightNo)}#journey`;
             return (
               <MobileCard
                 key={r.flightNo + i}
@@ -214,7 +225,7 @@ export default function FlightsTable({
 
             <tbody>
               {rows.map((r, i) => {
-                const href = `${pathname}?flight=${toSlug(r.flightNo)}#journey`;
+                const href = `${pathname}/${activeTab === "arrivals" ? "arrivalDetails" : "departureDetails"}?flight=${toSlug(r.flightNo)}`;
                 return (
                   <tr
                     key={r.flightNo + i}

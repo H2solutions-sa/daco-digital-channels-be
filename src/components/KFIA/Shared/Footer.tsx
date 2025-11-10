@@ -1,10 +1,10 @@
 import { JSX } from 'react';
 import {  Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { FaXTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 
 import Image from "next/image";
 import Link from 'next/link';
+import { useI18n } from 'next-localization';
 type Link = {
     href:string,
     text:string,
@@ -27,6 +27,7 @@ type FooterProps = ComponentProps & {
 }
 
 export const Default = (props: FooterProps): JSX.Element => {
+  const {t} = useI18n();
   const mapLinks = (links: { fields: { Link: Field<Link> } }[] = []) =>
     links.map((item) => ({
       text: item.fields.Link.value?.text || "",
@@ -91,24 +92,24 @@ export const Default = (props: FooterProps): JSX.Element => {
           <div className="mt-8 xl:mt-0 grow">
             {/* Mobile (<= xl-1): grid */}
             <div className="xl:hidden grid grid-cols-2 gap-x-5 gap-y-6 sm:gap-x-6 sm:gap-y-7">
-              <FooterColumn compact title="Flights" items={FLIGHTS} />
-              <FooterColumn compact title="Parking & Transport" items={PARKING} />
-              <FooterColumn compact title="Shops & Dine" items={SHOPSDINE} />
-              <FooterColumn compact title="Facilities & Services" items={FACILITIES} />
-              <FooterColumn compact title="Guide" items={GUIDE} />
+              <FooterColumn compact title={t("Footer-Flights")} items={FLIGHTS} />
+              <FooterColumn compact title={t("Footer-Parking")}  items={PARKING} />
+              <FooterColumn compact title={t("Footer-Shops")} items={SHOPSDINE} />
+              <FooterColumn compact title={t("Footer-Facilities")} items={FACILITIES} />
+              <FooterColumn compact title={t("Footer-Guide")} items={GUIDE} />
             </div>
 
             {/* Desktop / web view */}
             <div className="hidden xl:flex items-stretch justify-start">
-              <FooterColumn title="Flights" items={FLIGHTS} padLeft={false} grow={false} />
+              <FooterColumn title={t("Footer-Flights")} items={FLIGHTS} padLeft={false} grow={false} />
               <VDivider tightLeft />
-              <FooterColumn title="Parking & Transport" items={PARKING} />
+              <FooterColumn title={t("Footer-Parking")} items={PARKING} />
               <VDivider tighter />
-              <FooterColumn title="Shops & Dine" items={SHOPSDINE} />
+              <FooterColumn title={t("Footer-Shops")} items={SHOPSDINE} />
               <VDivider tighter />
-              <FooterColumn title="Facilities & Services" items={FACILITIES} />
+              <FooterColumn title={t("Footer-Facilities")} items={FACILITIES} />
               <VDivider tighter />
-              <FooterColumn title="Guide" items={GUIDE} />
+              <FooterColumn title={t("Footer-Guide")} items={GUIDE} />
             </div>
           </div>
         </div>

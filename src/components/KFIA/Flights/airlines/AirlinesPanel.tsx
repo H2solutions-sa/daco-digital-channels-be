@@ -1,7 +1,7 @@
 import { JSX, useState, useEffect, useMemo } from "react";
 import { ComponentProps } from "lib/component-props";
 import { Plus, Share2 } from "lucide-react";
-import { shareAirline } from "./share";
+//import { shareAirline } from "./share";
 import Image from "next/image";
 import { Field, ImageField } from "@sitecore-jss/sitecore-jss-nextjs";
 import { useI18n } from "next-localization";
@@ -62,11 +62,17 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
   const { wrapperRef, forceMobile } = useAutoMobile(1000, [visibleRows.length]);
   if (forceMobile) {
     return (
-      <div className="space-y-3">
+      <section id="airlines" className="kfia-content py-6 sm:py-10 scroll-mt-[96px]">
+      <div className="mt-3 sm:mt-4 rounded-2xl bg-white p-2.5 sm:p-4 md:p-6 shadow-sm max-w-[1100px] mx-3 sm:mx-4 md:mx-auto">
+        <div className="w-full">
+          <div className="space-y-3">
         {visibleRows.map((a,i) => (
           <MobileAirlineCard key={i} a={a} />
         ))}
       </div>
+      </div>
+      </div>
+      </section>
     );
   }
   return (
@@ -127,7 +133,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       {t('email-column')}
                     </span>
                     </th>
-                  <th className={`${th} text-center w-[64px]`}></th>
+                  {/* <th className={`${th} text-center w-[64px]`}></th> */}
                 </tr>
               </thead>
               <tbody>
@@ -199,7 +205,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       )}
                     </td>
 
-                    <td className="px-2 py-2 text-center w-[64px]">
+                    {/* <td className="px-2 py-2 text-center w-[64px]">
                       <button
                         type="button"
                         aria-label={`Share ${a.fields.name?.value}`}
@@ -208,7 +214,7 @@ export const Default = (props: AirlinesPanelProps): JSX.Element => {
                       >
                         <Share2 className="h-4 w-4" />
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

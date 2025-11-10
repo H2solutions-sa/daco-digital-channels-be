@@ -1,5 +1,6 @@
 "use client";
 import { PlaneLanding, PlaneTakeoff } from "lucide-react";
+import { useI18n } from "next-localization";
 
 type Tab = "arrivals" | "departures";
 export default function Tabs({
@@ -9,6 +10,8 @@ export default function Tabs({
   tab: Tab;
   setTab: (t: Tab) => void;
 }) {
+const {t} = useI18n();
+
   return (
     <div role="tablist" aria-label="Arrivals and departures" className="kfia-tabs mt-6">
       <button
@@ -18,7 +21,7 @@ export default function Tabs({
         className="kfia-tab"
       >
         <PlaneLanding className="w-[18px] h-[18px]" aria-hidden="true" />
-        ARRIVALS
+        {t("arrivals-tab")}
       </button>
       <button
         role="tab"
@@ -27,7 +30,7 @@ export default function Tabs({
         className="kfia-tab"
       >
         <PlaneTakeoff className="w-[18px] h-[18px]" aria-hidden="true" />
-        DEPARTURES
+        {t("departures-tab")}
       </button>
     </div>
   );

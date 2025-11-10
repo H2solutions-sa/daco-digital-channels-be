@@ -28,7 +28,7 @@ export async function fetchFlights(opts: FetchFlightsOpts = {}) {
 }
 
 export async function fetchSingleFlight(airline: string, number: string) {
-  const url = `/api/aodp/flight/${encodeURIComponent(airline)}/${encodeURIComponent(number)}`;
+  const url = `https://uat.dammamairports.sa/AODPAPI/api/v1/flight/${encodeURIComponent(airline)}/${encodeURIComponent(number)}`;
   try {
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
