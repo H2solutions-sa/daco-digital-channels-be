@@ -57,20 +57,30 @@
     --kfia-scale: 1;
 
     --font-family: "Loew Next Arabic", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-    --heading1-size: 64px;
-    --heading2-size: 56px;
-    --heading3-size: 40px;
-    --heading4-size: 28px;
+
+    /* ========== UPDATED: Match FE-WEB Typography Scale ========== */
+    --heading1-size: 48px;  /* Changed from 64px */
+    --heading2-size: 32px;  /* Changed from 56px */
+    --heading3-size: 24px;  /* Changed from 40px */
+    --heading4-size: 16px;  /* Changed from 28px */
     --heading5-size: 18px;
 
     /* === Added for card + section titles === */
     --title-lg-size: 22px;
     --title-md-size: 20px;
+    --title-20-size: 20px;  /* NEW: Match FE-WEB */
+    --title-20-line: 24px;  /* NEW: Match FE-WEB */
 
-    --paragraph1-size: 16px;
-    --paragraph2-size: 15px;
+    --paragraph1-size: 14px;  /* Changed from 16px */
+    --paragraph2-size: 13px;  /* Changed from 15px */
     --paragraph4-size: 13px;
     --button-size: 16px;
+
+    /* ========== Font Weight Variables (Match FE-WEB) ========== */
+    --w-medium: 500;
+    --w-bold: 700;
+    --w-xbold: 800;
+    --w-heavy: 850;
   }
 
   /* Enable smooth scrolling and optimized rendering */
@@ -133,54 +143,54 @@
 
   /* ---------- Typography Utilities ---------- */
   .kfia-h1 {
-    font-weight: 600;
+    font-weight: var(--w-xbold);  /* Changed from 600 to match FE-WEB */
     font-size: var(--heading1-size);
     color: var(--kfia-brand);
   }
   .kfia-h2 {
-    font-weight: 600;
+    font-weight: var(--w-xbold);  /* Changed from 600 to match FE-WEB */
     font-size: var(--heading2-size);
     color: var(--kfia-brand);
   }
   .kfia-h3 {
-    font-weight: 500;
+    font-weight: var(--w-medium);  /* Keep 500 */
     font-size: var(--heading3-size);
     color: var(--kfia-brand);
   }
   .kfia-h4 {
-    font-weight: 500;
+    font-weight: var(--w-medium);  /* Keep 500 */
     font-size: var(--heading4-size);
     color: var(--kfia-brand);
   }
   .kfia-h5 {
-    font-weight: 600;
+    font-weight: var(--w-bold);  /* Changed from 600 to match FE-WEB */
     font-size: var(--heading5-size);
     color: var(--kfia-brand);
   }
   .kfia-h5--medium {
-    font-weight: 500;
+    font-weight: var(--w-medium);
     font-size: var(--heading5-size);
     color: var(--kfia-brand);
   }
 
   .kfia-p1 {
-    
+    font-weight: var(--w-medium);  /* Added to match FE-WEB */
     font-size: var(--paragraph1-size);
     color: #333;
   }
   .kfia-p2 {
-    font-weight: 400;
+    font-weight: var(--w-medium);  /* Changed from 400 to match FE-WEB */
     font-size: var(--paragraph2-size);
     color: #333;
   }
   .kfia-p4 {
-    font-weight: 500;
+    font-weight: var(--w-medium);  /* Keep 500 */
     font-size: var(--paragraph4-size);
     color: #555;
   }
 
   .kfia-btn-text {
-    font-weight: 600;
+    font-weight: var(--w-bold);  /* Changed from 600 to match FE-WEB */
     font-size: var(--button-size);
     letter-spacing: 0.01em;
     color: #fff;
