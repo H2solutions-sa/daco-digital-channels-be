@@ -2,20 +2,24 @@ html {
   font-size: 62.5%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
   margin-bottom: 0px;
-  height: auto !important;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   @include opensans-font-stack();
-  position: relative;
-  overflow: auto;
+  position: static;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: $text-basic;
   font-size: 16px;
   line-height: 1.5;
   background: $page-bg;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  height: auto !important;
+  min-height: 100vh;
   &.on-page-editor {
     background: $page-bg-editor !important;
   }

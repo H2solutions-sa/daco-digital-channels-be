@@ -1,3 +1,46 @@
+/* ============================================
+   Font Faces - Loew Next Arabic (Brand Font)
+   ============================================ */
+@font-face {
+  font-family: "Loew Next Arabic";
+  src: url("/fonts/Loew Next Arabic Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Loew Next Arabic";
+  src: url("/fonts/Loew Next Arabic Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Loew Next Arabic";
+  src: url("/fonts/Loew Next Arabic Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Loew Next Arabic";
+  src: url("/fonts/Loew Next Arabic ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Loew Next Arabic";
+  src: url("/fonts/Loew Next Arabic Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 /* ---------- Base: only-used tokens ---------- */
@@ -13,7 +56,7 @@
     --kfia-content-w: 1200px;
     --kfia-scale: 1;
 
-    --font-family: "Plus Jakarta Sans", sans-serif;
+    --font-family: "Loew Next Arabic", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
     --heading1-size: 64px;
     --heading2-size: 56px;
     --heading3-size: 40px;
@@ -30,9 +73,20 @@
     --button-size: 16px;
   }
 
+  /* Enable smooth scrolling and optimized rendering */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
   body {
     font-family: var(--font-family);
     color: #1c1550;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {
