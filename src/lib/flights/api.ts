@@ -13,7 +13,7 @@ export async function fetchFlights(opts: FetchFlightsOpts = {}) {
 
   const url = `${INTERNAL_FLIGHTS_PATH}${params.size ? `?${params.toString()}` : ""}`;
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) {
       // swallow upstream body/details from surfacing to UI
       const detail = await res.text().catch(() => "");
@@ -30,7 +30,7 @@ export async function fetchFlights(opts: FetchFlightsOpts = {}) {
 export async function fetchSingleFlight(airline: string, number: string) {
   const url = `https://uat.dammamairports.sa/AODPAPI/api/v1/flight/${encodeURIComponent(airline)}/${encodeURIComponent(number)}`;
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) {
       const detail = await res.text().catch(() => "");
       console.debug("Flight upstream error:", res.status, res.statusText, detail);

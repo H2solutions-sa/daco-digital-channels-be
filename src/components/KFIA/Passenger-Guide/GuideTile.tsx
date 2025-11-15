@@ -51,7 +51,7 @@ export const Default = (props: cardList): JSX.Element => {
                        text-[color:var(--kfia-brand)]
                        bg-[color:var(--kfia-brand)]/10"
           >
-            <ArrowUpRight className="w-5 h-5" />
+            <ArrowUpRight className="w-5 h-5 rtl:scale-x-[-1]" />
           </span>
         </div>
       </div>

@@ -239,108 +239,135 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
 
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
     let alive = true;
+
+    const processFlights = (raw: any, selectedDate: Date, tab: Tab) => {
+      const currentTime =
+        (raw as any)?.CURRENT_TIME ??
+        (raw as any)?.current_time ??
+        null;
+
+      let flights: FlightApi[] = [];
+      if (Array.isArray((raw as any)?.FLIGHTS)) flights = (raw as any).FLIGHTS;
+      else if (Array.isArray((raw as any)?.flights)) flights = (raw as any).flights;
+      else if (Array.isArray((raw as any)?.results)) flights = (raw as any).results;
+      else if (Array.isArray(raw)) flights = raw as FlightApi[];
+      else flights = [];
+
+      const want = tab === "arrivals" ? "A" : "D";
+      const byDir = flights.filter(
+        (f) => ((f as any)?.ARR_DEP || "").toUpperCase() === want
+      );
+
+      const byDay = filterByDay(byDir, selectedDate);
+      const mapped = byDay
+        .map((f) => toBigRow(f))
+        .sort((a, b) => a.scheduled.localeCompare(b.scheduled));
+
+      return { mapped, currentTime, flights };
+    };
+
+    const persistToLocalStorage = (mapped: Row[], selectedDate: Date, tab: Tab) => {
+      if (typeof window === "undefined") return;
+
+      const statusMap = Object.fromEntries(
+        mapped.map((r) => [r.flightNo, r.status || ""])
+      );
+      const destMap = Object.fromEntries(
+        mapped.map((r) => [r.flightNo, r.destination || ""])
+      );
+
+      const journeySeed = mapped.map((r) => {
+        const iata = r.destination.match(/\(([A-Z]{3})\)/i)?.[1] ?? "";
+        const city = r.destination.replace(/\s*\([A-Z]{3}\)\s*$/, "");
+        const from = tab === "departures" ? "DMM" : iata;
+        const to = tab === "departures" ? iata : "DMM";
+        return {
+          flightNo: r.flightNo,
+          sched: r.scheduled,
+          from,
+          to,
+          destinationLabel: city,
+          gate: r.gate || "",
+          status: r.status || "",
+          tab,
+        };
+      });
+
+      const journeyByFlightNo: Record<string, any> = Object.fromEntries(
+        journeySeed.map((j) => [j.flightNo, j])
+      );
+
+      try {
+        localStorage.setItem("kfia:statusMap", JSON.stringify(statusMap));
+        localStorage.setItem("kfia:destMap", JSON.stringify(destMap));
+        localStorage.setItem("kfia:journeySeed", JSON.stringify(journeySeed));
+        localStorage.setItem("kfia:journeyByFlightNo", JSON.stringify(journeyByFlightNo));
+        localStorage.setItem("kfia:selectedDatePretty", new Intl.DateTimeFormat(undefined, {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }).format(selectedDate));
+        localStorage.setItem("kfia:selectedDateISO", selectedDate.toISOString());
+      } catch {}
+    };
+
     (async () => {
       try {
         setLoading(true);
         setErr(null);
 
-        // Server filters by ARR/DEP; top controls payload size
-        const raw = await fetchFlights({ tab, top: 500 });
+        // PHASE 1: Quick load - fetch first 50 flights
+        const quickRaw = await fetchFlights({ tab, top: 50 });
+        const quickResult = processFlights(quickRaw, selectedDate, tab);
 
-        const currentTime =
-          (raw as any)?.CURRENT_TIME ??
-          (raw as any)?.current_time ??
-          null;
-
-        let flights: FlightApi[] = [];
-        if (Array.isArray((raw as any)?.FLIGHTS)) flights = (raw as any).FLIGHTS;
-        else if (Array.isArray((raw as any)?.flights)) flights = (raw as any).flights;
-        else if (Array.isArray((raw as any)?.results)) flights = (raw as any).results;
-        else if (Array.isArray(raw)) flights = raw as FlightApi[];
-        else flights = [];
-
-        //Defensive client-side filter by ARR_DEP (in case upstream ignored it)
-        const want = tab === "arrivals" ? "A" : "D";
-        const byDir = flights.filter(
-          (f) => ((f as any)?.ARR_DEP || "").toUpperCase() === want
-        );
-
-        if (!didInitFromPayload && currentTime) {
-          setSelectedDate(startOfDay(new Date(currentTime)));
+        if (!didInitFromPayload && quickResult.currentTime) {
+          setSelectedDate(startOfDay(new Date(quickResult.currentTime)));
           setDidInitFromPayload(true);
         }
 
-        const byDay = filterByDay(byDir, selectedDate);
-        const mapped = byDay
-          .map((f) => toBigRow(f))
-          .sort((a, b) => a.scheduled.localeCompare(b.scheduled));
+        if (alive) {
+          // Show initial results immediately
+          setRows(quickResult.mapped);
+          setVisible(PAGE_SIZE);
+          setLoading(false);
+
+          if (process.env.NODE_ENV !== "production") {
+            console.debug(`[FlightsPanel] Quick load: showing ${quickResult.mapped.length} flights`);
+          }
+        }
+
+        // PHASE 2: Background load - fetch all 500 flights
+        setLoadingMore(true);
+        const fullRaw = await fetchFlights({ tab, top: 500 });
+        const fullResult = processFlights(fullRaw, selectedDate, tab);
 
         if (alive) {
           if (process.env.NODE_ENV !== "production") {
-            const countA = flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "A").length;
-            const countD = flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "D").length;
-            console.debug(`[FlightsPanel] fetched: A=${countA} D=${countD} | showing ${tab}=${mapped.length}`);
+            const countA = fullResult.flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "A").length;
+            const countD = fullResult.flights.filter((f) => ((f as any).ARR_DEP || "").toUpperCase() === "D").length;
+            console.debug(`[FlightsPanel] Full load: A=${countA} D=${countD} | showing ${tab}=${fullResult.mapped.length}`);
           }
 
-          setRows(mapped);
-          setVisible(PAGE_SIZE);
-
-          // Persist lightweight maps for Journey pages (keyed by flightNo)
-          if (typeof window !== "undefined") {
-            const statusMap = Object.fromEntries(
-              mapped.map((r) => [r.flightNo, r.status || ""])
-            );
-            const destMap = Object.fromEntries(
-              mapped.map((r) => [r.flightNo, r.destination || ""])
-            );
-
-            //Journey seed + quick lookup map
-            const journeySeed = mapped.map((r) => {
-              const iata = r.destination.match(/\(([A-Z]{3})\)/i)?.[1] ?? "";
-              const city = r.destination.replace(/\s*\([A-Z]{3}\)\s*$/,"");
-              const from = tab === "departures" ? "DMM" : iata;
-              const to = tab === "departures" ? iata : "DMM";
-              return {
-                flightNo: r.flightNo,
-                sched: r.scheduled,               // "HH:mm"
-                from,                             // IATA
-                to,                               // IATA
-                destinationLabel: city,           // city name
-                gate: r.gate || "",
-                status: r.status || "",
-                tab,                              // "arrivals" | "departures"
-              };
-            });
-
-            const journeyByFlightNo: Record<string, any> = Object.fromEntries(
-              journeySeed.map((j) => [j.flightNo, j])
-            );
-
-            try {
-              localStorage.setItem("kfia:statusMap", JSON.stringify(statusMap));
-              localStorage.setItem("kfia:destMap", JSON.stringify(destMap));
-              localStorage.setItem("kfia:journeySeed", JSON.stringify(journeySeed));
-              localStorage.setItem("kfia:journeyByFlightNo", JSON.stringify(journeyByFlightNo));
-              localStorage.setItem("kfia:selectedDatePretty", new Intl.DateTimeFormat(undefined, {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              }).format(selectedDate));
-              localStorage.setItem("kfia:selectedDateISO", selectedDate.toISOString());
-            } catch {}
-          }
+          setRows(fullResult.mapped);
+          persistToLocalStorage(fullResult.mapped, selectedDate, tab);
+          setLoadingMore(false);
         }
       } catch (e: any) {
         console.error("FlightsPanel: failed to load flights", e);
         if (alive) setErr(e?.message ?? "Failed to load flights");
       } finally {
-        if (alive) setLoading(false);
+        if (alive) {
+          setLoading(false);
+          setLoadingMore(false);
+        }
       }
     })();
+
     return () => {
       alive = false;
     };
@@ -443,7 +470,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                 setSelectedDate((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1))
               }
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
             </button>
 
             {startOfDay(selectedDate).getTime() === TODAY().getTime() && (
@@ -474,7 +501,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                 setSelectedDate((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1))
               }
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 rtl:rotate-180" />
             </button>
           </div>
 
@@ -505,11 +532,18 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
               </p>
             </div>
           ) : (
-            <FlightsTable
-              rows={visibleRows}
-              forceMobile={forceMobile}
-              showCounter={tab === "departures"}   //hide column on arrivals
-            />
+            <>
+              <FlightsTable
+                rows={visibleRows}
+                forceMobile={forceMobile}
+                showCounter={tab === "departures"}   //hide column on arrivals
+              />
+              {loadingMore && (
+                <div className="mt-3 text-center">
+                  <p className="text-xs text-neutral-500">{t("loading")} {t("load-more-flights")}...</p>
+                </div>
+              )}
+            </>
           )}
 
           {canLoadMore && !loading && !err && visibleRows.length > 0 && (
@@ -550,7 +584,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                       setSelectedDate((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1))
                     }
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
                   </button>
 
                   <button
@@ -575,7 +609,7 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                       setSelectedDate((d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1))
                     }
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5 rtl:rotate-180" />
                   </button>
                 </div>
 
@@ -598,11 +632,18 @@ export default function FlightsPanel({ initialTab }: { initialTab: Tab }) {
                       </p>
                     </div>
                   ) : (
-                    <FlightsTable
-                      rows={visibleRows}
-                      forceMobile={false}
-                      showCounter={tab === "departures"} //hide column on arrivals (fullscreen too)
-                    />
+                    <>
+                      <FlightsTable
+                        rows={visibleRows}
+                        forceMobile={false}
+                        showCounter={tab === "departures"} //hide column on arrivals (fullscreen too)
+                      />
+                      {loadingMore && (
+                        <div className="mt-3 text-center">
+                          <p className="text-xs text-neutral-500">{t("loading")} {t("load-more-flights")}...</p>
+                        </div>
+                      )}
+                    </>
                   )}
                   {canLoadMore && visibleRows.length > 0 && (
                     <div className="mt-6 flex justify-center">

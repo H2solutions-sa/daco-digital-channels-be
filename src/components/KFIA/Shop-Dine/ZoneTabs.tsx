@@ -1,7 +1,7 @@
 import { JSX ,useState } from 'react';
-import Link from 'next/link';
 import { Field,Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
+import Link from 'next/link';
 
 type ZoneTabsWrapperProps = ComponentProps & {
   id: string; // Sitecore ID
@@ -32,7 +32,7 @@ export const Default = (props: ZoneTabsProps): JSX.Element => {
       ].join(" ")}>
    { props.fields.items &&
      props.fields.items.map(
-      (tab, index) => 
+      (tab, index) =>
         index <= props.fields.items.length && (
           <Link
             key={index}
@@ -41,7 +41,7 @@ export const Default = (props: ZoneTabsProps): JSX.Element => {
             onClick={() => handleTabClick(index)}
              className={[
                   "h-[44px] sm:h-[48px] w-full rounded-xl border text-sm transition text-center pt-3",
-                  activeTab === index  
+                  activeTab === index
                     ? "bg-[color:var(--kfia-brand)] text-white border-[color:var(--kfia-brand)] shadow-sm"
                     : "bg-white text-[color:var(--kfia-brand)] border-[color:var(--kfia-brand)]/15 hover:bg-[oklch(0.98_0_0)]",
                 ].join(" ")}

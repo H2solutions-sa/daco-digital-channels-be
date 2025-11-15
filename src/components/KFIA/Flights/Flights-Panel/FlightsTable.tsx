@@ -94,7 +94,7 @@ const { t } = useI18n();
             className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-neutral-500"
             aria-hidden="true"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 rtl:rotate-180" />
           </span>
         </div>
       </div>
@@ -284,7 +284,7 @@ export default function FlightsTable({
                         className="inline-flex h-8 w-8 items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-300/60"
                         aria-label={`Go to ${r.flightNo}`}
                       >
-                        <ChevronRight size={18} />
+                        <ChevronRight size={18} className="rtl:rotate-180" />
                       </Link>
                     </td>
                   </tr>

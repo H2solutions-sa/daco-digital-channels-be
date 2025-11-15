@@ -68,7 +68,7 @@ props.fields.items.map((quickTab,index) =>(
           style={{ background: "var(--kfia-brand)" }}
           aria-hidden
         >
-          <ArrowUpRight className="h-5 w-5" />
+          <ArrowUpRight className="h-5 w-5 rtl:scale-x-[-1]" />
            </span>
       </div>
     </Link>

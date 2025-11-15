@@ -85,7 +85,7 @@ export default function AirlineQuickLook({
               <div className="flex-1 text-sm text-neutral-800">{f.city}</div>
               <div className="flex items-center gap-2 text-[13px] text-[color:var(--kfia-brand)] font-medium">
                 {f.code}
-                <ArrowUpRight className="w-4 h-4" aria-hidden />
+                <ArrowUpRight className="w-4 h-4 rtl:scale-x-[-1]" aria-hidden />
               </div>
             </li>
           ))}

@@ -102,7 +102,7 @@ export default function PanelShell({
               className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-neutral-200/60"
               onClick={() => step(-1)}
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
             </button>
 
             <span className="px-2 py-1 rounded-md bg-[color:var(--kfia-brand)]/10 text-[color:var(--kfia-brand)] font-medium">
@@ -128,7 +128,7 @@ export default function PanelShell({
               className={`inline-flex h-9 w-9 items-center justify-center rounded-md ${disableNext ? "opacity-40 cursor-not-allowed" : "hover:bg-neutral-200/60"}`}
               onClick={() => step(+1)}
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 rtl:rotate-180" />
             </button>
           </div>
 
@@ -196,7 +196,7 @@ export default function PanelShell({
                     ))
                   }
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
                 </button>
 
                 <span className="px-2 py-1 rounded-md bg-[color:var(--kfia-brand)]/10 text-[color:var(--kfia-brand)] font-semibold">
@@ -218,7 +218,7 @@ export default function PanelShell({
                     ))
                   }
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5 rtl:rotate-180" />
                 </button>
               </div>
 
